@@ -218,7 +218,7 @@ metabolism, FSCTF, signature duality, finite-state transducers,
 boundary-preserving dynamics.\\
 \textbf{Code:} \texttt{genesis-simulation/dynamics/metabolic.js},
 \texttt{genesis-simulation/tests/test-metabolic-theory.mjs}
-(53 tests, zero failures).
+(76 tests, zero failures).
 \end{center}
 \vspace{0.4em}
 \begin{center}
@@ -243,7 +243,7 @@ theorems on the metabolic cycle plus four pathology theorems
 originated as biological predictions and are here promoted to
 pure algebra. The paper makes no claims to novelty in the underlying
 algebra: everything reduces to operations already present in the
-substrate of Paper~I. The contribution is the bijection, the
+substrate of Paper~I~\cite{paper-I}. The contribution is the bijection, the
 identification of two distinct witness invariants, the closed-form
 decay law $c_k(t) = c_k(0) \exp(-t(1 - \vp^{-k}))$ for grade-$k$
 Grace dynamics, and four algebraic pathology theorems with explicit
@@ -307,8 +307,8 @@ specific biological predictions stated in §\ref{sec:predictions}.
 \medskip
 \noindent\textbf{Place in the series.}
 This is the \emph{operational/biological} side paper for the
-main trilogy (I~$\to$~II~$\to$~III).  It depends on Paper~I
-(Clifford algebra, Peirce idempotents) and Paper~III (monad/braid
+main trilogy (I~$\to$~II~$\to$~III).  It depends on Paper~I~\cite{paper-I}
+(Clifford algebra, Peirce idempotents) and Paper~III~\cite{paper-III} (monad/braid
 grammar) but is independent of Papers~II, VI, VII, and VIII.
 
 \tableofcontents
@@ -322,7 +322,7 @@ grammar) but is independent of Papers~II, VI, VII, and VIII.
 \begin{sectionopener}
 This paper takes a sentence from natural language --- ``eating is asymmetric
 coherence transfer across a boundary'' --- and shows that it has a
-unique algebraic realization in the substrate of Paper~I. The
+unique algebraic realization in the substrate of Paper~I~\cite{paper-I}. The
 realization makes seven testable numerical claims, all of which we
 verify, and four biological predictions, which we state but do not
 verify.
@@ -340,7 +340,7 @@ become unique?
 
 The answer, given a Clifford algebra $\Cl(3,1)$ over $\R$ with
 primitive idempotents and a contraction operator $G$ satisfying the
-Lyapunov property of Paper~I, is exactly one. The bijection is
+Lyapunov property of Paper~I~\cite{paper-I}, is exactly one. The bijection is
 forced by:
 
 \begin{enumerate}[label=(\arabic*)]
@@ -372,9 +372,9 @@ excretion & $\mathrm{residue} = \mathrm{mixed} - \mathrm{reconstruct}(G^n(c))$ \
 
 \subsection*{Relation to Papers I--IV}
 
-This paper depends on Paper~I for the algebraic substrate
+This paper depends on Paper~I~\cite{paper-I} for the algebraic substrate
 ($\Cl(3,1)$, the Grace contraction, the idempotent split). It does
-not depend on Papers II--IV. The metabolic reading is a new
+not depend on Papers~II--IV~\cite{paper-II,paper-III,paper-IV}. The metabolic reading is a new
 interpretive layer over the existing substrate; no new algebra
 is introduced.
 
@@ -383,7 +383,7 @@ is introduced.
 \label{sec:prelim}
 %% =====================================================================
 
-We assume the reader is familiar with the substrate of Paper~I and
+We assume the reader is familiar with the substrate of Paper~I~\cite{paper-I} and
 state only what is needed.
 
 \subsection{The algebra}
@@ -406,7 +406,7 @@ basis.
 \subsection{The primitive idempotents}
 
 Let $\Pf, \Qf \in \Cl(3,1)$ be the primitive idempotent pair from
-Paper~I, with $\Pf + \Qf = I$ and $\Pf\Qf = \Qf\Pf = 0$. In the
+Paper~I~\cite{paper-I}, with $\Pf + \Qf = I$ and $\Pf\Qf = \Qf\Pf = 0$. In the
 matrix representation chosen here,
 \[
 \Pf = \tfrac{1}{4}\,\mathrm{diag}(4, 0, 0, 0) = E_{00}, \qquad
@@ -434,7 +434,7 @@ with multiplicities $(1, 4, 6, 4, 1)$.
 
 When the Grace coupling $\kappa = 2\vp^{-3}$ governs continuous
 dynamics, the per-step contraction reads (after the convention
-fixed in Paper~I) $c_i \mapsto e^{-(1 - \vp^{-\mathrm{grade}(e_i)})} c_i$
+fixed in Paper~I~\cite{paper-I}) $c_i \mapsto e^{-(1 - \vp^{-\mathrm{grade}(e_i)})} c_i$
 under unit time step. We use this convention.
 
 \subsection{The Love operator}
@@ -447,7 +447,7 @@ contribution in grades $1$ and $3$ (odd grades).
 \subsection{The master step}
 
 The combined dynamics is $M \mapsto S(M)$ where $S$ is the
-matrix-level update of Paper~III §2. $S$ preserves the first matrix
+matrix-level update of Paper~III~\cite{paper-III} \S2. $S$ preserves the first matrix
 row $M[0, {:}]$ exactly (verified numerically; we restate this
 below as \cref{thm:two-witnesses}).
 
@@ -472,6 +472,44 @@ c &= \mathrm{decompose}(\mathrm{mixed}) \in \R^{16}, \\
 \mathrm{residue} &= \mathrm{mixed} - \mathrm{absorbed}.
 \end{align*}
 \end{definition}
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[
+    >=Latex,
+    every node/.style={font=\small},
+    phase/.style={circle,draw=accentBlue!75,fill=accentBlue!10,
+                  thick,minimum size=42pt,inner sep=2pt,align=center},
+    arr/.style={->,very thick,accentGray!85},
+    lab/.style={font=\footnotesize,text=accentGray}
+  ]
+  \node[phase] (O) at (90:2.4)  {$\Omega$\\[-1pt]{\scriptsize intake}};
+  \node[phase] (L) at (0:2.4)   {$L$\\[-1pt]{\scriptsize lysis}};
+  \node[phase] (W) at (270:2.4) {$W$\\[-1pt]{\scriptsize witness}};
+  \node[phase] (G) at (180:2.4) {$G$\\[-1pt]{\scriptsize growth}};
+
+  \draw[arr] (O) arc[start angle=90,end angle=10,radius=2.4]
+    node[lab,pos=0.5,right=4pt] {decompose};
+  \draw[arr] (L) arc[start angle=0,end angle=-80,radius=2.4]
+    node[lab,pos=0.5,below right=2pt] {residue};
+  \draw[arr] (W) arc[start angle=270,end angle=190,radius=2.4]
+    node[lab,pos=0.5,left=4pt] {absorbed};
+  \draw[arr] (G) arc[start angle=180,end angle=100,radius=2.4]
+    node[lab,pos=0.5,above left=2pt] {mixed};
+
+  \node[font=\footnotesize\bfseries,text=accentBlue!80] at (0,0)
+    {$R = G(W(L(\Omega)))$};
+\end{tikzpicture}
+\caption{The metabolic cycle $R = G(W(L(\Omega)))$ as a circular flow.
+External matter $\Omega$ is decomposed (lysis $L$), the
+boundary-preserving residue is witnessed ($W$), and Grace
+contraction ($G$) stabilises the absorbed product.  The labels
+on each arc indicate the algebraic product at that stage:
+\emph{mixed} (ingested sum), \emph{decompose} (grade
+decomposition), \emph{residue} (excreted complement), and
+\emph{absorbed} (Grace-stable projection).}
+\label{fig:metabolic-cycle}
+\end{figure}
 
 \begin{theorem}[Energy conservation]
 \label{thm:cycle}
@@ -550,12 +588,50 @@ The pseudoscalar (chiral history) decays fastest; the scalar
 witness persists through the flow.''
 \end{corollary}
 
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[
+    >=Latex,
+    every node/.style={font=\small}
+  ]
+  \draw[->,thick] (-0.3,0) -- (7.5,0) node[right] {$t$};
+  \draw[->,thick] (0,-0.3) -- (0,3.8) node[above] {$c_k(t)/c_k(0)$};
+  \foreach \y/\lab in {1/0.5, 2/1.0} {
+    \draw[accentGray!40] (0,\y*3) -- (7,\y*3);
+    \draw (-0.1,\y*3) -- (0.1,\y*3) node[left=4pt,font=\footnotesize] {\lab};
+  }
+  \foreach \x in {2,4,6} {
+    \draw (\x,-0.1) -- (\x,0.1) node[below=2pt,font=\footnotesize] {\x};
+  }
+  \draw[accentBlue!90, very thick]
+    plot[domain=0:7,samples=60] (\x, {3});
+  \node[right,font=\footnotesize,accentBlue!90] at (7.1,3) {$k{=}0$};
+  \draw[accentBlue!70, thick, dashed]
+    plot[domain=0:7,samples=60] (\x, {3*exp(-\x*0.382)});
+  \node[right,font=\footnotesize,accentBlue!70] at (7.1,{3*exp(-7*0.382)}) {$k{=}1$};
+  \draw[accentGray!80, thick]
+    plot[domain=0:7,samples=60] (\x, {3*exp(-\x*0.618)});
+  \node[right,font=\footnotesize,accentGray!80] at (7.1,{3*exp(-7*0.618)}) {$k{=}2$};
+  \draw[red!60!black, thick, densely dotted]
+    plot[domain=0:7,samples=60] (\x, {3*exp(-\x*0.764)});
+  \node[right,font=\footnotesize,red!60!black] at (7.1,{3*exp(-7*0.764)}) {$k{=}3$};
+  \draw[red!80, thick, dashdotted]
+    plot[domain=0:7,samples=60] (\x, {3*exp(-\x*0.854)});
+  \node[right,font=\footnotesize,red!80] at (7.1,{3*exp(-7*0.854)}) {$k{=}4$};
+\end{tikzpicture}
+\caption{Grace decay curves $c_k(t)/c_k(0) = \exp(-t(1-\vp^{-k}))$ for
+grades $k=0,\ldots,4$.  The scalar ($k{=}0$) is the unique fixed point;
+the pseudoscalar ($k{=}4$) decays fastest with rate $1-\vp^{-4}\approx 0.854$.
+The five decay rates are $\{0, 1{-}\vp^{-1}, 1{-}\vp^{-2}, 1{-}\vp^{-3}, 1{-}\vp^{-4}\}$, fully determined by the golden ratio.}
+\label{fig:grace-decay}
+\end{figure}
+
 \begin{remark}
 The rates are $1, 2\vp^{-2}, \vp^{-2}+\vp^{-3}, \ldots$ but the
 closed-form $1 - \vp^{-k}$ is the cleanest expression. The
 appearance of all five integer powers of $\vp$ in a single
 spectrum is the structural reason Grace is unique up to the
-golden-ratio scaling fixed in Paper~I.
+golden-ratio scaling fixed in Paper~I~\cite{paper-I}.
 \end{remark}
 
 %% =====================================================================
@@ -565,7 +641,7 @@ golden-ratio scaling fixed in Paper~I.
 
 \begin{theorem}[Two distinct witnesses]
 \label{thm:two-witnesses}
-Let $S$ be the master step of Paper~III and $G$ the Grace
+Let $S$ be the master step of Paper~III~\cite{paper-III} and $G$ the Grace
 contraction. Then:
 \begin{enumerate}[label=(\roman*)]
 \item For every $c \in \R^{16}$, $\big(G(c)\big)_0 = c_0$. The
@@ -583,7 +659,7 @@ contraction. Then:
 \begin{proof}
 (i) is immediate from \eqref{eq:grace} since $\mathrm{grade}(e_0) = 0$.
 (ii) is verified by direct inspection of $S$'s matrix
-representation (Paper~III §2). For (iii): the trace
+representation (Paper~III~\cite{paper-III} \S2). For (iii): the trace
 $\tr(M) = 4 c_0$ in our representation, and $S$ contracts off-diagonal
 entries while modifying the diagonal trace by a Grace factor, hence
 $c_0$ is not generically fixed by $S$. Conversely, the pseudoscalar
@@ -723,8 +799,8 @@ Three failure modes are distinguishable in this framework:
 \item \emph{Toxicity.} Iterated ingestion with insufficient $n$.
   Grade-$\geq 1$ content accumulates; $\|\mathrm{self}\|$ grows
   monotonically without bound.
-\item \emph{Constipation.} Excretion blocked. From the throat
-  architecture of Paper~IV (mushrooms.md), if $P_\mathrm{clear} = 0$
+\item \emph{Constipation.} Excretion blocked.   From the throat
+  architecture of Paper~IV~\cite{paper-IV}, if $P_\mathrm{clear} = 0$
   or $P_\mathrm{cap} = 0$, then total flux $J = 0$, and residue
   accumulates internally.
 \end{itemize}
@@ -828,7 +904,7 @@ accepting depths is exactly $\{2, 3, 4, 7\}$.
 
 \begin{proof}[Proof sketch]
 Enumerate all $64$ states $(g, c, s, w, x, p)$ with each component
-in $\{0, 1\}$ for $g$ and ranges from Paper~III §3. For each, run
+in $\{0, 1\}$ for $g$ and ranges from Paper~III~\cite{paper-III} \S3. For each, run
 the acceptance check and read the depth field. The exhaustive
 check is performed in
 \texttt{tests/test-metabolic-theory.mjs} (suite ``Phase 5 / depth-5'').
@@ -838,7 +914,7 @@ states have depth $\in \{2, 3, 4, 7\}$.
 
 \begin{remark}
 \cref{thm:promotion} is the runtime complement to the Lean
-machine-verified Promotion Lemma of Paper~III. The two proofs
+machine-verified Promotion Lemma of Paper~III~\cite{paper-III}. The two proofs
 agree.
 \end{remark}
 
@@ -1397,7 +1473,7 @@ P4 Constipation & \cref{thm:constipation,cor:cycle-flux} & Phase 7.1 / constipat
 \end{center}
 
 No ad hoc parameters are introduced: every constant is fixed by
-the substrate of Paper~I or is a uniformly random test input drawn
+the substrate of Paper~I~\cite{paper-I} or is a uniformly random test input drawn
 under standard PRNG. The total test runtime is under $150$ ms on a
 2024 laptop. Within the full simulation test suite of $317$ tests,
 zero failures occur and no prior tests regress.
@@ -1457,7 +1533,7 @@ boundary between them.
 
 Every algebraic primitive used here ($\Cl(3,1)$, the idempotent
 split, the Grace contraction, the Love unfolding, the master step,
-the FST) appears in Papers I--IV. This paper introduces no new
+the FST) appears in Papers~I--IV~\cite{paper-I,paper-II,paper-III,paper-IV}. This paper introduces no new
 algebra. The contribution is the interpretation, the precise
 bijection, and the closed-form theorems that the interpretation
 forces.
@@ -1467,5 +1543,34 @@ forces.
 conversation about sphere eversion and ended at the gut wall.
 The intermediate steps are in
 \texttt{sphereeversion.md} in the accompanying repository.
+
+\begin{thebibliography}{99}
+
+\bibitem{paper-I}
+  K.~Tynski,
+  \emph{The Golden Substrate: From Null Generators to the Split Albert Algebra},
+  Paper~I in the Golden Substrate series, May 2026.
+
+\bibitem{paper-II}
+  K.~Tynski,
+  \emph{Echo Interference Implies the Riemann Hypothesis and the Collatz Conjecture},
+  Paper~II in the Golden Substrate series, May 2026.
+
+\bibitem{paper-III}
+  K.~Tynski,
+  \emph{The Holographic Monad: Why the Substrate Proves Universal Theorems},
+  Paper~III in the Golden Substrate series, May 2026.
+
+\bibitem{paper-IV}
+  K.~Tynski,
+  \emph{$\Z[\vp]$ Arithmetic in the Monstrous Atlas},
+  Paper~IV in the Golden Substrate series, May 2026.
+
+\bibitem{paper-VI}
+  K.~Tynski,
+  \emph{The Operator-Level Bridge},
+  Paper~VI in the Golden Substrate series, May 2026.
+
+\end{thebibliography}
 
 \end{document}

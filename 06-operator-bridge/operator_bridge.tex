@@ -415,6 +415,59 @@ In the $M_2(\HH)$ picture, $Q_4$ projects onto the top-left $\HH$-block:
   P_{23} = \begin{pmatrix} 0 & \HH \\ \HH & 0 \end{pmatrix}.
 \]
 
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[
+    cell/.style={minimum width=2.4cm,minimum height=2.4cm,
+                 draw=accentGray!60,thick,align=center,font=\small},
+    diagcell/.style={cell,fill=accentBlue!10},
+    offcell/.style={cell,fill=red!6},
+    lbl/.style={font=\footnotesize\itshape,text=accentGray},
+    elbl/.style={font=\small\bfseries,text=accentBlue!80}
+  ]
+  \matrix (m) [column sep=-\pgflinewidth, row sep=-\pgflinewidth] {
+    \node[diagcell] (e1) {$E_1$\\[2pt]{\footnotesize$\HH$-block}}; &
+    \node[offcell]  (v12){$V_{12}$\\[2pt]{\footnotesize off-diag.}}; &
+    \node[offcell]  (v13){$V_{13}$\\[2pt]{\footnotesize off-diag.}}; \\
+    \node[offcell]  (v21){$V_{21}$\\[2pt]{\footnotesize off-diag.}}; &
+    \node[diagcell] (e2) {$E_2$\\[2pt]{\footnotesize$\HH$-block}}; &
+    \node[offcell]  (v23){$V_{23}$\\[2pt]{\footnotesize off-diag.}}; \\
+    \node[offcell]  (v31){$V_{31}$\\[2pt]{\footnotesize off-diag.}}; &
+    \node[offcell]  (v32){$V_{32}$\\[2pt]{\footnotesize off-diag.}}; &
+    \node[diagcell] (e3) {$E_3$\\[2pt]{\footnotesize$\HH$-block}}; \\
+  };
+  \node[elbl,above=4pt] at (e1.north) {witness};
+  \node[elbl,above=4pt] at (e2.north) {dual};
+  \node[elbl,above=4pt] at (e3.north) {residue};
+  \node[lbl,left=6pt] at (v21.west) {$P_{23}$};
+  \node[lbl,right=6pt] at (v23.east) {$P_{23}$};
+  \draw[thick,accentBlue!60,rounded corners=4pt]
+    ([shift={(-3pt,3pt)}]e1.north west) rectangle
+    ([shift={(3pt,-3pt)}]e1.south east);
+  \draw[thick,accentBlue!60,rounded corners=4pt]
+    ([shift={(-3pt,3pt)}]e2.north west) rectangle
+    ([shift={(3pt,-3pt)}]e2.south east);
+  \draw[thick,accentBlue!60,rounded corners=4pt]
+    ([shift={(-3pt,3pt)}]e3.north west) rectangle
+    ([shift={(3pt,-3pt)}]e3.south east);
+  \node[lbl] at ([yshift=-18pt]m.south)
+    {$J_3(\Os)$ Peirce block structure:
+     diagonal $\cong \HH$ (idempotents $E_i$),
+     off-diagonal $\cong \Os$ (octets $V_{ij}$)};
+\end{tikzpicture}
+\caption{The $3\!\times\!3$ Peirce block structure of
+$J_3(\Os) \supset M_2(\HH) = \Cl(3,1)$.  The three diagonal
+slots carry the idempotents $E_1$ (witness), $E_2$ (dual),
+$E_3$ (residue), each isomorphic to $\HH$.  The six
+off-diagonal octets $V_{ij}$ form the $P_{23}$ sector of the
+Peirce decomposition; they carry the split-prime interior
+degrees of freedom.  In the $M_2(\HH)$ restriction used by
+Paper~VI, the upper-left $\HH$-block is $P_4$ (boundary /
+ramified), the lower-right is $P_{4c}$ (complement / inert),
+and the off-diagonal pair is $P_{23}$ (interior / split).}
+\label{fig:peirce-blocks}
+\end{figure}
+
 \subsection{Galois block structure of tensor induction}
 
 The Langlands base-change from $\GL(2)/\QQ$ to $\Res_{K/\QQ}\GL(2)$ carries
@@ -792,6 +845,51 @@ computation via Weierstrass point counting), \texttt{hilbert\_homology}
 % ===========================================================================
 
 \begin{thebibliography}{99}
+
+%% --- Golden Substrate series ---
+
+\bibitem{paper1}
+K.~Tynski,
+\emph{The Golden Substrate: From Null Generators to the Split Albert
+Algebra} (Paper~I in the Golden Substrate series), 2026.
+
+\bibitem{paper2}
+K.~Tynski,
+\emph{Echo Interference Implies the Riemann Hypothesis and the Collatz
+Conjecture} (Paper~II), 2026.
+
+\bibitem{paper3}
+K.~Tynski,
+\emph{The Holographic Monad: Why the Substrate Proves Universal Theorems}
+(Paper~III), 2026.
+
+\bibitem{paper4}
+K.~Tynski,
+\emph{$\ZZ[\varphi]$ Arithmetic in the Monstrous Atlas: Moonshine
+Scaffolding for the Golden Substrate Seam} (Paper~IV), 2026.
+
+\bibitem{paper5}
+K.~Tynski,
+\emph{The Metabolic Interpretation of FSCTF: Eating as the Creation Cycle}
+(Paper~V), 2026.
+
+\bibitem{paper6}
+K.~Tynski,
+\emph{The Operator-Level Bridge: From Peirce Decomposition to Prime
+Splitting via the Quaternion--Clifford Identification} (Paper~VI;
+this paper), 2026.
+
+\bibitem{paper7}
+K.~Tynski,
+\emph{The Information-Acoustic Eversion: Sphere Eversion as Hecke
+Propagation through the $\Cl(3,1)$ Substrate} (Paper~VII), 2026.
+
+\bibitem{paper8}
+K.~Tynski,
+\emph{From $G_2$ to Universal Grammar: A Math-First Derivation of Natural
+Semantic Metalanguage via $\Cl(3,1)$} (Paper~VIII), 2026.
+
+%% --- External references ---
 
 \bibitem{langlands1980}
 R.~P. Langlands, \emph{Base change for $\GL(2)$}, Annals of Mathematics

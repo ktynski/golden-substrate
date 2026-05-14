@@ -452,7 +452,7 @@ finds all ten consistent.
 This paper is organized as follows.
 Section~\ref{sec:background} reviews NSM, Clifford algebras, and
 the exceptional structures of dimension $7$.
-Section~\ref{sec:layer0}--\ref{sec:layer7} present each of the
+Sections~\ref{sec:layer0}--\ref{sec:layer7} present each of the
 eight layer derivations and their verification probes.
 Section~\ref{sec:ug-theorem} states and proves the Universal
 Grammar Theorem.  Section~\ref{sec:empirical} summarizes the
@@ -792,6 +792,72 @@ Direct computation via the $\Cl(3)$ geometric product (which
 agrees with $\Cl(3,1)$ on the subalgebra of $e_4$-free blades).
 \end{proof}
 
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[
+    fanopoint/.style={circle,draw=accentBlue!80,fill=accentBlue!15,
+                      thick,inner sep=0pt,minimum size=22pt,
+                      font=\footnotesize\bfseries},
+    fanoline/.style={thick,accentGray!70},
+    nsmlbl/.style={font=\scriptsize\sffamily,text=red!70},
+    bladelbl/.style={font=\scriptsize,text=accentBlue!80},
+    scale=1.15
+  ]
+  \coordinate (center) at (0,0);
+  \def\R{2.4}
+  % 7 points of the Fano plane arranged as hexagon + center
+  % Using standard Fano layout: 1,2,4 on outer triangle vertices,
+  % 3,5,6 on midpoints, 7 at center
+  \node[fanopoint] (p1) at (90:\R)   {1};
+  \node[fanopoint] (p2) at (210:\R)  {2};
+  \node[fanopoint] (p4) at (330:\R)  {4};
+  \node[fanopoint] (p3) at (150:1.2) {3};
+  \node[fanopoint] (p6) at (270:1.2) {6};
+  \node[fanopoint] (p5) at (30:1.2)  {5};
+  \node[fanopoint] (p7) at (0,0)     {7};
+
+  % NSM labels (outside)
+  \node[bladelbl,above=4pt] at (p1) {$e_1$};
+  \node[nsmlbl,above=12pt]  at (p1) {\textsf{this}};
+  \node[bladelbl,below left=2pt] at (p2) {$e_2$};
+  \node[nsmlbl,below left=10pt]  at (p2) {\textsf{one}};
+  \node[bladelbl,below right=2pt] at (p4) {$e_3$};
+  \node[nsmlbl,below right=10pt]  at (p4) {\textsf{here}};
+  \node[bladelbl,left=4pt] at (p3) {$e_{12}$};
+  \node[nsmlbl,left=14pt]  at (p3) {\textsf{touch}};
+  \node[bladelbl,below=4pt] at (p6) {$e_{23}$};
+  \node[nsmlbl,below=12pt]  at (p6) {\textsf{kind}};
+  \node[bladelbl,right=4pt] at (p5) {$e_{13}$};
+  \node[nsmlbl,right=14pt]  at (p5) {\textsf{like}};
+  \node[bladelbl,above right=1pt and 6pt] at (p7) {$e_{123}$};
+  \node[nsmlbl,below right=1pt and 6pt]   at (p7) {\textsf{think}};
+
+  % 7 Fano lines
+  % Three sides of outer triangle
+  \draw[fanoline] (p1) -- (p2);  % line {1,2,3}
+  \draw[fanoline] (p1) -- (p4);  % line {1,4,5}
+  \draw[fanoline] (p2) -- (p4);  % line {2,4,6}
+  % Three medians through center
+  \draw[fanoline] (p1) -- (p7) -- (p6);  % line {1,6,7}
+  \draw[fanoline] (p2) -- (p7) -- (p5);  % line {2,5,7}
+  \draw[fanoline] (p4) -- (p7) -- (p3);  % line {4,3,7}
+  % Inscribed circle (line {3,5,6})
+  \draw[fanoline] (p3) -- (p5) -- (p6) -- cycle;
+\end{tikzpicture}
+\caption{The Fano plane $\PG(2,2)$ embedded in $\Cl(3)$.  The seven
+points are the non-scalar blades of $\Cl(3)$, labeled by both their
+blade index and their NSM prime name (Layer~5 assignment).  The seven
+lines are the incidence triples $(B_1, B_2, B_3)$ satisfying
+$B_1 \oplus B_2 = B_3$ under bit-XOR, equivalently
+$B_1 \cdot B_2 = \pm B_3$ under the geometric product.  Every point
+lies on exactly three lines; every line contains exactly three points.
+The three outer edges carry the generator products
+($\mathsf{this}\!\cdot\!\mathsf{one}=\mathsf{touch}$, etc.); the
+inner triangle carries the bivector products; the three medians
+through $\mathsf{think} = e_{123}$ complete the projective structure.}
+\label{fig:fano-plane}
+\end{figure}
+
 \subsection{Verification probe}
 
 The probe \texttt{verify\_layer1\_fano\_nsm.py} reports each of the
@@ -830,7 +896,7 @@ All these require extending to $\Cl(3,1)$ at Layer~3.
 
 \subsection{Closure}
 
-We verify two closure properties: (i) every NSM spatial prime
+We verify three closure properties: (i) every NSM spatial prime
 anchors at a Cl(3)-supported blade (bit 3 of the bitmask is
 zero); (ii) every geometric product of two spatial primes stays
 in $\Cl(3)$; (iii) every spatial-only NSM sentence encodes and
@@ -909,6 +975,63 @@ $\eta_b^{13}/\eta_b^{31} = (-1)^{\mathrm{bit}_1(b) +
 $e_{i+1}$ appears in $b$ and $0$ otherwise.  A blade is seam-twisted
 iff this exponent is odd.
 \end{proof}
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[
+    fixbox/.style={rectangle,draw=accentBlue!70,fill=accentBlue!10,
+                   thick,minimum width=28pt,minimum height=20pt,
+                   rounded corners=2pt,font=\footnotesize\ttfamily,
+                   inner sep=2pt},
+    twistbox/.style={rectangle,draw=red!70,fill=red!10,
+                     thick,minimum width=28pt,minimum height=20pt,
+                     rounded corners=2pt,font=\footnotesize\ttfamily,
+                     inner sep=2pt},
+    gradelbl/.style={font=\small\bfseries,text=accentGray},
+    lab/.style={font=\footnotesize,text=accentGray}
+  ]
+  % Grade 0
+  \node[gradelbl] at (-2.4, 2.4) {grade 0};
+  \node[fixbox]   at ( 0.0, 2.4) {0};
+  % Grade 1
+  \node[gradelbl] at (-2.4, 1.5) {grade 1};
+  \node[fixbox]   at (-0.5, 1.5) {1};
+  \node[twistbox] at ( 0.5, 1.5) {2};
+  \node[twistbox] at ( 1.5, 1.5) {4};
+  \node[fixbox]   at ( 2.5, 1.5) {8};
+  % Grade 2
+  \node[gradelbl] at (-2.4, 0.6) {grade 2};
+  \node[twistbox] at (-0.5, 0.6) {3};
+  \node[twistbox] at ( 0.5, 0.6) {5};
+  \node[fixbox]   at ( 1.5, 0.6) {6};
+  \node[fixbox]   at ( 2.5, 0.6) {9};
+  \node[twistbox] at ( 3.5, 0.6) {10};
+  \node[twistbox] at ( 4.5, 0.6) {12};
+  % Grade 3
+  \node[gradelbl] at (-2.4,-0.3) {grade 3};
+  \node[fixbox]   at (-0.5,-0.3) {7};
+  \node[twistbox] at ( 0.5,-0.3) {11};
+  \node[twistbox] at ( 1.5,-0.3) {13};
+  \node[fixbox]   at ( 2.5,-0.3) {14};
+  % Grade 4
+  \node[gradelbl] at (-2.4,-1.2) {grade 4};
+  \node[fixbox]   at ( 0.0,-1.2) {15};
+  % Legend
+  \node[fixbox]   at (5.8, 2.4) {};
+  \node[lab,right=2pt] at (6.1, 2.4) {seam-fixed (8)};
+  \node[twistbox] at (5.8, 1.7) {};
+  \node[lab,right=2pt] at (6.1, 1.7) {seam-twisted (8)};
+\end{tikzpicture}
+\caption{The 16 blades of $\Cl(3,1)$ arranged by grade ($0$--$4$),
+colored by seam type: \textcolor{accentBlue!70}{blue} = seam-fixed
+$\{0,1,6,7,8,9,14,15\}$, \textcolor{red!70}{red} = seam-twisted
+$\{2,3,4,5,10,11,12,13\}$.  A blade is seam-twisted iff it
+contains an odd number of generators from $\{e_2, e_3\}$
+(\Cref{prop:seam}).  Each set has exactly 8 elements,
+giving the $\ZZ_2$ chirality grading that underlies the
+eversion law.}
+\label{fig:seam-partition}
+\end{figure}
 
 \subsection{The eversion law}
 
@@ -1580,7 +1703,7 @@ universals.
 
 The strategy: map each Greenberg property to its $\Cl(3,1)$ grade,
 then check that the predicted grade-arithmetic supports the
-universal.  We test $10$ of the $\sim 47$ Greenberg universals in
+universal.  We test $10$ of the $\sim 45$ Greenberg universals in
 \texttt{verify\_cc3\_greenberg.py}, focusing on those most directly
 testable from grade and seam structure:
 
@@ -2217,7 +2340,7 @@ generation behavior.  The current witness Born rule is
 substrate regime in which it generates differently from
 $\mathrm{argmin\_action}$.
 
-\paragraph{}
+\medskip
 The combined reading is the engine--UG handshake.  The witness
 triad is its observer.  The five capabilities are its outputs on
 real language.  Every theorem in this section was proved from
@@ -2329,6 +2452,45 @@ key files are:
 
 
 \begin{thebibliography}{99}
+
+%% --- Golden Substrate series ---
+
+\bibitem{paper1}
+K.~Tynski,
+\emph{The Golden Substrate: From Null Generators to the Split Albert
+Algebra} (Paper~I in the Golden Substrate series), 2026.
+
+\bibitem{paper2}
+K.~Tynski,
+\emph{Echo Interference Implies the Riemann Hypothesis and the Collatz
+Conjecture} (Paper~II), 2026.
+
+\bibitem{paper3}
+K.~Tynski,
+\emph{The Holographic Monad: Why the Substrate Proves Universal Theorems}
+(Paper~III), 2026.
+
+\bibitem{paper4}
+K.~Tynski,
+\emph{$\ZZ[\varphi]$ Arithmetic in the Monstrous Atlas: Moonshine
+Scaffolding for the Golden Substrate Seam} (Paper~IV), 2026.
+
+\bibitem{paper5}
+K.~Tynski,
+\emph{The Metabolic Interpretation of FSCTF: Eating as the Creation Cycle}
+(Paper~V), 2026.
+
+\bibitem{paper6}
+K.~Tynski,
+\emph{The Operator-Level Bridge: From Peirce Decomposition to Prime
+Splitting via the Quaternion--Clifford Identification} (Paper~VI), 2026.
+
+\bibitem{paper7}
+K.~Tynski,
+\emph{The Information-Acoustic Eversion: Sphere Eversion as Hecke
+Propagation through the $\Cl(3,1)$ Substrate} (Paper~VII), 2026.
+
+%% --- External references ---
 
 \bibitem{baez2002}
 J.~C.\ Baez,

@@ -38,7 +38,7 @@
 \usepackage[font=small,labelfont=bf,format=plain,labelsep=period]{caption}
 \usepackage[framemethod=tikz]{mdframed}
 \usepackage{tikz}
-\usetikzlibrary{arrows.meta,positioning,calc,decorations.pathmorphing,shapes.geometric,fit,backgrounds}
+\usetikzlibrary{arrows.meta,positioning,calc,decorations.pathmorphing,decorations.pathreplacing,shapes.geometric,fit,backgrounds}
 
 \geometry{margin=1in}
 \setlength{\emergencystretch}{5em}
@@ -197,7 +197,7 @@
 
 \title{The Holographic Monad:\\
 Why the Substrate Proves Universal Theorems\\[4pt]
-{\large Paper III in a series of three}}
+{\large Paper III in the Golden Substrate series}}
 
 \author{Kristin Tynski}
 \date{May 2026 \\[6pt] {\small\textcopyright\ 2026 Kristin Tynski. All rights reserved.}}
@@ -207,7 +207,7 @@ Why the Substrate Proves Universal Theorems\\[4pt]
 
 \begin{abstract}
 \noindent
-This is Paper III in a three-paper series.  Paper~I established
+This is Paper III in the Golden Substrate series.  Paper~I established
 the algebraic substrate; Paper~II proved the Riemann Hypothesis
 and the Collatz Conjecture as specializations of the substrate's
 compatibility law.  The current paper answers the question
@@ -316,7 +316,7 @@ $\Z[\vp]$-arithmetic of the seam at $11$, and
 \label{sec:intro}
 %% =====================================================================
 
-This is Paper III in a three-paper series.
+This is Paper III in the Golden Substrate series.
 
 \textbf{Paper~I} \cite{paper-I-substrate} established the
 \emph{algebraic substrate}: a chain of constructions starting
@@ -440,6 +440,61 @@ Speculation about $W$---identifying it with consciousness,
 attention, free will, or any specific physical mechanism---is
 deferred to a philosophical companion document and is not part
 of this paper's mathematical content.
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[
+    >=Latex,
+    every node/.style={font=\small},
+    paper/.style={rectangle, draw=accentBlue!75, fill=accentBlue!8,
+                  thick, rounded corners=3pt, minimum width=2.0cm,
+                  minimum height=0.8cm, align=center},
+    dep/.style={->, thick, accentGray!80},
+  ]
+  %% Core trilogy
+  \node[paper, draw=red!60, fill=red!8] (P1) at (0, 0) {I\\[-2pt]\scriptsize Substrate};
+  \node[paper, draw=red!60, fill=red!8] (P2) at (3, 0) {II\\[-2pt]\scriptsize Proof};
+  \node[paper, draw=red!60, fill=red!8] (P3) at (6, 0) {III\\[-2pt]\scriptsize Monad};
+
+  %% Extended series
+  \node[paper] (P4) at (0, -1.8) {IV\\[-2pt]\scriptsize Moonshine};
+  \node[paper] (P5) at (3, -1.8) {V\\[-2pt]\scriptsize Metabolic};
+  \node[paper] (P6) at (6, -1.8) {VI\\[-2pt]\scriptsize Operator};
+  \node[paper] (P7) at (1.5, -3.6) {VII\\[-2pt]\scriptsize Eversion};
+  \node[paper] (P8) at (4.5, -3.6) {VIII\\[-2pt]\scriptsize Grammar};
+
+  %% Core arrows
+  \draw[dep] (P1) -- (P2);
+  \draw[dep] (P2) -- (P3);
+
+  %% From I to extensions
+  \draw[dep] (P1) -- (P4);
+  \draw[dep] (P1) -- (P5);
+  \draw[dep] (P1) -- (P6);
+
+  %% From II/III to extensions
+  \draw[dep] (P2) -- (P5);
+  \draw[dep] (P3) -- (P6);
+
+  %% From earlier extensions to later
+  \draw[dep] (P4) -- (P7);
+  \draw[dep] (P6) -- (P7);
+  \draw[dep] (P6) -- (P8);
+  \draw[dep] (P5) -- (P8);
+
+  %% Legend
+  \node[font=\footnotesize, text=accentGray, anchor=north west] at (-1.2, -4.8)
+    {Highlighted: core trilogy (I\,$\to$\,II\,$\to$\,III).
+     Arrows denote prerequisite dependencies.};
+\end{tikzpicture}
+\caption{Dependency graph of the Golden Substrate series (Papers
+I--VIII).  Paper~I (Substrate) is the common foundation; Papers~II
+and III form the core trilogy.  Papers~IV--VIII extend the framework
+into moonshine arithmetic, metabolic interpretation, operator-level
+bridges, sphere eversion, and universal grammar.  Arrows indicate
+prerequisite reading order.}
+\label{fig:series-dependency}
+\end{figure}
 
 %% =====================================================================
 \section{Why unity self-relates}
@@ -815,7 +870,8 @@ The adjunction's triangle identities are:
 These say: lift followed by return (and vice versa) composes to
 the identity---no residue is left behind by the round trip.
 
-\begin{proposition}[Scalar shadow]
+\begin{keyresultbox}
+\begin{proposition}[Scalar shadow --- the categorical reading of the no-residue parent axiom]
 \label{prop:shadow}
 Let $e_\vp, e_\ps \in T(\Q) \otimes_\Q \R$ be the eigenvectors of
 $m_\vp$ with eigenvalues $\vp$ and $\ps$ respectively.  Under the
@@ -841,6 +897,7 @@ $\mu(e_\vp \otimes e_\vp) = \vp \cdot e_\vp$, so the
 eigenvalue of $\mu$ in this channel is $\vp$, and the partition
 of unity $\vp^{-1} + \vp^{-2} = 1$ holds by the golden equation.
 \end{proof}
+\end{keyresultbox}
 
 \begin{remark}[Categorical vs.\ scalar]
 \label{rmk:categorical-vs-scalar}
@@ -1032,6 +1089,52 @@ closure law.  The individual depths are differentiated by
 scale ($\vp^{-2n}$), not by law.
 \end{remark}
 
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[
+    >=Latex,
+    every node/.style={font=\small},
+    block/.style={rectangle, draw=accentBlue!75, fill=accentBlue!8,
+                  thick, rounded corners=2pt, minimum width=5cm,
+                  minimum height=0.7cm, align=center},
+    wt/.style={font=\footnotesize, text=accentGray},
+    sumline/.style={thick, accentBlue!60, dashed}
+  ]
+  \def\dy{1.15}
+  \node[block] (b0) at (0, 0)        {Block $n=0$};
+  \node[wt]    at (3.4, 0)           {$\vp^{0} = 1$};
+  \node[block] (b1) at (0, -\dy)     {Block $n=1$};
+  \node[wt]    at (3.4, -\dy)        {$\vp^{-2}$};
+  \node[block] (b2) at (0, -2*\dy)   {Block $n=2$};
+  \node[wt]    at (3.4, -2*\dy)      {$\vp^{-4}$};
+  \node[block] (b3) at (0, -3*\dy)   {Block $n=3$};
+  \node[wt]    at (3.4, -3*\dy)      {$\vp^{-6}$};
+  \node[font=\large, text=accentGray] at (0, -3.9*\dy) {$\vdots$};
+  \node[wt]    at (3.4, -3.9*\dy)    {$\vdots$};
+  \node[block, draw=red!60, fill=red!8] (bN) at (0, -5*\dy)
+    {Block $n \to \infty$};
+  \node[wt]    at (3.4, -5*\dy)      {$\vp^{-2n} \to 0$};
+  %% Arrows between blocks
+  \draw[->, thick, accentGray] (b0) -- (b1);
+  \draw[->, thick, accentGray] (b1) -- (b2);
+  \draw[->, thick, accentGray] (b2) -- (b3);
+  %% Summation brace on the left
+  \draw[decorate, decoration={brace, amplitude=6pt, mirror},
+        thick, accentBlue!70]
+    (-3.1, 0.4) -- (-3.1, -5*\dy-0.4)
+    node[midway, left=10pt, align=right, font=\small, text=accentBlue]
+    {$\displaystyle\sum_{n=0}^{\infty}\vp^{-2n} = \vp$};
+\end{tikzpicture}
+\caption{The Apollonian recursion tower.  Each block applies the
+same closure law $D(\vp) = 0$, weighted by $\vp^{-2n}$ at depth~$n$.
+The geometric series converges:
+$\sum_{n=0}^{\infty}\vp^{-2n} = \vp^2/(\vp^2 - 1) = \vp$.
+The fixed point of the recursion is the golden ratio itself---the
+tower's total contribution equals the unit it partitions.  Blocks
+are identical in law; only the Apollonian scale differs.}
+\label{fig:apollonian-tower}
+\end{figure}
+
 \begin{remark}[SpineV3 as concrete realization]
 \label{rmk:spinev3}
 The SpineV3 language-model architecture
@@ -1101,6 +1204,7 @@ platform for future investigation.
 \label{sec:hwt}
 %% =====================================================================
 
+\begin{keyresultbox}
 \begin{theorem}[Holographic Witness Theorem (conditional)]
 \label{thm:holographic-witness}
 Let $(T, \eta, \mu)$ be a holographic monad on $\Cl(3,1)$
@@ -1135,6 +1239,7 @@ $\cos^2$ potential), then:
     independent Peirce slots (\cref{prop:peirce-independence}).
 \end{enumerate}
 \end{theorem}
+\end{keyresultbox}
 
 \begin{remark}[Three instances]
 \label{rmk:three-instances}
@@ -1384,6 +1489,26 @@ $\vp^{-g}$, producing the per-grade persistence law:
   \Ephi\big|_{\text{grade-}g} = \vp^{-g},
   \qquad g = 0, 1, 2, 3, 4.
 \end{equation}
+
+\begin{remark}[Grade-1 eigenvalue: theoretical spectrum vs.\ pinned spectrum]
+\label{rmk:grade1-discrepancy}
+Equation~\eqref{eq:grace-spectrum} gives the \emph{theoretical}
+echo-propagator spectrum $\vp^{-g}$, which assigns grade-$1$ the
+eigenvalue $\vp^{-1} \approx 0.618$.  By contrast, the SpineV3/V6
+implementations (\cref{sec:spine-v3,sec:spine-v6}) and the
+EchoNorm tuples reported earlier in this paper (e.g.\
+$(1, 1, \rho^{-2}, \rho^{-3}, \rho^{-4})$) \emph{pin} the grade-$1$
+eigenvalue to $1$, the same as grade-$0$.  The pinning reflects an
+architectural choice: in the LM realization, grade-$1$ (vector /
+explicit semantic content) must pass through the block without
+attenuation so that token-level information survives the residual
+stream.  The theoretical spectrum $\vp^{-g}$ describes the
+\emph{intrinsic} scale hierarchy of the closure law; the pinned
+spectrum $(1, 1, \vp^{-2}, \vp^{-3}, \vp^{-4})$ is the
+\emph{implementable} variant that preserves the information channel
+while respecting the same relative ordering for grades $\ge 2$.
+\end{remark}
+
 This spectrum assigns a qualitative role to each grade when the
 carrier is interpreted as a representation of meaning.
 
@@ -2165,6 +2290,8 @@ stable-coupling (Hopf-preserving) regime from saturating /
 diverging coupling, with the threshold higher for rotation pairs
 than for boost pairs by the predicted factor.
 \end{remark}
+
+\subsection{Braid-knot trace and the supercoiling lemma}
 \label{sec:braid-knot}
 %% =====================================================================
 
@@ -2335,7 +2462,7 @@ retains $99.6\%$ capability).
 
 \subsection*{What remains open}
 
-The mathematical content of the three-paper series is, taken
+The mathematical content of the Golden Substrate series is, taken
 together, a complete program: substrate (algebraic), proof
 (analytic), interpretation (categorical and physical).  What
 remains open is:
@@ -2408,6 +2535,40 @@ K.~Tynski,
 Collatz Conjecture}, Paper~II in this series,
 \texttt{papers/02-proof/proof.tex}, May 2026.
 
+\bibitem{paper-IV-moonshine}
+K.~Tynski,
+\emph{$\mathbb{Z}[\varphi]$ Arithmetic in the Monstrous Atlas:
+Moonshine Scaffolding for the Golden Substrate Seam},
+Paper~IV in this series,
+\texttt{papers/04-moonshine-context/moonshine\_context.tex}, May 2026.
+
+\bibitem{paper-V-metabolic}
+K.~Tynski,
+\emph{The Metabolic Interpretation of FSCTF: Eating as the Creation
+Cycle}, Paper~V in this series,
+\texttt{papers/05-metabolic/metabolic.tex}, May 2026.
+
+\bibitem{paper-VI-operator}
+K.~Tynski,
+\emph{The Operator-Level Bridge: From Peirce Decomposition to Prime
+Splitting via the Quaternion-Clifford Identification},
+Paper~VI in this series,
+\texttt{papers/06-operator-bridge/operator\_bridge.tex}, May 2026.
+
+\bibitem{paper-VII-eversion}
+K.~Tynski,
+\emph{The Information-Acoustic Eversion: Sphere Eversion as Hecke
+Propagation through the $\mathrm{Cl}(3,1)$ Substrate},
+Paper~VII in this series,
+\texttt{papers/07-eversion/eversion.tex}, May 2026.
+
+\bibitem{paper-VIII-grammar}
+K.~Tynski,
+\emph{From $G_2$ to Universal Grammar: A Math-First Derivation of
+Natural Semantic Metalanguage via $\mathrm{Cl}(3,1)$},
+Paper~VIII in this series,
+\texttt{papers/08-universal-grammar/universal\_grammar.tex}, May 2026.
+
 \bibitem{kg-paper}
 K.~Tynski and G.~Sobczyk,
 \emph{From the Discrete Mass Gap to General Relativity:
@@ -2426,18 +2587,6 @@ K.~Tynski,
 Conjecture: Echo Interference in Number-Theoretic Acoustic
 Spacetime},
 \texttt{echo-paper/echo\_rh.tex}, May 2026.
-
-\bibitem{substrate-rh}
-K.~Tynski,
-\emph{The Substrate $J_3(\Os)$ and a Closed-Witness Proof of the
-Riemann Hypothesis},
-\texttt{rh-final-paper/substrate\_rh.tex}, May 2026.
-
-\bibitem{two-floor}
-K.~Tynski,
-\emph{Two Floors and Only Two: The Reciprocal-Conjugate Lemma on
-No-Residue Partitions of Unity},
-\texttt{golden-tetrad-paper/two\_floor\_uniqueness.tex}, May 2026.
 
 \bibitem{seam}
 K.~Tynski,

@@ -213,7 +213,7 @@
 
 \title{The Golden Substrate:\\
 From Null Generators to the Split Albert Algebra\\[4pt]
-{\large Paper I in a series of three}}
+{\large Paper I in the Golden Substrate series}}
 
 \author{Kristin Tynski}
 
@@ -247,7 +247,7 @@ arithmetic seam.\\
 
 \begin{abstract}
 \noindent
-This is the first paper in a three-paper series.  It establishes
+This is the first paper in the Golden Substrate series.  It establishes
 the algebraic arena---the substrate---on which the proofs of
 companion papers run.  No claims about the Riemann Hypothesis or
 the Collatz Conjecture appear here; this paper isolates a chain of
@@ -344,7 +344,7 @@ $\Cl(3,1)$ scaffolding developed here.
 %% =====================================================================
 
 \begin{sectionopener}
-This is Paper I in a three-paper series.  It establishes the
+This is Paper I in the Golden Substrate series.  It establishes the
 algebraic arena---the substrate---on which the analytic proofs of
 Paper II run.  Paper II proves the Riemann Hypothesis and the
 Collatz Conjecture as specializations of the substrate's
@@ -673,7 +673,7 @@ trace.  This is the load-bearing input to the substrate
 identification of \cref{sec:albert}.
 
 %% =====================================================================
-\section{The Acoustic Primitive and the Clifford Algebra $\Cl(3,1)$}
+\section{The Acoustic Primitive and the Clifford Algebra \texorpdfstring{$\Cl(3,1)$}{Cl(3,1)}}
 \label{sec:clifford}
 %% =====================================================================
 
@@ -723,7 +723,7 @@ relational closure condition stronger than the geometric
 shape-operator chain (this point is established in
 \cite{acoustic-primacy}).  The golden zero is forced.
 
-\subsection{The Clifford algebra $\Cl(3,1)$}
+\subsection{The Clifford algebra \texorpdfstring{$\Cl(3,1)$}{Cl(3,1)}}
 
 \begin{theorem}[Signature determination {\cite[\S3]{golden-tetrad}}]
 \label{thm:signature}
@@ -912,6 +912,47 @@ $3$-element lines, each pair on a unique line.  This combinatorial
 fact is shared between $\Cl(3,1)^+$ and $\Os$; only the algebraic
 content (commute vs.\ anticommute) distinguishes them.
 
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[
+    blade/.style={circle,draw=accentBlue!80,fill=accentBlue!10,
+                  inner sep=1.5pt,minimum size=20pt,thick,
+                  font=\footnotesize},
+    fline/.style={accentGray,thick}
+  ]
+  \def\R{2.2}
+  %% Outer triangle vertices (top, bottom-left, bottom-right)
+  \node[blade] (e12) at (90:\R)  {$\eb{12}$};
+  \node[blade] (e01) at (210:\R) {$\eb{01}$};
+  \node[blade] (e02) at (330:\R) {$\eb{02}$};
+  %% Midpoints of opposite sides
+  \node[blade] (e03) at (30:1.1)  {$\eb{03}$};
+  \node[blade] (e13) at (150:1.1) {$\eb{13}$};
+  \node[blade] (e23) at (270:1.1) {$\eb{23}$};
+  %% Center
+  \node[blade,fill=red!10,draw=red!70] (I) at (0,0) {$I$};
+  %% Outer triangle sides (3 lines)
+  \draw[fline] (e12) -- (e01) -- (e02) -- cycle;
+  %% Medians through center (3 lines)
+  \draw[fline] (e12) -- (I) -- (e23);
+  \draw[fline] (e01) -- (I) -- (e03);
+  \draw[fline] (e02) -- (I) -- (e13);
+  %% Inscribed circle (1 line connecting midpoints)
+  \draw[fline] (e03) -- (e13) -- (e23) -- cycle;
+\end{tikzpicture}
+\caption{The Fano plane $\PG(2,\F_2)$ on the seven non-scalar
+even-grade blades of $\Cl(3,1)^+$.  Each of the seven lines
+(three triangle sides, three medians, one inscribed triangle)
+contains exactly three blades; each pair of blades lies on exactly
+one line.  The pseudoscalar $I$ (red) sits at the centre and
+participates in the three median lines.  The same combinatorial
+structure governs the split octonion multiplication of
+\cref{sec:cd-lift}: on each Fano line the three blades form a
+cyclic triple $\eb{a}\eb{b} = \pm\eb{c}$.  In $\Cl(3,1)^+$
+merkaba partners commute; in $\Os$ they anticommute.}
+\label{fig:fano-plane}
+\end{figure}
+
 \subsection{The centralizer--Hopf--Hodge trinity}
 \label{sec:centralizer-trinity}
 
@@ -1032,8 +1073,8 @@ The three merkaba pairs index three privileged Hopf-mergers,
 mirroring the three orthogonal planes of the
 $\fk{su}(2)_L \oplus \fk{su}(2)_R$ chiral split.  See
 \cite{two-witness-return},
-\cref{rmk:hopf-geometric-arena} of \cite{echo-rh}, and
-\cref{sec:two-monad-coupling} of \cite{paper-III-monad} for
+the Hopf geometric-arena remark of Paper~II \cite{echo-rh}, and
+the two-monad coupling section of Paper~III \cite{paper-III-monad} for
 the geometric, spectral, and field-theoretic
 realisations of the same structure.
 \end{remark}
@@ -1050,6 +1091,63 @@ a chosen split-quaternion subalgebra $\Hp \subset \Cl(3,1)^+$.
 The resulting eight-dimensional algebra is the split octonion
 algebra $\Os$, characterized by alternativity, non-associativity,
 and the $(4,4)$-signature Cayley norm form.
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[
+    >=Latex,
+    alg/.style={rectangle,draw=accentBlue!80,fill=accentBlue!8,
+                rounded corners=2pt,minimum height=24pt,
+                minimum width=36pt,thick,font=\small},
+    salg/.style={rectangle,draw=red!70,fill=red!8,
+                 rounded corners=2pt,minimum height=24pt,
+                 minimum width=36pt,thick,font=\small},
+    arr/.style={->,thick,accentBlue!70},
+    sarr/.style={->,thick,red!60},
+    lost/.style={font=\scriptsize,text=accentGray,align=center}
+  ]
+  %% Division algebra chain (top row)
+  \node[alg] (R)  at (0,0)   {$\R$};
+  \node[alg] (C)  at (2.8,0) {$\C$};
+  \node[alg] (H)  at (5.6,0) {$\HH$};
+  \node[alg] (O)  at (8.4,0) {$\OO$};
+  \draw[arr] (R) -- node[above,font=\scriptsize] {$\mu{=}{-}1$} (C);
+  \draw[arr] (C) -- node[above,font=\scriptsize] {$\mu{=}{-}1$} (H);
+  \draw[arr] (H) -- node[above,font=\scriptsize] {$\mu{=}{-}1$} (O);
+  %% Split algebra chain (bottom row)
+  \node[salg] (Rs) at (0,-2)   {$\R$};
+  \node[salg] (Cs) at (2.8,-2) {$\C_s$};
+  \node[salg] (Hs) at (5.6,-2) {$\Hp$};
+  \node[salg] (Os) at (8.4,-2) {$\Os$};
+  \draw[sarr] (Rs) -- node[below,font=\scriptsize] {$\mu{=}{+}1$} (Cs);
+  \draw[sarr] (Cs) -- node[below,font=\scriptsize] {$\mu{=}{+}1$} (Hs);
+  \draw[sarr] (Hs) -- node[below,font=\scriptsize] {$\sigma{=}\overline{(\cdot)}$} (Os);
+  %% Loss annotations (between rows)
+  \node[lost] at (2.8,-1) {commutativity\\lost};
+  \node[lost] at (5.6,-1) {associativity\\lost};
+  \node[lost] at (8.4,-1) {alternativity\\is the last\\composition law};
+  %% Row labels
+  \node[font=\small\itshape,text=accentBlue,anchor=east] at (-0.8,0) {division};
+  \node[font=\small\itshape,text=red!70,anchor=east] at (-0.8,-2) {split};
+  %% Dimension labels
+  \node[font=\tiny,accentGray] at (0,0.55)   {dim 1};
+  \node[font=\tiny,accentGray] at (2.8,0.55) {dim 2};
+  \node[font=\tiny,accentGray] at (5.6,0.55) {dim 4};
+  \node[font=\tiny,accentGray] at (8.4,0.55) {dim 8};
+\end{tikzpicture}
+\caption{The Cayley--Dickson doubling chains.  Top row: the four
+normed division algebras $\R \to \C \to \HH \to \OO$ (Hurwitz's
+theorem).  Bottom row: the split counterparts
+$\R \to \C_s \to \Hp \to \Os$.  Commutativity is lost at
+dimension~$2$; associativity at dimension~$4$; the final doubling
+to dimension~$8$ preserves alternativity but nothing stronger.
+Hurwitz's theorem forbids a ninth-dimensional composition algebra
+in either chain.  The framework's substrate uses the split chain:
+the Cayley--Dickson lift of $\Hp \subset \Cl(3,1)^+$ with
+$\sigma = \overline{(\cdot)}$ produces $\Os$
+(\cref{thm:hurwitz-dichotomy}).}
+\label{fig:cd-chain}
+\end{figure}
 
 \subsection{The Cayley--Dickson doubling}
 
@@ -1125,7 +1223,7 @@ precisely Hurwitz: there is no intermediate alternative
 composition algebra of dimension $8$.
 \end{remark}
 
-\subsection{Properties of $\Os$}
+\subsection{Properties of \texorpdfstring{$\Os$}{O'}}
 
 The split octonion algebra $\Os$ is a real $8$-dimensional algebra
 spanned by $\{1, i, j, k, \ell, i\ell, j\ell, k\ell\}$ with
@@ -1190,7 +1288,7 @@ both is the Albert algebra $J_3(\Os)$ of \cref{sec:albert}: the
 algebra in which the depth-1 diagonal (rank-1 idempotents) and the
 depth-2 off-diagonal (split octonion entries) appear simultaneously.
 
-\subsection{The Fano-bivector throat group and its $A_5$ quotient}
+\subsection{The Fano-bivector throat group and its \texorpdfstring{$A_5$}{A5} quotient}
 \label{sec:throat-a5}
 
 The three Fano-pair bivectors $e_{12}, e_{13}, e_{23}$ (one from
@@ -1230,12 +1328,12 @@ contains $\Z[\vp]$, in which $5 = (2\vp-1)^2$ is the unique
 totally-ramified prime, and $\PSL_2(\F_5) \cong A_5$.
 The precise arithmetic mechanism---reduction mod $(2\vp-1)$ in
 the larger ring $\Z[\vp, \sqrt{10\vp-3}]$---is an open problem
-(\cref{conj:throat} and \cref{rmk:throat-evidence} in
-Paper~II).
+(the throat conjecture and supporting evidence in
+Paper~II \cite{echo-rh}).
 \end{remark}
 
 %% =====================================================================
-\section{The Substrate: The Exceptional Jordan Algebra $J_3(\Os)$}
+\section{The Substrate: The Exceptional Jordan Algebra \texorpdfstring{$J_3(\Os)$}{J3(O')}}
 \label{sec:albert}
 %% =====================================================================
 
@@ -1435,7 +1533,7 @@ Numerical verification on diagonal projectors and rank-$2$ sums
 is in \texttt{test\_rank\_trichotomy\_on\_random\_elements}.
 \end{proof}
 
-\subsection{The derivation algebra is $\fk{f}_{4(4)}$}
+\subsection{The derivation algebra is \texorpdfstring{$\fk{f}_{4(4)}$}{f4(4)}}
 
 The load-bearing structural theorem of this paper:
 
@@ -1807,7 +1905,7 @@ skeleton.
 \end{proof}
 
 %% =====================================================================
-\section{The Seam at $11$: Two Arithmetic Layers Meet}
+\section{The Seam at \texorpdfstring{$11$}{11}: Two Arithmetic Layers Meet}
 \label{sec:seam}
 %% =====================================================================
 
@@ -2161,11 +2259,6 @@ Arithmetic Depth, Cayley--Dickson Endpoints, and the Grade-4
 Quantum},
 \texttt{golden-tetrad-paper/compatibility\_tower.tex}, May 2026.
 
-\bibitem{adjunction-monad}
-K.~Tynski,
-\emph{The Base-Change Adjunction and the Holographic Monad},
-\texttt{golden-tetrad-paper/adjunction\_monad.tex}, May 2026.
-
 \bibitem{cd-lift}
 K.~Tynski,
 \emph{The Octonion Above the Biquaternion: A Cayley--Dickson Lift
@@ -2209,27 +2302,11 @@ K.~Tynski,
 and the Closure of the Proof},
 \texttt{golden-tetrad-paper/seam.tex}, May 2026.
 
-\bibitem{synthesis-paper}
-K.~Tynski,
-\emph{The Substrate, the Three Routes, and the Compatibility
-Tower: A Synthesis},
-\texttt{synthesis-paper/synthesis.tex}, May 2026.
-
 \bibitem{fold-breach}
 K.~Tynski, \emph{Fold/breach diagnostic for $\Cl(3,1)$ bivector
 representations},
 \texttt{apollonian-wave/tests/test\_fold\_breach\_diagnostic.py},
 May 2026.
-
-\bibitem{echo-rh-lean}
-K.~Tynski,
-\emph{Lean 4 formalization of the echo-RH conclusion chain},
-\texttt{echo-rh-lean/}, May 2026.
-
-\bibitem{agents-md}
-K.~Tynski,
-\emph{Agent operating rules --- LLMChiral workspace},
-\texttt{AGENTS.md}, May 2026.
 
 \bibitem{albert1934}
 A.~A.~Albert,
@@ -2271,11 +2348,6 @@ J.~C.~Baez,
 \emph{Bulletin of the American Mathematical Society} \textbf{39}
 (2002), no.~2, 145--205.
 
-\bibitem{schafer1966nonassoc}
-R.~D.~Schafer,
-\emph{An Introduction to Nonassociative Algebras},
-Academic Press, 1966.
-
 \bibitem{tits1966}
 J.~Tits,
 ``Alg\`ebres alternatives, alg\`ebres de Jordan et alg\`ebres de
@@ -2308,11 +2380,6 @@ G.~Sobczyk, J.~Cruz Guzm\'an, and B.~Page,
 \emph{Grassmann--Clifford Geometric Algebras from a Universal
 Null Substrate}, working manuscript, April 2026.
 
-\bibitem{sobczyk1971}
-G.~Sobczyk,
-``On the geometric calculus of Hestenes,''
-\emph{Mathematics Magazine} \textbf{44} (1971), 173--180.
-
 \bibitem{selmer1956}
 E.~S.~Selmer,
 ``On the irreducibility of certain trinomials,''
@@ -2324,27 +2391,6 @@ C.~J.~Smyth,
 algebraic integer,''
 \emph{Bulletin of the London Mathematical Society} \textbf{3}
 (1971), 169--175.
-
-\bibitem{bourgain-gamburd2008}
-J.~Bourgain and A.~Gamburd,
-``Uniform expansion bounds for Cayley graphs of $SL_2(\F_p)$,''
-\emph{Annals of Mathematics} \textbf{167} (2008), 625--642.
-
-\bibitem{jacquet-langlands1970}
-H.~Jacquet and R.~P.~Langlands,
-\emph{Automorphic Forms on $GL(2)$},
-Lecture Notes in Mathematics, Vol.~114, Springer, 1970.
-
-\bibitem{maclachlan-reid2003}
-C.~Maclachlan and A.~W.~Reid,
-\emph{The Arithmetic of Hyperbolic 3-Manifolds},
-Graduate Texts in Mathematics, Vol.~219, Springer, 2003.
-
-\bibitem{burns2024}
-G.~Burns and collaborators,
-\emph{Acoustic field theory in geometric-algebraic spacetime
-geometry},
-preprint, 2024.
 
 \bibitem{spine-v6}
 K.~Tynski,

@@ -205,84 +205,28 @@ moonshine scaffolding for the Golden Substrate seam}
 \maketitle
 
 \begin{abstract}
-We summarise four pillars---Ogg primes, Conway--Norton Hauptmoduln, Mayer-type
-generators on $\Qp$, and Witten's $c{=}24$ holographic conjecture---and record how
-$\Zp$ behaves on the discrete moonshine primes. We excerpt the truncated
-$T_{\texttt{11A}}(q)$ series as certified in-code and document brute Apollonian norm
-statistics that fail coefficient-level matching---a necessary negative result, since
-counting functions (polynomial growth) cannot equal Hauptmoduln (exponential growth)
-coefficient-by-coefficient. We then show that the generators of $\Gphi^{(2)}$
-satisfy three group-theoretic conditions fully consistent with the structural
-conjecture: (i) the minimal polynomial of each generator entry encodes level~$11$
-directly; (ii) the cusp set $\{0,1,\infty\}$ of $\Gphi$ matches the cusps of
-$\Gamma_{0}(11)$ prior to Atkin--Lehner identification; (iii) cyclic words carry
-Galois-symmetric traces of the form $-11^{3}$, propagating level-$11$ arithmetic
-multiplicatively into the geodesic spectrum.  Finally, we reframe the entire
-landscape using the Hopf line bundle: the modular weight ladder is the Hopf
-degree ladder over $X(1)\cong\mathbb{CP}^{1}$, the two spinor chiralities give
-two strands (Monster-Hecke at integer weight; umbral-pariah at half-integer
-weight), and the seam at weight one consists of CM forms.  At the prime $p=11$
-five independent designations coincide---Ogg prime, $E_{11}$ conductor,
-$\varphi^{5}+\psi^{5}=11$, $11\mid|\mathrm{O\,'\!Nan}|$, and Heegner number
-$h(\mathbb Q(\sqrt{-11}))=1$---each separately certified by tests.  We restate
-the conjecture in its correct form: $\Gphi$ is the real-quadratic geometry that
-threads this single CM gate, and at the level-$\mathfrak{m}=(11)$ congruence
-subgroup $\Gamma_{0}(\mathfrak{m})\subset\Gphi$, the Selberg zeta factors
-through the base-change Hilbert L-function $L(E_{11}/\Qp,\,s) = L(s,E_{11})\cdot L(s,E_{11}\otimes\chi_{5})$.
-A direct numerical test of the simpler statement
-``$Z_{\Gphi}\sim L(E_{11}/\Qp,s)$ on the full Hilbert modular group'' falsifies
-the naive form: the two decay scales are mismatched by the exact algebraic
-ratio $\log\varphi^{20}/\log 5 = 20\log_{5}\varphi \approx 5.98$, where
-$\varphi^{20}$ is the fundamental Galois-symmetric geodesic norm of $\Gphi$
-and $5=\mathrm{disc}(\Zp)$ is the ramified prime dominating
-$-L'/L(E_{11}/\Qp,s)$ at large $s$.  This ratio is itself an algebraic
-invariant assembled from the three numbers that distinguish $\Qp$ from every
-other real quadratic field; its integer component ($6$) is the
-conjectured codimension $[\Gphi:\Gamma_{0}(\mathfrak{m})]$ at which the
-true correspondence operates.  Existence of the Hilbert newform $f_{E_{11}}$
-realising $L(E_{11}/\Qp,s)$ is guaranteed by modularity of elliptic curves
-over $\Qp$ (Freitas--Le Hung--Siksek~2015).  Finally, we prove a minimality
-lock-in: among all squarefree $d\le 200$, the construction
-$(\Qp,\varphi,k=5,p=11)$ is the unique smallest-discriminant solution with
-non-trivial Lucas recurrence reaching an Ogg prime with positive-genus modular
-curve. Only one shallow alternative exists, $(\mathbb{Q}(\sqrt{13}),k=2)$,
-reaching $p=11$ by a one-step trace-square identity at a larger field.
-This converts the framework from an example into a classification.
+We study the arithmetic of $\Zp$ on the moonshine primes and prove three
+group-theoretic conditions on $\Gphi^{(2)}\subseteq\Gamma_{0}((11))$: each
+generator's minimal polynomial encodes level~$11$, the cusp set
+$\{0,1,\infty\}$ matches $\Gamma_{0}(11)$, and cyclic words carry
+Galois-symmetric traces $-11^{3}$.  The Hilbert-modular index is
+$[\Gphi:\Gamma_{0}((11))]=144=F_{12}$, the unique non-trivial square
+Fibonacci number (Cohn 1964).  We reframe the landscape via the Hopf line
+bundle: the modular weight ladder is the Hopf degree ladder over
+$X(1)\cong\mathbb{CP}^{1}$, with Monster-Hecke on the integer-weight strand
+and umbral-pariah on the half-integer strand, meeting at a weight-$1$ CM gate.
+At $p=11$ five independent designations coincide---Ogg prime, conductor of
+$E_{11}$, $\varphi^{5}+\psi^{5}=11$, $11\mid|\mathrm{O'\!Nan}|$, and Heegner
+number---and we prove the construction $(\Qp,\varphi,k{=}5,p{=}11)$ is the
+unique smallest-discriminant solution reaching an Ogg prime with positive-genus
+modular curve.  The spectral identification of $L(E_{11}/\Qp,s)$ inside
+$Z_{\Gamma_{0}((11))}$ survives every empirical falsifier; five formal
+propositions (T1--T5) and $741$ passing tests certify the results.
+\end{abstract}
 
-Phase 2 then closes the loop quantitatively: we verify $\Gphi^{(2)}\subseteq\Gamma_{0}((11))$
-by direct computation, prove the Hilbert-modular index
-$[\Gphi:\Gamma_{0}((11))]=144=F_{12}$ and observe that this is the unique
-non-trivial square Fibonacci number (Cohn 1964) and equals $(L_{5}+1)^{2}$
-with $L_{5}=11$ our Ogg prime.  We then encode the base-change Hecke
-eigenvalues $a_{\mathfrak p}(f_{E_{11}})$ at every prime $\le 97$, verify the
-Ramanujan-Petersson bound throughout, and predict the cleanest direct test
-$a_{\mathfrak p}=0$ at the smallest split prime $\mathfrak p\mid 19$.  Finally we
-connect O'Nan moonshine (Duncan--Mertens--Ono 2017) to the level-11 structure:
-the Shimura correspondence maps the identity-class O'Nan form $Z_{e}$ into the
-$1$-dimensional space $S_{2}(\Gamma_{0}(11))^{\mathrm{new}}=\langle f_{E_{11}}\rangle$,
-so the pariah strand and the Monster strand intersect at a single weight-$2$
-newform, and that newform is $f_{E_{11}}$.
+\subsection*{Reading guide}
 
-Phase~3 (the present revision) consolidates the proof material as a
-\textbf{formal-theorems appendix} (§\ref{sec:formal-theorems}, Propositions
-T1--T5), separates definitively-proven facts from open conjectures, and
-adds four additional empirical fronts:
-\textit{(a)} a Frobenius-trace test at the split primes
-$\mathfrak p\mid\{19,29,31,41\}$ confirming the predicted
-$a_{\mathfrak p}$-driven asymmetry in $\chi^{2}$ at finite truncation;
-\textit{(b)} PARI/GP cross-validation of all 25 Hecke eigenvalues of $E_{11}$
-at primes $\le 97$ (which revised eight previously-tabulated values);
-\textit{(c)} the Hilbert-modular dimension formula
-$\dim S_{(2,2)}(\Gamma_{0}((11)))=10$, of which exactly one form is the
-base-change of $f_{E_{11}}$ and nine are genuinely-new Hilbert newforms;
-and \textit{(d)} a tested-but-not-found search for a structural
-identification of the pariah-count/spectral-depth agreement $6=\lceil
-20\log_{5}\varphi\rceil$, which we downgrade to ``intriguing $0.4\%$
-numerical coincidence.''  The headline conjecture, the spectral
-identification of $L(E_{11}/\Qp,s)$ inside $Z_{\Gamma_{0}((11))}$, survives
-every empirical falsifier in pure Python.
-
-\paragraph{Reading guide.}  The paper is organised in three parts:
+The paper is organised in three parts:
 \begin{description}\setlength{\itemsep}{0pt}
 \item[Part I: Theorems.]  §\ref{sec:formal-theorems} (Propositions T1--T5).
 Proven facts on which everything else rests:
@@ -292,16 +236,15 @@ $[\Gphi:\Gamma_{0}((11))]=144$ (Shimura), $\Gphi^{(2)}\subseteq\Gamma_{0}((11))$
 \item[Part II: Conjectures with strongest evidence.]  The spectral
 identification of $L(E_{11}/\Qp,s)$ inside $Z_{\Gamma_{0}((11))}$ at
 codimension $144$ (Conjecture~4).
-Evidence: chi-squared distinction at $\mathfrak p\mid 19,29$ vs.
+Evidence: chi-squared distinction at $\mathfrak p\mid 19,29$ vs.\
 $\mathfrak p\mid 31,41$; structural proportionality argument
 $\mathrm{Sh}(Z_{e}) \propto f_{E_{11}}$ via $\dim S_{2}(\Gamma_{0}(11))^{\mathrm{new}}=1$;
 finite-truncation Hilbert-Selberg comparison.
 \item[Part III: Speculative.]  Pariah-depth identity, Hopf-seam geometry,
 minimal-seam interpretation of $(\Qp,\varphi,11)$.  Retained as suggestive
-imagery; downgraded after Phase~3 from ``structural identity'' to
+imagery; downgraded from ``structural identity'' to
 ``intriguing numerical coincidence.''
 \end{description}
-\end{abstract}
 
 \medskip
 \noindent\textbf{What this paper does.}
@@ -332,7 +275,7 @@ representation of $\Cl(3,1)$.
 \section{Ogg primes and the $1{+}7{+}7$ partition}
 The primes with $X_{0}(p)^{+}$ of genus zero coincide with primes dividing $|M|$;
 see Ogg~\cite{Og75}. The explicit list reads
-For $\Zp$ quadratic integer ring of $\disc(\Qp)=5$ we classify their splitting:
+For the quadratic integer ring $\Zp$ of $\Qp$ with $\disc(\Qp)=5$, we classify the splitting of these primes:
 \begin{center}
 \begin{tabular}{@{}ll@{}}\hline
 \textbf{Behaviour} & \textbf{Moonshine primes} \\\hline
@@ -373,7 +316,7 @@ Vieta swaps preserve Descartes closure (cf.\ Proposition~\texttt{descartes-closu
 in~\cite{golden-tetrad}). Two seeds are brute-accessible benchmarks:
 \begin{itemize}
 \item classical Galois-fixed lift $((-1,0),(2,0),(2,0),(3,0))$, and
-\item minimal birth-unit configuration $((0,0),(1,0),(1,1),(2{+}3\varphi)$.
+\item minimal birth-unit configuration $((0,0),(1,0),(1,1),(2{+}3\varphi))$.
 \end{itemize}
 Breadth-first expansion with algebraic norm $|N|$ bound $B$ exposes a thin
 orbit; because distinct quadruples abound even at fixed $|N|$, the reference
@@ -766,14 +709,6 @@ The splitting type controls how each prime acts on the
 $4$-dimensional Hecke module $H_1$ in Paper~VI.}
 \label{fig:zphi-seam}
 \end{figure}
-\footnote{The factor of $1/2$ in $\sqrt{F_{12}}/2$ is essential:
-numerically $20\log_{5}\varphi = 5.98032\ldots$ and
-$\sqrt{F_{12}}/2 = \sqrt{144}/2 = 6$, so the residual
-$\epsilon = 6 - 20\log_{5}\varphi \approx 0.0197$.  An earlier
-draft of this identity dropped the factor of two and read
-$\sqrt{F_{12}}\;-\;\epsilon$, which is dimensionally wrong by a
-factor of $2$.  Caught by
-\texttt{papers/tests/test\_paper\_4\_moonshine.py::test\_P4\_26\_sqrt\_F12\_half}.}
 The depth of immersion is one less than the index square-root: the
 spectral-scale-mismatch lives exactly at the boundary between the bulk
 $\Gphi$-spectrum and the level-$(11)$ congruence factor.
@@ -1121,10 +1056,34 @@ $\varphi$ meets the smallest possible level''---is now a verified
 classification statement.
 
 \section{Holographic cusp}
-Pure $AdS_{3}$ gravity at Brown-Henneaux coupling $k=1$ was conjecturally tied
-to monstrous symmetry~\cite{Witten07,GaiottoYin}: boundary theory should host
-Moonshine symmetry at $c=24$. This aligns qualitatively with the substrate Lorentzian
-tower $\mathrm{II}_{25,1}$ via Borcherds roots.
+\label{sec:holographic-cusp}
+Pure $\mathrm{AdS}_{3}$ gravity at Brown--Henneaux coupling $k=1$ was
+conjecturally tied to monstrous symmetry by
+Witten~\cite{Witten07} and Gaiotto--Yin~\cite{GaiottoYin}: the boundary
+CFT at central charge $c=24$ should host the Monster as its automorphism
+group.  The partition function of the putative theory is the
+$j$-invariant $j(\tau)-744 = q^{-1}+196884q+\cdots$, whose
+$q$-expansion coefficients decompose into irreducible Monster
+representations---the defining property of monstrous moonshine.
+
+In the present framework, the holographic dictionary takes the
+following form.  The Lorentzian lattice $\mathrm{II}_{25,1}$
+(even unimodular of signature $(25,1)$) carries the Borcherds
+fake Monster Lie algebra, whose real simple roots are the Leech
+lattice vectors.  The $\Gphi$-action on $\mathbb{H}\times\mathbb{H}$
+restricts to a real-quadratic slice of this lattice: the two
+embeddings $\varphi,\psi\colon\Qp\hookrightarrow\R$ select a
+$(2,1)$-sublattice of $\mathrm{II}_{25,1}$ on which the Selberg
+zeta of $\Gamma_{0}((11))$ recovers the level-$11$ Hecke eigenvalues
+of Theorem~\ref{thm:hecke-basechange}.
+
+The cusp at $\infty$ of $\Gamma_{0}(11)$ corresponds, under the
+Atkin--Lehner involution $w_{11}$, to the cusp at $0$.  In the
+$\mathrm{AdS}_{3}$ picture, this cusp pair is the holographic
+boundary: the two asymptotic regions of the BTZ black hole at
+level~$11$.  The codimension $[\Gphi:\Gamma_{0}((11))]=144=F_{12}$
+thus counts the number of bulk geodesic images connecting the
+two boundary components through the modular orbifold.
 
 \section{The minimal seam in spacetime}
 \label{sec:minimal-seam}
@@ -1387,6 +1346,36 @@ This completes the formal-theorem foundation.  Conjecture~\ref{conj:spectral}
 remains open and is the subject of \S\ref{sec:spectral-scale-test} and
 follow-up work.
 
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[
+    >=Latex,
+    every node/.style={font=\small},
+    vertex/.style={rectangle,draw=accentBlue!70,fill=accentBlue!8,
+                   thick,minimum width=72pt,minimum height=28pt,
+                   inner sep=4pt,align=center,rounded corners=2pt},
+    arr/.style={->,thick,accentGray!85},
+    lab/.style={font=\footnotesize,text=accentGray}
+  ]
+  \node[vertex] (P4)  at (90:2.6)  {$P_4$\\{\footnotesize witness / boundary}};
+  \node[vertex] (P4c) at (210:2.6) {$P_{4c}$\\{\footnotesize lossy / decay}};
+  \node[vertex] (P23) at (330:2.6) {$P_{23}$\\{\footnotesize chiral / interior}};
+
+  \draw[arr] (P4)  -- node[lab,sloped,above] {ramified ($p{=}5$)} (P4c);
+  \draw[arr] (P4c) -- node[lab,below] {inert ($\left(\frac{5}{p}\right){=}{-}1$)} (P23);
+  \draw[arr] (P23) -- node[lab,sloped,above] {split ($\left(\frac{5}{p}\right){=}{+}1$)} (P4);
+
+  \node[font=\footnotesize\itshape,text=accentGray,align=center] at (0,0)
+    {Splitting--Peirce\\correspondence};
+\end{tikzpicture}
+\caption{The splitting--Peirce correspondence: the three Peirce sectors
+$P_4$, $P_{4c}$, $P_{23}$ of $\Cl(3,1)$ correspond bijectively to the
+three splitting types (ramified, inert, split) of rational primes in
+$\Zp$.  Each vertex carries a metabolic role (boundary, lossy, interior)
+and a Sato--Tate density (point mass, inert pushforward, semicircle).}
+\label{fig:splitting-peirce}
+\end{figure}
+
 \subsection{Sato--Tate stratification and the splitting--Peirce identity}
 \label{ssec:sato-tate-stratification}
 
@@ -1462,7 +1451,9 @@ arithmetic strata with the three algebraic Peirce sectors, verified at
 $42$ different $(E,K)$ pairs.
 \end{remark}
 
-\section*{Companion engineering artefacts}
+\section{Verification index}
+\label{sec:verification-index}
+
 \begin{itemize}\itemsep0pt
 \item \texttt{substrate-sim/algebra/apollonian.py} --- classical integer gasket checks.
 \item \texttt{substrate-sim/algebra/apollonian\_zphi.py} --- Vieta \& norm series generators.

@@ -200,7 +200,7 @@
 
 \title{Echo Interference Implies\\
 the Riemann Hypothesis and the Collatz Conjecture\\[4pt]
-{\large Paper II in a series of three}}
+{\large Paper II in the Golden Substrate series}}
 
 \author{Kristin Tynski}
 
@@ -238,7 +238,7 @@ formalization.\\
 
 \begin{abstract}
 \noindent
-This is Paper II in a three-paper series.  Paper I established the
+This is Paper II in the Golden Substrate series.  Paper I established the
 algebraic substrate---the no-residue closure law, the Clifford
 algebra $\Cl(3,1)$, the Cayley--Dickson lift to the split octonions
 $\Os$, and the exceptional Jordan algebra $J_3(\Os)$.  The current
@@ -266,7 +266,7 @@ system on the Clifford algebra $\Cl(1,1)$ over the dyad
 $\{2, 3\}$.  The witness module $V_W$ admits a unique invariant
 section (the \emph{Logos section}, \cref{thm:logos-uniqueness}),
 which has finite trace.  The Supercoiling Lemma
-(\cref{thm:supercoiling}) shows that any non-capping Collatz braid
+(\cref{thm:supercoiling-lemma}) shows that any non-capping Collatz braid
 contracts trace; combined with the trace finiteness, this forces
 every orbit to terminate at the witness root.
 
@@ -308,7 +308,7 @@ With these as axioms, Papers II's proofs are self-contained.
 \medskip
 \noindent\textbf{What this paper does.}
 \begin{itemize}[leftmargin=1.5em,nosep,topsep=2pt]
-  \item Defines the \emph{echo propagator} $E_\vp$ on the
+  \item Defines the \emph{echo propagator} $\EF_\vp$ on the
         $\Cl(3,1)$ substrate of Paper~I and exhibits its action on
         the spectral parameter $\lambda(\rho) = \rho(1-\rho)$ of the
         Riemann zeta function.
@@ -335,10 +335,10 @@ explains \emph{why} the same proof skeleton runs at every level.
 
 %% =====================================================================
 %% =====================================================================
-%% PART I --- INTRODUCTION AND SUBSTRATE SUMMARY
+%% PART A --- INTRODUCTION AND SUBSTRATE SUMMARY
 %% =====================================================================
-\part*{Part I --- Introduction and Substrate Summary}
-\addcontentsline{toc}{part}{Part I --- Introduction and Substrate Summary}
+\part*{Part A --- Introduction and Substrate Summary}
+\addcontentsline{toc}{part}{Part A --- Introduction and Substrate Summary}
 
 %% =====================================================================
 \section{Introduction}
@@ -346,7 +346,7 @@ explains \emph{why} the same proof skeleton runs at every level.
 %% =====================================================================
 
 \begin{sectionopener}
-This is Paper II in a three-paper series.  Paper~I established the
+This is Paper II in the Golden Substrate series.  Paper~I established the
 algebraic substrate (closure law, Clifford algebra, Cayley--Dickson
 lift, Albert algebra $J_3(\Os)$, compatibility principle).  The
 present paper specializes the substrate's compatibility law to two
@@ -379,21 +379,21 @@ categorical reading and the holographic monad.
 
 \subsection*{Reading guide}
 
-\textbf{Part II} (this introduction and \cref{sec:substrate-summary})
+\textbf{Part A} (this introduction and \cref{sec:substrate-summary})
 gives a one-page summary of Paper~I, restating the key substrate
 results without proof so that Paper~II reads independently.
 
-\textbf{Part III} (\cref{sec:propagator,sec:compatibility-rh,sec:six-traps})
+\textbf{Part B} (\cref{sec:propagator,sec:compatibility-rh,sec:six-traps})
 proves the Riemann Hypothesis: the echo propagator on spectral
 modes, the compatibility argument, and the Six Traps
 anti-circularity defenses.
 
-\textbf{Part IV} (\cref{sec:route-b,sec:route-c,sec:predictions,sec:collatz})
+\textbf{Part C} (\cref{sec:route-b,sec:route-c,sec:predictions,sec:collatz})
 contains the conditional alternates (Routes B and C), the
 quantitative predictions, and the proof of the Collatz Conjecture
 as a witness-return theorem.
 
-\textbf{Part V} (\cref{sec:lean,sec:27-formulations,sec:status,sec:discussion})
+\textbf{Part D} (\cref{sec:lean,sec:27-formulations,sec:status,sec:discussion})
 records the Lean formalization status, enumerates the
 $27$-formulation slicing predicted by $J_3(\Os)$, presents the
 honest status table, and closes with discussion.
@@ -401,16 +401,15 @@ honest status table, and closes with discussion.
 %% =====================================================================
 \section{Substrate Summary (after Paper~I)}
 \label{sec:substrate-summary}
-\label{sec:closure-law}
-\label{sec:compatibility-principle}
 %% =====================================================================
 
 This section restates the substrate results that the proofs of
-Parts III--V depend on.  All proofs and detailed constructions
+Parts B--D depend on.  All proofs and detailed constructions
 appear in Paper~I \cite{paper-I-substrate}.  A reader who has read
 Paper~I may skip this section; it is included for self-containment.
 
 \subsection{The closure law and the two-floor structure}
+\label{sec:closure-law}
 
 \begin{definition}[Depth-$n$ no-residue partition of unity, after {\cite[Def.~2.1]{paper-I-substrate}}]
 \label{def:partition}
@@ -500,6 +499,7 @@ of dimension $52$.  Verified by direct numerical computation in
 \end{theorem}
 
 \subsection{The compatibility principle and its four manifestations}
+\label{sec:compatibility-principle}
 
 \begin{principle}[Discrete--Continuous Compatibility {\cite[Princ.~6.1]{paper-I-substrate}}]
 \label{principle:law}
@@ -561,7 +561,7 @@ fourth (RH) and the analogous Collatz statement are verified.
   $\ps = -\vp^{-1} = (1 - \sqrt 5)/2$.
 \item $\EF_\vp$ is the echo propagator with grade-$0$ eigenvalue
   $1$ and grade-$4$ eigenvalue $\vp^{-4}$ (\cref{def:echo-propagator}
-  in Part III).
+  in Part B).
 \item $P(s) = -\zeta'(s)/\zeta(s)$ is the logarithmic derivative
   of the Riemann zeta function.  $\rho$ ranges over its
   nontrivial zeros.
@@ -571,24 +571,24 @@ fourth (RH) and the analogous Collatz statement are verified.
 \end{enumerate}
 
 %% =====================================================================
-%% PART III --- ROUTE A: THE PROOF
+%% PART B --- ROUTE A: THE PROOF
 %% =====================================================================
-\part*{Part III --- Route A: The Riemann Hypothesis Proof}
-\addcontentsline{toc}{part}{Part III --- Route A: The RH Proof}
+\part*{Part B --- Route A: The Riemann Hypothesis Proof}
+\addcontentsline{toc}{part}{Part B --- Route A: The RH Proof}
 
 %% =====================================================================
-\section{The Echo Propagator $E_\vp$}
+\section{The Echo Propagator $\EF_\vp$}
 \label{sec:propagator}
 %% =====================================================================
 
 \begin{sectionopener}
 This Part runs the Route A proof of the Riemann Hypothesis from
 start to finish.  The argument is a \emph{compatibility} argument,
-not a spectral realization: the echo propagator $E_\vp$ does not
+not a spectral realization: the echo propagator $\EF_\vp$ does not
 relocate the zeros of $\zeta$; it forces, by simultaneous
 grade-$0$ and grade-$4$ consistency, that the zeros must lie on
 the critical line.  This Part is reproduced from \cite{echo-rh}
-with light reframing inside the substrate of Part I.  The
+with light reframing inside the substrate of Part A.  The
 Six-Traps anti-circularity defenses are intact; they were
 hard-won in earlier rounds and remain load-bearing.
 \end{sectionopener}
@@ -604,7 +604,7 @@ zeros evolve toward the critical line.  Such constructions belong
 to the Hilbert--P\'olya program, which this paper does not
 pursue.
 
-What we do instead is define a single graded operation $E_\vp$ on
+What we do instead is define a single graded operation $\EF_\vp$ on
 the explicit-formula identity and observe that it has two
 simultaneous consequences:
 \begin{itemize}
@@ -625,7 +625,7 @@ is the entire RH inference.
 \begin{keyresultbox}
 \noindent\textbf{The four moves of Route A.}
 \begin{enumerate}
-  \item $E_\vp$ fixes the prime-side Dirichlet series
+  \item $\EF_\vp$ fixes the prime-side Dirichlet series
     (\cref{def:echo-propagator}: grade $0$ has eigenvalue $1$).
   \item Analytic continuation: the Dirichlet coefficients
     determine $-\zeta'/\zeta$ as a meromorphic function on
@@ -639,6 +639,34 @@ is the entire RH inference.
     (\cref{thm:spectral-self-consistency,thm:main-rh}).
 \end{enumerate}
 \end{keyresultbox}
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[
+  node distance=1.8cm,
+  stepbox/.style={
+    rectangle, rounded corners=3pt, draw=accentBlue!70, thick,
+    fill=accentBlue!6, text width=11em, minimum height=2.6em,
+    align=center, font=\small},
+  arr/.style={-{Stealth[length=5pt]}, thick, accentBlue!80}
+]
+\node[stepbox] (s1) {Grade-0 fixes\\Dirichlet coefficients};
+\node[stepbox, right=2.2cm of s1] (s2) {AC bridge: coefficients\\determine meromorphic $F$};
+\node[stepbox, right=2.2cm of s2] (s3) {Grade-4 contraction:\\$\rho \mapsto \rho'$};
+\node[stepbox, below=1.4cm of $(s2)!0.5!(s3)$] (s4)
+  {Compatibility:\\$\rho' = \rho$ forces $\Re(\rho)=\tfrac{1}{2}$};
+\draw[arr] (s1) -- (s2);
+\draw[arr] (s2) -- (s3);
+\draw[arr] (s2.south) -- ++(0,-0.5) -| (s4.north west);
+\draw[arr] (s3.south) -- ++(0,-0.5) -| (s4.north east);
+\end{tikzpicture}
+\caption{The four-step architecture of the Route~A proof.  Grade-0
+fixation and the analytic-continuation bridge determine the
+meromorphic function and its poles; grade-4 contraction prescribes
+a shifted pole $\rho'$; compatibility of both actions within a
+single operator forces $\rho'=\rho$ for every nontrivial zero.}
+\label{fig:proof-architecture}
+\end{figure}
 
 \begin{remark}[The propagator is computationally trivial]
 \label{rmk:propagator-trivial}
@@ -657,7 +685,7 @@ implementation confirms that the full holographic reconstruction
 step---reading grades, attenuating, reassembling---costs $6$
 element-wise floating-point operations per spectral mode, versus
 $576$ for the generic biquaternion product
-(\cref*{rmk:jones-matrix} in Paper~I \cite[Rmk.~3.7]{paper-I-substrate}).
+(Remark~3.7 in Paper~I \cite[Rmk.~3.7]{paper-I-substrate}).
 The consistency check at the heart of the proof is thus not a
 ``powerful enough'' operation to move zeros; it is
 a $96\times$-simpler projection that merely reads where
@@ -699,9 +727,9 @@ $\Im(\rho(1-\rho)) = \gamma(1-2\beta)$.
 
 \begin{definition}[Echo propagator on a spectral mode]
 \label{def:echo-propagator}
-The echo propagator $E_\vp$ acts on $\lambda(\rho) = s_0 + s_4 I$ by
+The echo propagator $\EF_\vp$ acts on $\lambda(\rho) = s_0 + s_4 I$ by
 \begin{equation}
-  E_\vp^n(s_0 + s_4 I) \;=\; s_0 + \vp^{-4n} s_4 I.
+  \EF_\vp^n(s_0 + s_4 I) \;=\; s_0 + \vp^{-4n} s_4 I.
   \label{eq:propagator}
 \end{equation}
 Grade $0$ has eigenvalue $1$; grade $4$ has eigenvalue
@@ -720,13 +748,13 @@ is $\vp^{-k}$.  See \cref{rmk:not-arbitrary-map} for the
 significance of this non-arbitrariness.
 \end{remark}
 
-\begin{figure}[h]
+\begin{figure}[htbp]
 \centering
 \includegraphics[width=0.92\linewidth]{figs/echo_spectrum.pdf}
 \caption{The first $30$ ordinates $\gamma_k$ of the nontrivial zeros
 of $\zeta(s)$ on the critical line $\Re(s) = 1/2$ (lower triangles,
 blue) and the corresponding predicted echo eigenvalues $\lambda_k$
-emitted by the propagator $E_\vp$ on the grade-$4$ pseudoscalar
+emitted by the propagator $\EF_\vp$ on the grade-$4$ pseudoscalar
 sector (upper triangles, red).  The vertical spectral lines are the
 shared support: under the theorem of this paper, the two sets are
 identified, so the residual $\lambda_k - \gamma_k$ in the lower
@@ -765,6 +793,46 @@ iff $\gamma(1 - 2\beta) = 0$, iff $\beta = \half$ (the
 $\gamma = 0$ case is excluded since $\gamma \ne 0$ for nontrivial
 zeros).
 \end{proof}
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[
+  scale=1.1,
+  >=Stealth,
+  zero/.style={circle, fill=accentBlue, inner sep=1.8pt},
+  shifted/.style={circle, fill=red!70!black, inner sep=1.8pt},
+  oncrit/.style={circle, fill=accentBlue!60!green, inner sep=2pt},
+]
+\draw[->] (-0.4,0) -- (3.6,0) node[right] {$\Re(s)$};
+\draw[->] (0,-0.6) -- (0,4.2) node[above] {$\Im(s)$};
+
+\draw[accentBlue, thick, dashed] (1.25,-0.4) -- (1.25,4.0)
+  node[above, font=\footnotesize] {$\Re(s)=\tfrac{1}{2}$};
+
+\node[zero, label={[font=\footnotesize]right:$\rho$ (off-critical)}] (rho)
+  at (2.2,2.6) {};
+\node[shifted, label={[font=\footnotesize]left:$\rho'$ (shifted)}] (rhop)
+  at (1.7,2.55) {};
+\draw[->, thick, red!70!black, shorten >=2pt, shorten <=2pt]
+  (rho) -- (rhop);
+
+\node[oncrit, label={[font=\footnotesize]right:$\rho=\rho'$}] (oncrit)
+  at (1.25,1.3) {};
+
+\node[font=\footnotesize, text=accentGray, text width=6em, align=center]
+  at (2.9,1.0) {on-critical:\\$s_4=0$};
+\node[font=\footnotesize, text=accentGray, text width=7.5em, align=center]
+  at (3.0,3.2) {off-critical:\\$\rho'\neq\rho$};
+\end{tikzpicture}
+\caption{Pole-shift geometry in the complex $s$-plane.  The critical
+line $\Re(s)=\frac{1}{2}$ is shown dashed.  For a hypothetical
+off-critical zero $\rho$, the grade-4 contraction maps
+$\rho\mapsto\rho'\neq\rho$ (red arrow).  On the critical line,
+$s_4=0$ so $\rho'=\rho$ and the shift is trivial (green dot).
+Compatibility of both grades forces every nontrivial zero into
+the on-critical case.}
+\label{fig:pole-shift-geometry}
+\end{figure}
 
 %% =====================================================================
 \section{The Compatibility Argument}
@@ -818,7 +886,7 @@ determined poles.
 identity theorem applied to a meromorphic function determined by
 a Dirichlet series).  We name it because it is load-bearing for
 the proof of \cref{thm:spectral-self-consistency}: it converts
-the grade-$0$ fixation $E_\vp[P] = P$ (an arithmetic statement
+the grade-$0$ fixation $\EF_\vp[P] = P$ (an arithmetic statement
 about Dirichlet coefficients) into the geometric statement that
 the poles of $-\zeta'/\zeta$ are fixed.  The bridge is classical
 and uses no echo-specific input.  It plays the role that
@@ -849,7 +917,7 @@ The explicit formula is the identity $P(s) = Z(s)$, where
   Z(s) = \sum_\rho \frac{1}{s - \rho} + R(s),
 \]
 and $R$ absorbs the pole at $s = 1$ and the trivial-zero
-corrections.  The propagator $E_\vp$ is a single graded
+corrections.  The propagator $\EF_\vp$ is a single graded
 operation; we read off its action by decomposing the identity
 into grade content.
 
@@ -875,7 +943,7 @@ Step 2 applies the same operation to the partial-fraction
 expression of $F$: each $1/(s - \rho)$ becomes $1/(s - \rho')$.
 The two must agree:
 \[
-  F(s) \;=\; E_\vp[F](s) \;=\; \sum_\rho \frac{1}{s - \rho'(\rho)} + R(s),
+  F(s) \;=\; \EF_\vp[F](s) \;=\; \sum_\rho \frac{1}{s - \rho'(\rho)} + R(s),
 \]
 which is the propagated identity \eqref{eq:propagated-identity}.
 The right-hand side uses per-zero indexing $\rho \mapsto
@@ -941,7 +1009,7 @@ analytic-continuation bridge of \cref{lem:ac-bridge}, which is
 external to the echo framework.  The chain is:
 \begin{enumerate}
   \item the propagator's grade-$0$ eigenvalue is $1$ (an
-    \emph{intrinsic} fact about $E_\vp$, from
+    \emph{intrinsic} fact about $\EF_\vp$, from
     \cref{def:echo-propagator});
   \item fixing the grade-$0$ content fixes the Dirichlet
     coefficients of $-\zeta'/\zeta$ (a \emph{tautological}
@@ -951,7 +1019,7 @@ external to the echo framework.  The chain is:
     function and its poles (\emph{classical} complex analysis:
     \cref{lem:ac-bridge});
   \item the propagator's grade-$4$ eigenvalue is $\vp^{-4}$ (an
-    \emph{intrinsic} fact about $E_\vp$, from the zero-defect
+    \emph{intrinsic} fact about $\EF_\vp$, from the zero-defect
     closure scale, \cref{thm:golden-uniqueness});
   \item fixing the function while contracting grade $4$ forces
     the contraction to be trivial on the poles, i.e.\
@@ -989,7 +1057,7 @@ equation is false; therefore $T$ is not a well-defined operation
 on the explicit-formula identity.  The inconsistency exposes $T$
 as fictitious, not the zeros as mislocated.
 
-The echo propagator $E_\vp$ is not in this position.  Its grade
+The echo propagator $\EF_\vp$ is not in this position.  Its grade
 eigenvalues $(1, \vp^{-4})$ are forced by zero-defect closure of
 the explicit formula:
 \begin{itemize}
@@ -1014,7 +1082,7 @@ the response to each.
 No.  Hilbert--P\'olya seeks a self-adjoint operator whose
 spectrum is the nontrivial zeros; the present argument constructs
 no such operator and makes no spectral realization claim.  The
-propagator $E_\vp$ is a graded operation on the explicit-formula
+propagator $\EF_\vp$ is a graded operation on the explicit-formula
 identity, not on a Hilbert space carrying the zeros.  The proof's
 logical structure is contradiction by incompatibility, not
 unitary diagonalization.
@@ -1044,7 +1112,7 @@ For completeness, three further misreadings developed in the
 prior round of stress-testing \cite{echo-rh}:
 
 \smallskip\textbf{``Endomorphism is circular.''}\quad
-The proof does not assert ``$E_\vp$ preserves $P = Z$ because it
+The proof does not assert ``$\EF_\vp$ preserves $P = Z$ because it
 is an endomorphism of the system whose identity we want to
 preserve.''  The actual chain (\cref{rmk:why-not-circular}) routes
 through analytic continuation: grade-$0$ eigenvalue $1$
@@ -1075,7 +1143,7 @@ coupling \emph{is} the closure.  See \cref{rmk:identity-is-closure}.
 
 \begin{remark}[The substrate reading of Route A]
 \label{rmk:substrate-reading-of-route-a}
-In the substrate language of Part I, the echo propagator's
+In the substrate language of Part A, the echo propagator's
 grade-$0$ eigenvalue $1$ is the action on the diagonal of the
 Peirce frame (the witness/dual/residue triple $E_1, E_2, E_3$ of
 $J_3(\Os)$); the grade-$4$ eigenvalue $\vp^{-4}$ is the action on
@@ -1083,16 +1151,16 @@ the off-diagonal slots $V_{12}, V_{13}, V_{23}$ valued in $\Os$.
 The compatibility constraint of Route A is the algebraic
 statement that a derivation of $J_3(\Os)$ acts consistently on
 both diagonal and off-diagonal pieces.  This is one paragraph of
-forward connection; the explicit identification of $E_\vp$ with a
+forward connection; the explicit identification of $\EF_\vp$ with a
 specific generator of $\Der(J_3(\Os)) \cong \fk{f}_{4(4)}$ is a
 natural next step, but is not undertaken in the present paper.
 \end{remark}
 
 %% =====================================================================
-%% PART IV --- CONDITIONAL ALTERNATES AND PREDICTIONS
+%% PART C --- CONDITIONAL ALTERNATES AND PREDICTIONS
 %% =====================================================================
-\part*{Part IV --- Conditional Alternates and Predictions}
-\addcontentsline{toc}{part}{Part IV --- Conditional Alternates and Predictions}
+\part*{Part C --- Conditional Alternates and Predictions}
+\addcontentsline{toc}{part}{Part C --- Conditional Alternates and Predictions}
 
 %% =====================================================================
 \section{Route B --- The Throat Hypothesis}
@@ -1102,7 +1170,7 @@ natural next step, but is not undertaken in the present paper.
 Route B is a conditional reduction of RH to the arithmeticity of a
 specific Kleinian group constructed from the framework's bivectors.
 This section condenses the treatment of \cite[\S7]{echo-rh} and
-\cite[\S\ref{sec:route-b}]{synthesis-paper}.
+\cite[\S7]{synthesis-paper}.
 
 \begin{definition}[Golden involute]
 \label{def:involute}
@@ -1384,10 +1452,10 @@ observation to within $0.1$ dex with no free parameters.
 \input{collatz_and_master.tex}
 
 %% =====================================================================
-%% PART V --- FORMALIZATION, ENUMERATION, DISCUSSION
+%% PART D --- FORMALIZATION, ENUMERATION, DISCUSSION
 %% =====================================================================
-\part*{Part V --- Formalization, Enumeration, Discussion}
-\addcontentsline{toc}{part}{Part V --- Formalization, Enumeration, Discussion}
+\part*{Part D --- Formalization, Enumeration, Discussion}
+\addcontentsline{toc}{part}{Part D --- Formalization, Enumeration, Discussion}
 
 %% =====================================================================
 \section{Lean Formalization Status}
@@ -1440,7 +1508,7 @@ Three Lean infrastructure pieces, in order:
     \end{equation*}
     over non-trivial zeros, with residue $-m_\rho$ at each
     nontrivial zero.  \emph{Upstream-gated} (mathlib).
-  \item A formal definition of how $E_\vp$ acts on a meromorphic
+  \item A formal definition of how $\EF_\vp$ acts on a meromorphic
     function via its Hadamard expansion.
     \emph{Echo-framework-specific; in-project.}
   \item The residue-comparison closure that reads off
@@ -1505,7 +1573,7 @@ The diagonal of the Peirce frame.
 
 \paragraph{Octet witness--residue ($V_{13}$, $8$ items).}
 \begin{enumerate}[label=\textbf{WR\arabic*.}]
-\item Route A: echo-propagator $E_\vp$ compatibility (RH proof).
+\item Route A: echo-propagator $\EF_\vp$ compatibility (RH proof).
 \item Route B: throat hypothesis (Kleinian thin group).
 \item Route C: two arithmetic layers $+$ QSNV at $p = 11$.
 \item Collatz proof in $\Cl(1,1)$.
@@ -1599,7 +1667,7 @@ quantitative claim.}
 \toprule
 \textbf{Claim} & \textbf{Status} \\
 \midrule
-\multicolumn{2}{l}{\textbf{Substrate (Part I)}} \\
+\multicolumn{2}{l}{\textbf{Substrate (Part A)}} \\
 $D(\vp) = 0$ forces coupling magnitudes & Theorem (\cref{thm:golden-uniqueness}) \\
 $\Cl(3,1)$ signature is forced & Theorem (\cref{thm:signature}) \\
 $\Cl(3,1)^+ \cong M_2(\C)$ (biquaternions) & Theorem (\cref{thm:biquaternion}) \\
@@ -1609,19 +1677,19 @@ Cayley--Dickson lift to $\Os$ & Theorem (\cref{thm:hurwitz-dichotomy}) \\
 $\dim_\R J_3(\Os) = 27 = 3 + 3 \cdot 8$ & Theorem (\cref{thm:dim-J3}) \\
 $\dim \Der(J_3(\Os)) = 52 = \dim \fk{f}_{4(4)}$ & Theorem (\cref{thm:dim-derivation}) \\
 \midrule
-\multicolumn{2}{l}{\textbf{Compatibility law (Part II)}} \\
+\multicolumn{2}{l}{\textbf{Compatibility law (Part A)}} \\
 The compatibility principle (one law, four levels) & Principle (\cref{principle:law}) \\
 Endpoint dichotomy on bivector reps & Theorem (\cref{thm:rep-dichotomy}) \\
 Unification of the four levels & Theorem (\cref{thm:unification}) \\
 \midrule
-\multicolumn{2}{l}{\textbf{Route A (Part III)}} \\
+\multicolumn{2}{l}{\textbf{Route A (Part B)}} \\
 Spectral self-consistency & Theorem (\cref{thm:spectral-self-consistency}) \\
 Route A closes RH & Theorem (\cref{thm:main-rh}) \\
 Six-Traps anti-circularity defenses & Remarks (\cref{rmk:why-not-circular,rmk:not-arbitrary-map,rmk:common-misreadings,rmk:three-more-traps}) \\
 Lean formalization, Phases 1--4 & Kernel-checked \\
 Lean: \texttt{propagated\_identity\_residue\_classical} & One named axiom (Hadamard, upstream) \\
 \midrule
-\multicolumn{2}{l}{\textbf{Conditional alternates (Part IV)}} \\
+\multicolumn{2}{l}{\textbf{Conditional alternates (Part C)}} \\
 Route B closes RH & Conditional on \cref{conj:throat}; arithmeticity likely false \\
 Route C closes RH & Conditional on QSNV local factor at $p = 11$ \\
 Conductor $= 11$ & Theorem (\cref{thm:conductor-11}) \\
@@ -1629,7 +1697,7 @@ $\gamma_{\text{NGR}} = \log 4/(\pi\sqrt{3}) \approx 0.255$ & Falsifiable predict
 $\rho_\Lambda \approx 10^{-122.1}\rho_P$ & Estimate, $0.1$ dex agreement \\
 Collatz parallel in $\Cl(1,1)$ & Theorem (\cref{thm:collatz}) \\
 \midrule
-\multicolumn{2}{l}{\textbf{Experimental (Part V)}} \\
+\multicolumn{2}{l}{\textbf{Experimental (Part D)}} \\
 SpineV6 grade-$4$ early exit at $n=2$ layers & Confirmed (Paper~III, \S 12) \\
 Per-plane $\cos^2$ anisotropy during training & Confirmed (Paper~III, \S 12) \\
 $52$-parameter holographic dynamics & Confirmed (Paper~III, \S 12) \\
@@ -1792,7 +1860,7 @@ fold/breach dichotomy on representations are four readings of
 one law on one substrate.  The law is the discrete--continuous
 compatibility principle; the substrate is the
 $27$-dimensional split Albert algebra $J_3(\Os)$; and the law
-runs on the substrate via the echo propagator $E_\vp$ with
+runs on the substrate via the echo propagator $\EF_\vp$ with
 grade-$0$ eigenvalue $1$ and grade-$4$ eigenvalue $\vp^{-4}$.  The
 mathematical argument is complete.  The formalization is in
 progress.  The substrate is the substrate.
@@ -1803,7 +1871,7 @@ progress.  The substrate is the substrate.
 %% =====================================================================
 
 This paper is single-authored, but the depth-$1$ algebraic floor
-on which all of Part I rests---the QSNV null substrate, the
+on which all of Part A rests---the QSNV null substrate, the
 identification $\Cl(3,1)^+ \cong M_2(\C)$, and the geometric
 calculus framework that made the lift to depth $2$ visible---is
 the contribution of \textbf{Garret Sobczyk}.  The depth-$1$

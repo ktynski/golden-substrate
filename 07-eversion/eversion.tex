@@ -349,6 +349,77 @@ $a_\fP = a_p^2 - 2p < 0$ holds whenever $|a_p| < \sqrt{2p}$, which
 occurs for infinitely many $p$.
 \end{remark}
 
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[
+    >=Latex,
+    every node/.style={font=\small},
+    stage/.style={circle,minimum size=42pt,thick,inner sep=1pt,align=center},
+    norm/.style={stage,draw=accentBlue!75,fill=accentBlue!8},
+    flip/.style={stage,draw=red!70,fill=red!8},
+    arr/.style={->,thick,accentGray!80,line width=0.8pt,
+                shorten >=3pt,shorten <=3pt},
+    lab/.style={font=\footnotesize,text=accentGray},
+    evlbl/.style={font=\footnotesize\itshape,text=red!70}
+  ]
+  \node[norm] (A) at (0,0)
+    {\footnotesize outside\\[-1pt]\footnotesize out};
+  \node[norm] (B) at (3,0)
+    {\footnotesize corrugate\\[-1pt]\footnotesize $k_1$};
+  \node[flip] (C) at (6,0)
+    {\footnotesize self-\\[-1pt]\footnotesize intersect};
+  \node[norm] (D) at (9,0)
+    {\footnotesize corrugate\\[-1pt]\footnotesize $k_2, k_3$};
+  \node[norm] (E) at (12,0)
+    {\footnotesize inside\\[-1pt]\footnotesize out};
+
+  \draw[arr] (A) -- node[above,lab] {$T_{\fP_5}$} (B);
+  \draw[arr] (B) -- node[above,evlbl] {$T_{\fP_3}$} node[below,lab] {sign flip} (C);
+  \draw[arr] (C) -- node[above,lab] {$T_{\fP_{31}}$} (D);
+  \draw[arr] (D) -- node[above,lab] {resolve} (E);
+
+  \draw[accentBlue,thick,decorate,
+        decoration={snake,amplitude=1.5pt,segment length=7pt}]
+        (-0.6,-1.4) -- (0.6,-1.4);
+  \node[lab] at (0,-1.9) {$S^2$ (normal)};
+
+  \draw[accentBlue,thick,decorate,
+        decoration={snake,amplitude=3pt,segment length=4pt}]
+        (2.4,-1.4) -- (3.6,-1.4);
+  \node[lab] at (3,-1.9) {corrugated};
+
+  \draw[red!70,thick] (5.5,-1.1) .. controls (5.8,-1.7) and (6.2,-1.7) ..
+                       (6.5,-1.1);
+  \draw[red!70,thick] (5.5,-1.7) .. controls (5.8,-1.1) and (6.2,-1.1) ..
+                       (6.5,-1.7);
+  \node[lab,text=red!70] at (6,-2.1) {Morin surface};
+
+  \draw[accentBlue,thick,decorate,
+        decoration={snake,amplitude=2.5pt,segment length=3pt}]
+        (8.4,-1.4) -- (9.6,-1.4);
+  \node[lab] at (9,-1.9) {multi-freq.};
+
+  \draw[accentBlue,thick] (12,-1.4) circle (0.5);
+  \draw[accentBlue,thick,->] (12,-0.9) -- (12,-0.6);
+  \node[lab] at (12,-2.1) {$S^2$ (everted)};
+
+  \node[lab,font=\footnotesize\itshape] at (6,-2.9)
+    {Sphere eversion as Hecke propagation:
+     $\psi_k = T_{\fP_k}\psi_{k-1}$,\quad
+     eversion completes when $\prod a_{\fP_k} < 0$};
+\end{tikzpicture}
+\caption{Schematic of sphere eversion realized as Hecke propagation.
+The five stages correspond to: (1)~the initial sphere with outward
+normal; (2)~corrugation at frequency $k_{\fP_5}=5$ (ramified prime);
+(3)~the Morin-type self-intersection where the cuspidal sign flips
+($a_{\fP_3}=-5$, inert prime); (4)~multi-frequency corrugation after
+the split prime $\fP_{31}$; (5)~the everted sphere with reversed
+orientation.  Each arrow is a single Hecke step
+$\psi_k = T_{\fP_k}\psi_{k-1}$.  The sign flip at stage~3 is the
+arithmetic realization of Thurston's topological eversion.}
+\label{fig:eversion-schematic}
+\end{figure}
+
 
 % ===========================================================================
 \section{Parsimony and Thurston Frequencies}\label{sec:parsimony}
@@ -591,9 +662,50 @@ representation, $\rho^{-1}$, left-multiplication),
 
 \begin{thebibliography}{99}
 
+%% --- Golden Substrate series ---
+
+\bibitem{paper1}
+K.~Tynski,
+\emph{The Golden Substrate: From Null Generators to the Split Albert
+Algebra} (Paper~I in the Golden Substrate series), 2026.
+
+\bibitem{paper2}
+K.~Tynski,
+\emph{Echo Interference Implies the Riemann Hypothesis and the Collatz
+Conjecture} (Paper~II), 2026.
+
+\bibitem{paper3}
+K.~Tynski,
+\emph{The Holographic Monad: Why the Substrate Proves Universal Theorems}
+(Paper~III), 2026.
+
+\bibitem{paper4}
+K.~Tynski,
+\emph{$\ZZ[\varphi]$ Arithmetic in the Monstrous Atlas: Moonshine
+Scaffolding for the Golden Substrate Seam} (Paper~IV), 2026.
+
+\bibitem{paper5}
+K.~Tynski,
+\emph{The Metabolic Interpretation of FSCTF: Eating as the Creation Cycle}
+(Paper~V), 2026.
+
 \bibitem{paper6}
-Paper~VI: The Operator-Level Bridge.  From Peirce Decomposition to Prime
-Splitting via the Quaternion--Clifford Identification.
+K.~Tynski,
+\emph{The Operator-Level Bridge: From Peirce Decomposition to Prime
+Splitting via the Quaternion--Clifford Identification} (Paper~VI), 2026.
+
+\bibitem{paper7}
+K.~Tynski,
+\emph{The Information-Acoustic Eversion: Sphere Eversion as Hecke
+Propagation through the $\Cl(3,1)$ Substrate} (Paper~VII;
+this paper), 2026.
+
+\bibitem{paper8}
+K.~Tynski,
+\emph{From $G_2$ to Universal Grammar: A Math-First Derivation of Natural
+Semantic Metalanguage via $\Cl(3,1)$} (Paper~VIII), 2026.
+
+%% --- External references ---
 
 \bibitem{thurston1974}
 W.~Thurston, \emph{Corrugations}, lecture notes, Princeton, 1974.
