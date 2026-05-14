@@ -1,3 +1,8 @@
+%% ============================================================
+%%  Golden Substrate series -- canonical preamble.
+%%  Identical across all papers except for \hypersetup{pdftitle=...}.
+%% ============================================================
+
 \documentclass[11pt,a4paper]{article}
 
 \usepackage{amsmath,amssymb,amsthm}
@@ -8,7 +13,6 @@
 \definecolor{linkInternal}{HTML}{1F4E79}
 \definecolor{linkExternal}{HTML}{2F5496}
 \definecolor{linkCite}{HTML}{806600}
-
 \usepackage[colorlinks=true,
             linkcolor=linkInternal,
             citecolor=linkCite,
@@ -21,40 +25,173 @@
   pdftitle={The Information-Acoustic Eversion: Sphere Eversion as Hecke Propagation (Paper VII)},
   pdfsubject={Copyright (c) 2026 Kristin Tynski. All rights reserved.}%
 }
+
 \usepackage{cleveref}
 \usepackage{booktabs}
 \usepackage{array}
+\usepackage{longtable}
 \usepackage{enumitem}
 \usepackage{lmodern}
 \usepackage[T1]{fontenc}
 \usepackage[protrusion=true,expansion=false]{microtype}
+\usepackage{fancyhdr}
 \usepackage[font=small,labelfont=bf,format=plain,labelsep=period]{caption}
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc,decorations.pathmorphing,shapes.geometric,fit,backgrounds}
 
 \geometry{margin=1in}
+\setlength{\emergencystretch}{5em}
 
+\theoremstyle{plain}
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definition}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{principle}[theorem]{Principle}
+
+\theoremstyle{remark}
 \newtheorem{remark}[theorem]{Remark}
 
-\DeclareMathOperator{\Cl}{Cl}
-\DeclareMathOperator{\End}{End}
-\DeclareMathOperator{\tr}{tr}
-\DeclareMathOperator{\Nm}{N}
-\DeclareMathOperator{\Spec}{Spec}
-\DeclareMathOperator{\rk}{rk}
-\DeclareMathOperator{\sgn}{sgn}
+\numberwithin{equation}{section}
 
-\newcommand{\HH}{\mathbb{H}}
-\newcommand{\ZZ}{\mathbb{Z}}
-\newcommand{\QQ}{\mathbb{Q}}
-\newcommand{\RR}{\mathbb{R}}
-\newcommand{\FF}{\mathbb{F}}
-\newcommand{\fP}{\mathfrak{P}}
-\newcommand{\cO}{\mathcal{O}}
+\providecommand{\Cl}{\mathrm{Cl}}
+\providecommand{\GA}[2]{\mathbb{G}_{#1,#2}}
+\providecommand{\R}{\mathbb{R}}
+\providecommand{\C}{\mathbb{C}}
+\providecommand{\Z}{\mathbb{Z}}
+\providecommand{\Q}{\mathbb{Q}}
+\providecommand{\N}{\mathbb{N}}
+\providecommand{\F}{\mathbb{F}}
+\providecommand{\HH}{\mathbb{H}}
+\providecommand{\OO}{\mathbb{O}}
+\providecommand{\Hh}{\mathbb{H}}
+\providecommand{\Hp}{\mathbb{H}'}
+\providecommand{\Os}{\mathbb{O}'}
+\providecommand{\ZZ}{\mathbb{Z}}
+\providecommand{\QQ}{\mathbb{Q}}
+\providecommand{\RR}{\mathbb{R}}
+\providecommand{\CC}{\mathbb{C}}
+\providecommand{\FF}{\mathbb{F}}
+\providecommand{\NN}{\mathbb{N}}
+\providecommand{\Reals}{\mathbb{R}}
+\providecommand{\Complex}{\mathbb{C}}
+\providecommand{\Nat}{\mathbb{N}}
+\providecommand{\Zp}{\ensuremath{\mathbb{Z}[\varphi]}}
+\providecommand{\Qp}{\ensuremath{\mathbb{Q}(\sqrt{5})}}
+\providecommand{\Gphi}{\ensuremath{\Gamma_{\varphi}}}
+\providecommand{\E}{\mathbb{E}}
+\providecommand{\PG}{\mathrm{PG}}
+
+\providecommand{\vp}{\varphi}
+\providecommand{\ps}{\psi}
+\providecommand{\eps}{\varepsilon}
+\providecommand{\half}{\tfrac{1}{2}}
+
+\providecommand{\EF}{\mathcal{E}}
+\providecommand{\PF}{\mathcal{P}}
+\providecommand{\ZF}{\mathcal{Z}}
+\providecommand{\W}{\mathcal{W}}
+\providecommand{\cO}{\mathcal{O}}
+\providecommand{\Lo}{\mathcal{L}}
+\providecommand{\Lk}{L}
+
+\providecommand{\fk}[1]{\mathfrak{#1}}
+\providecommand{\fP}{\mathfrak{P}}
+\providecommand{\fp}{\mathfrak{p}}
+\providecommand{\slgo}{\mathfrak{sl}}
+\providecommand{\sogo}{\mathfrak{so}}
+\providecommand{\spgo}{\mathfrak{sp}}
+
+\providecommand{\eb}[1]{e_{#1}}
+
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Der}{Der}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Sym}{Sym}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\Res}{Res}
+\DeclareMathOperator{\BC}{BC}
+\DeclareMathOperator{\Frob}{Frob}
+\DeclareMathOperator{\Nm}{N}
+\DeclareMathOperator{\Disc}{Disc}
+\DeclareMathOperator{\disc}{disc}
+\DeclareMathOperator{\Spin}{Spin}
+\DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\spn}{span}
+\DeclareMathOperator{\rk}{rk}
+\DeclareMathOperator{\Img}{Im}
+\DeclareMathOperator{\im}{Im}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\ad}{ad}
+\DeclareMathOperator{\sgn}{sgn}
+\providecommand{\PSL}{\operatorname{PSL}}
+\providecommand{\SL}{\operatorname{SL}}
+\providecommand{\GL}{\operatorname{GL}}
+\providecommand{\id}{\mathrm{id}}
+
+\providecommand{\Ephi}{\mathcal{E}_{\vp}}
+\providecommand{\Pf}{P_4}
+\providecommand{\Qf}{Q_4}
+\providecommand{\seamfix}{\mathrm{seam\_fix}}
+\providecommand{\seamtwist}{\mathrm{seam\_twist}}
+
+\definecolor{accentBlue}{HTML}{2F80ED}
+\definecolor{accentGray}{HTML}{6B7C93}
+\definecolor{accentMuted}{HTML}{D5DBE0}
+
+\newmdenv[
+  linecolor=accentBlue!50,
+  linewidth=0.6pt,
+  backgroundcolor=accentBlue!4,
+  roundcorner=3pt,
+  innerleftmargin=8pt,
+  innerrightmargin=8pt,
+  innertopmargin=6pt,
+  innerbottommargin=6pt,
+  skipabove=0.8em,
+  skipbelow=0.8em,
+]{keyresultbox}
+
+\newmdenv[
+  linecolor=accentGray!25,
+  linewidth=0.5pt,
+  backgroundcolor=accentGray!5,
+  roundcorner=2.5pt,
+  innerleftmargin=10pt,
+  innerrightmargin=10pt,
+  innertopmargin=6pt,
+  innerbottommargin=6pt,
+  skipabove=0.6em,
+  skipbelow=1.0em,
+]{sectionopenerframe}
+\newenvironment{sectionopener}
+  {\begin{sectionopenerframe}\small\itshape\ignorespaces}
+  {\end{sectionopenerframe}}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyhead[L]{\small\itshape\color{accentGray}\nouppercase{\leftmark}}
+\fancyhead[R]{\small\color{accentGray}\thepage}
+\fancyfoot[C]{}
+\renewcommand{\sectionmark}[1]{\markboth{\thesection.\ #1}{}}
+
+\widowpenalty=1000
+\clubpenalty=1000
+\setlength{\parskip}{0.55em plus 0.2em minus 0.05em}
+\setlength{\parindent}{1.2em}
+\AtBeginEnvironment{itemize}{\setlength{\parskip}{0pt}}
+\AtBeginEnvironment{enumerate}{\setlength{\parskip}{0pt}}
+\AtBeginEnvironment{description}{\setlength{\parskip}{0pt}}
 
 \title{Paper VII: The Information-Acoustic Eversion\\[4pt]
 \large Sphere Eversion as Hecke Propagation through the Cl(3,1) Substrate}
@@ -81,6 +218,75 @@ sign flip, rho bridge integrity, acoustic propagation, marching cubes
 isosurface extraction, and Smale invariant.
 \end{abstract}
 
+\medskip
+\noindent\textbf{What this paper does.}
+\begin{itemize}[leftmargin=1.5em,nosep,topsep=2pt]
+  \item Realises sphere eversion -- the orientation reversal of an
+        immersed $S^{2}$ in $\R^{3}$ -- as Hecke propagation on the
+        $4$-dim Hilbert modular homology $H_{1}$ of Paper~VI:
+        $\psi_k = T_{\fP_k}\psi_{k-1}$ on a $\Cl(3,1)$-coherence
+        state.
+  \item Shows the eversion \emph{completes} exactly when the running
+        cuspidal product $\prod a_{\fP_k}$ becomes negative -- the
+        sign flip of the cuspidal component.  A parsimonious
+        three-prime sequence $(p=5, p=3, p=31)$ achieves a full
+        eversion with three distinct Thurston-corrugation
+        frequencies $k_\fP \in \{5,9,31\}$.
+  \item Identifies the Thurston corrugation parameters
+        $k_\fP = \Nm(\fP)$, $A_\fP = |a_\fP|/\Nm(\fP)$ as
+        arithmetic invariants of the prime, not external knobs;
+        verified by $29$ tests on path dynamics, sign flip,
+        rho-bridge integrity, and acoustic propagation.
+\end{itemize}
+
+\medskip
+\noindent\textbf{Place in the series.}
+This is \emph{Paper~VII} of the Golden Substrate series.
+Prerequisites: \emph{Paper~I (Substrate)} and especially
+\emph{Paper~VI (Operator bridge)}.  Independent of Papers~III, IV,
+V, and VIII.
+
+\medskip
+\noindent\textbf{The arc this paper sits in.}
+Sphere eversion is one of the deepest visual results of
+$20^{\text{th}}$-century topology -- the Smale--Thurston
+construction that turns the sphere inside out without tearing,
+without singularities, and without ever fully creasing.  Thurston's
+explicit construction proceeds by \emph{corrugating} the sphere at
+ever higher spatial frequencies; in the limit, the corrugation
+density becomes $C^{1}$-dense, the immersion becomes regularly
+homotopic to its mirror, and the topological obstruction is
+defeated.  The construction has always felt geometric -- the
+corrugation frequency $k$ and amplitude $A$ are continuous knobs
+that the topologist adjusts by hand to achieve smoothness.
+
+This paper makes a precise claim: those continuous knobs are not
+free.  They are arithmetic.  Under the $\rho:\Cl(3,1)\to\End(H_{1})$
+representation of Paper~VI, a Hecke operator $T_\fP$ at a prime
+ideal $\fP$ of norm $\Nm(\fP) = p^{r}$ acts on a coherence state
+as a multivector multiplication that, at the level of the
+volumetric scalar field, produces exactly a Thurston corrugation
+of frequency $k_\fP = \Nm(\fP)$ and amplitude
+$A_\fP = |a_\fP|/\Nm(\fP)$ -- with $a_\fP$ the cuspidal Hecke
+eigenvalue, hence determined by the splitting type of $p$ in
+$\Z[\vp]$.  The continuous knobs are forced to take discrete,
+arithmetically determined values.
+
+The consequence is parsimony.  A single Hecke step achieves one
+corrugation frequency.  A three-step sequence with one prime of
+each splitting type (ramified, inert, split) achieves three
+distinct frequencies, and -- by the arithmetic of the Hecke
+eigenvalues -- also achieves the sign flip
+$\prod a_{\fP_k} < 0$ that is the arithmetic signature of a
+completed eversion.  The minimal such sequence is
+$(\fP_5, \fP_3, \fP_{31})$; it is the eversion in three primes.
+
+We treat the Thurston-eversion / Hecke-on-$H_{1}$ identification
+as a structural claim about the substrate, not a metaphor.  The
+identification is supported by a 29-test verification suite over
+path dynamics, sign flip, rho-bridge integrity, acoustic
+propagation, marching-cubes integration, and physical-units
+preservation.
 
 % ===========================================================================
 \section{The Information-Acoustic Principle}\label{sec:principle}
@@ -189,6 +395,74 @@ Thurston corrugation formula
 \end{equation}
 but emerge from the arithmetic rather than being imposed post-hoc.
 
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[
+    >=Latex,
+    every node/.style={font=\small},
+    primestep/.style={circle,draw=accentBlue!75,fill=accentBlue!10,
+                 thick,inner sep=2pt,minimum size=34pt},
+    flip/.style={circle,draw=red!70,fill=red!10,
+                 thick,inner sep=2pt,minimum size=34pt},
+    arr/.style={->,thick,accentGray!85,line width=0.9pt},
+    lab/.style={font=\footnotesize,text=accentGray},
+    valpos/.style={font=\footnotesize,text=accentBlue!75},
+    valneg/.style={font=\footnotesize,text=red!75}
+  ]
+  \draw[accentGray,thick,->] (-0.6,0) -- (10.8,0) node[right,lab] {step $k$};
+  \draw[accentGray,thick,->] (-0.6,0) -- (-0.6,2.6) node[above,lab] {$\prod_{j\le k} a_{\fP_j}$ (cuspidal product)};
+  \draw[accentGray,dashed] (-0.6,1.3) -- (10.4,1.3) node[right,lab] {$0$ (sign-flip threshold)};
+  \coordinate (S0) at (0.0,2.2);
+  \coordinate (S1) at (2.8,2.2);
+  \coordinate (S2) at (5.6,0.3);
+  \coordinate (S3) at (8.4,0.3);
+  \node[primestep] at (S0) {$+1$};
+  \node[primestep] at (S1) {$+1$};
+  \node[flip] at (S2) {$-5$};
+  \node[primestep,draw=red!70,fill=red!10] at (S3) {$-35$};
+  %% Step arrows with prime annotations
+  \draw[arr] (S0) -- node[valpos,above] {$\fP_5\;(\Nm=5,\,a=+1)$} (S1);
+  \draw[arr] (S1) -- node[valneg,sloped,above] {$\fP_3\;(\Nm=9,\,a=-5)$} (S2);
+  \draw[arr] (S2) -- node[valneg,above] {$\fP_{31}\;(\Nm=31,\,a=+7)$} (S3);
+  %% Below: corrugation icons (snake decorations standing in for sinusoidal
+  %% corrugations of frequency k and amplitude A; the visual encoding is
+  %% schematic but ranked correctly: more zigs == higher k, taller zigs == higher A)
+  \begin{scope}[yshift=-1.8cm]
+    %% k=5, A=0.20 (mild amplitude, low frequency)
+    \draw[accentBlue,thick,decorate,
+          decoration={snake,amplitude=2pt,segment length=6pt}]
+          (0,0) -- (2,0);
+    \node[lab] at (1.0,-0.5) {corrugation $k=5$, $A=0.20$};
+    %% k=9, A=0.56 (large amplitude, higher frequency, sign-flip step)
+    \draw[red,thick,decorate,
+          decoration={snake,amplitude=4pt,segment length=4pt}]
+          (3,0) -- (5,0);
+    \node[lab,text=red!75] at (4.0,-0.5) {$k=9$, $A=0.56$ (sign-flip step)};
+    %% k=31, A=0.23 (mild amplitude, very high frequency)
+    \draw[accentBlue,thick,decorate,
+          decoration={snake,amplitude=2pt,segment length=2.5pt}]
+          (6,0) -- (8,0);
+    \node[lab] at (7.0,-0.5) {$k=31$, $A=0.23$};
+  \end{scope}
+\end{tikzpicture}
+\caption{The three-prime eversion sequence
+$(\fP_5,\fP_3,\fP_{31})$ in cuspidal-product coordinates.  Top
+panel: the running cuspidal product
+$\prod_{j\le k} a_{\fP_j}$ starts at $+1$, stays positive after the
+ramified prime $\fP_5$ ($a=+1$), \emph{flips} sign at the inert
+prime $\fP_3$ ($a=-5$), and lands at $-35$ after the split prime
+$\fP_{31}$ ($a=+7$).  The sign change of the product is the
+arithmetic signature of sphere eversion: the cuspidal component of
+the coherence state has reversed orientation.  Bottom panel: the
+Thurston corrugation icons at each step, with frequencies
+$k = \Nm(\fP) \in \{5, 9, 31\}$ and amplitudes
+$A_\fP = |a_\fP|/\Nm(\fP) \in \{0.20,\,0.56,\,0.23\}$.  The
+sign-flip step is drawn inverted (red): it is the moment Thurston's
+construction ``turns the sphere inside out.''  All three frequencies
+co-exist in the final volumetric field via the Hecke composition
+$T_{\fP_{31}} T_{\fP_3} T_{\fP_5}\,\psi_0$.}
+\label{fig:eversion-trajectory}
+\end{figure}
 
 % ===========================================================================
 \section{The Thurston Frequency Identity}\label{sec:thurston-identity}

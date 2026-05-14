@@ -1,3 +1,8 @@
+%% ============================================================
+%%  Golden Substrate series -- canonical preamble.
+%%  Identical across all papers except for \hypersetup{pdftitle=...}.
+%% ============================================================
+
 \documentclass[11pt,a4paper]{article}
 
 \usepackage{amsmath,amssymb,amsthm}
@@ -8,7 +13,6 @@
 \definecolor{linkInternal}{HTML}{1F4E79}
 \definecolor{linkExternal}{HTML}{2F5496}
 \definecolor{linkCite}{HTML}{806600}
-
 \usepackage[colorlinks=true,
             linkcolor=linkInternal,
             citecolor=linkCite,
@@ -21,6 +25,7 @@
   pdftitle={The Metabolic Interpretation of FSCTF: Eating as the Creation Cycle (Paper V)},
   pdfsubject={Copyright (c) 2026 Kristin Tynski. All rights reserved.}%
 }
+
 \usepackage{cleveref}
 \usepackage{booktabs}
 \usepackage{array}
@@ -32,6 +37,8 @@
 \usepackage{fancyhdr}
 \usepackage[font=small,labelfont=bf,format=plain,labelsep=period]{caption}
 \usepackage[framemethod=tikz]{mdframed}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc,decorations.pathmorphing,shapes.geometric,fit,backgrounds,automata}
 
 \geometry{margin=1in}
 \setlength{\emergencystretch}{5em}
@@ -51,21 +58,109 @@
 \theoremstyle{remark}
 \newtheorem{remark}[theorem]{Remark}
 
-%% --- Macros ---
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\N}{\mathbb{N}}
-\newcommand{\Z}{\mathbb{Z}}
-\newcommand{\Q}{\mathbb{Q}}
-\newcommand{\cO}{\mathcal{O}}
-\newcommand{\Cl}{\mathrm{Cl}}
-\newcommand{\Pf}{P_4}
-\newcommand{\Qf}{Q_4}
-\newcommand{\vp}{\varphi}
-\newcommand{\tr}{\mathrm{tr}}
+\numberwithin{equation}{section}
 
-\definecolor{accentBlue}{HTML}{2F5496}
-\definecolor{accentGray}{HTML}{555555}
-\definecolor{accentMuted}{HTML}{888888}
+%% --- Canonical notation (union across the series) ------------------
+\providecommand{\Cl}{\mathrm{Cl}}
+\providecommand{\GA}[2]{\mathbb{G}_{#1,#2}}
+\providecommand{\R}{\mathbb{R}}
+\providecommand{\C}{\mathbb{C}}
+\providecommand{\Z}{\mathbb{Z}}
+\providecommand{\Q}{\mathbb{Q}}
+\providecommand{\N}{\mathbb{N}}
+\providecommand{\F}{\mathbb{F}}
+\providecommand{\HH}{\mathbb{H}}
+\providecommand{\OO}{\mathbb{O}}
+\providecommand{\Hh}{\mathbb{H}}
+\providecommand{\Hp}{\mathbb{H}'}
+\providecommand{\Os}{\mathbb{O}'}
+\providecommand{\ZZ}{\mathbb{Z}}
+\providecommand{\QQ}{\mathbb{Q}}
+\providecommand{\RR}{\mathbb{R}}
+\providecommand{\CC}{\mathbb{C}}
+\providecommand{\FF}{\mathbb{F}}
+\providecommand{\NN}{\mathbb{N}}
+\providecommand{\Reals}{\mathbb{R}}
+\providecommand{\Complex}{\mathbb{C}}
+\providecommand{\Nat}{\mathbb{N}}
+\providecommand{\Zp}{\ensuremath{\mathbb{Z}[\varphi]}}
+\providecommand{\Qp}{\ensuremath{\mathbb{Q}(\sqrt{5})}}
+\providecommand{\Gphi}{\ensuremath{\Gamma_{\varphi}}}
+\providecommand{\E}{\mathbb{E}}
+\providecommand{\PG}{\mathrm{PG}}
+
+\providecommand{\vp}{\varphi}
+\providecommand{\ps}{\psi}
+\providecommand{\eps}{\varepsilon}
+\providecommand{\half}{\tfrac{1}{2}}
+
+\providecommand{\EF}{\mathcal{E}}
+\providecommand{\PF}{\mathcal{P}}
+\providecommand{\ZF}{\mathcal{Z}}
+\providecommand{\W}{\mathcal{W}}
+\providecommand{\cO}{\mathcal{O}}
+\providecommand{\Lo}{\mathcal{L}}
+\providecommand{\Lk}{L}
+
+\providecommand{\fk}[1]{\mathfrak{#1}}
+\providecommand{\fP}{\mathfrak{P}}
+\providecommand{\fp}{\mathfrak{p}}
+\providecommand{\slgo}{\mathfrak{sl}}
+\providecommand{\sogo}{\mathfrak{so}}
+\providecommand{\spgo}{\mathfrak{sp}}
+
+\providecommand{\eb}[1]{e_{#1}}
+
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Der}{Der}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Sym}{Sym}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\Res}{Res}
+\DeclareMathOperator{\BC}{BC}
+\DeclareMathOperator{\Frob}{Frob}
+\DeclareMathOperator{\Nm}{N}
+\DeclareMathOperator{\Disc}{Disc}
+\DeclareMathOperator{\disc}{disc}
+\DeclareMathOperator{\Spin}{Spin}
+\DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\spn}{span}
+\DeclareMathOperator{\rk}{rk}
+\DeclareMathOperator{\Img}{Im}
+\DeclareMathOperator{\im}{Im}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\ad}{ad}
+\DeclareMathOperator{\sgn}{sgn}
+\providecommand{\PSL}{\operatorname{PSL}}
+\providecommand{\SL}{\operatorname{SL}}
+\providecommand{\GL}{\operatorname{GL}}
+\providecommand{\id}{\mathrm{id}}
+
+\providecommand{\Ephi}{\mathcal{E}_{\vp}}
+\providecommand{\Pf}{P_4}
+\providecommand{\Qf}{Q_4}
+\providecommand{\seamfix}{\mathrm{seam\_fix}}
+\providecommand{\seamtwist}{\mathrm{seam\_twist}}
+
+\definecolor{accentBlue}{HTML}{2F80ED}
+\definecolor{accentGray}{HTML}{6B7C93}
+\definecolor{accentMuted}{HTML}{D5DBE0}
+
+\newmdenv[
+  linecolor=accentBlue!50,
+  linewidth=0.6pt,
+  backgroundcolor=accentBlue!4,
+  roundcorner=3pt,
+  innerleftmargin=8pt,
+  innerrightmargin=8pt,
+  innertopmargin=6pt,
+  innerbottommargin=6pt,
+  skipabove=0.8em,
+  skipbelow=0.8em,
+]{keyresultbox}
 
 \newmdenv[
   linecolor=accentGray!25,
@@ -91,8 +186,13 @@
 \fancyfoot[C]{}
 \renewcommand{\sectionmark}[1]{\markboth{\thesection.\ #1}{}}
 
+\widowpenalty=1000
+\clubpenalty=1000
 \setlength{\parskip}{0.55em plus 0.2em minus 0.05em}
 \setlength{\parindent}{1.2em}
+\AtBeginEnvironment{itemize}{\setlength{\parskip}{0pt}}
+\AtBeginEnvironment{enumerate}{\setlength{\parskip}{0pt}}
+\AtBeginEnvironment{description}{\setlength{\parskip}{0pt}}
 
 \title{The Metabolic Interpretation of FSCTF:\\
 Eating as the Creation Cycle\\[4pt]
@@ -186,6 +286,30 @@ algebra in $\Cl(3,1) \cong M_4(\R)$. The framework is a
 re-reading, not a new physics; its empirical content lies in
 specific biological predictions stated in §\ref{sec:predictions}.
 \end{abstract}
+
+\medskip
+\noindent\textbf{What this paper does.}
+\begin{itemize}[leftmargin=1.5em,nosep,topsep=2pt]
+  \item Reads the FSCTF creation cycle
+        $R = G(W(L(\Omega)))$ as a \emph{metabolic} interpretation
+        of the substrate: opening Grace, decomposing food
+        (Sacrifice), retaining the boundary-preserving residue.
+  \item Encodes healthy and pathological eating as accepted vs.\
+        rejected sequences on a $64$-state braid-grammar
+        finite-state transducer over the alphabet $\{W,G,S,C,L,P,X\}$;
+        proves the accepting depths are exactly $\{2,3,4,7\}$.
+  \item Derives four \emph{pathology theorems}
+        -- autoimmunity, immunodeficiency, microbiome transport,
+        constipation -- as failure modes of the same boundary
+        algebra that underwrites the substrate.
+\end{itemize}
+
+\medskip
+\noindent\textbf{Place in the series.}
+This is the \emph{operational/biological} side paper for the
+main trilogy (I~$\to$~II~$\to$~III).  It depends on Paper~I
+(Clifford algebra, Peirce idempotents) and Paper~III (monad/braid
+grammar) but is independent of Papers~II, VI, VII, and VIII.
 
 \tableofcontents
 \clearpage
@@ -717,6 +841,64 @@ states have depth $\in \{2, 3, 4, 7\}$.
 machine-verified Promotion Lemma of Paper~III. The two proofs
 agree.
 \end{remark}
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[
+    >=Latex,
+    every node/.style={font=\small},
+    state/.style={circle,draw=accentBlue!75,fill=accentBlue!10,
+                  thick,inner sep=2pt,minimum size=26pt},
+    accept/.style={circle,draw=accentBlue!90,fill=accentBlue!20,double,double distance=1.4pt,
+                  thick,inner sep=2pt,minimum size=28pt},
+    reject/.style={circle,draw=red!70,fill=red!10,
+                  thick,inner sep=2pt,minimum size=26pt},
+    arr/.style={->,thick,accentGray!85},
+    lab/.style={font=\footnotesize}
+  ]
+  %% Linear backbone of a healthy cycle:  init -- G -- GG -- GGS -- GGSS -- accept
+  \node[state]  (q0) at (0,0)    {$q_{0}$};
+  \node[state]  (q1) at (2.2,0)  {$q_{G}$};
+  \node[state]  (q2) at (4.4,0)  {$q_{GG}$};
+  \node[state]  (q3) at (6.6,0)  {$q_{GGS}$};
+  \node[accept] (q4) at (8.8,0)  {$q_{\text{acc}}$};
+  %% Healthy edges
+  \draw[arr] (q0) -- node[lab,above] {$G/\,\uparrow g$} (q1);
+  \draw[arr] (q1) -- node[lab,above] {$G/\,\uparrow g$} (q2);
+  \draw[arr] (q2) -- node[lab,above] {$S/\,\downarrow g$} (q3);
+  \draw[arr] (q3) -- node[lab,above] {$S/\,\downarrow g,\,\uparrow d$} (q4);
+  %% Re-witness loop
+  \draw[arr] (q0) edge[loop above,looseness=8] node[lab,above] {$W$} (q0);
+  %% Cross-branch: communion path GGCSSL
+  \node[state]  (q2c) at (4.4,-2.0) {$q_{GGC}$};
+  \node[state]  (q3c) at (6.6,-2.0) {$q_{GGCSS}$};
+  \node[accept] (q4c) at (8.8,-2.0) {$q_{\text{acc}}^{C}$};
+  \draw[arr] (q2)  -- node[lab,right] {$C$} (q2c);
+  \draw[arr] (q2c) -- node[lab,above] {$SS$} (q3c);
+  \draw[arr] (q3c) -- node[lab,above] {$L$} (q4c);
+  %% Pathological sink: premature closure
+  \node[reject] (qe) at (3.3,-3.6) {$q_{\bot}$};
+  \draw[arr,red!75] (q1) -- node[lab,sloped,below,red!75] {$S$ before $g\!\ge\!1$ (starvation)} (qe);
+  \draw[arr,red!75] (q1) -- node[lab,sloped,above,red!75] {$L$ no chirality (anorexia)} (qe);
+  \draw[arr,red!75] (q0) edge[bend right=22,red!75] node[lab,below,red!75] {$P$ no opening (devouring)} (qe);
+  %% Bottom label
+  \node[lab,text=accentGray] at (4.4,-4.5)
+        {(Path through 5 of the 64 FST states; $\Sigma=\{W,G,S,C,L,P,X\}$.)};
+\end{tikzpicture}
+\caption{A representative slice of the $64$-state braid-grammar FST
+of \Cref{thm:promotion}.  Top: the healthy cycle $WGGSS$ -- open
+grace, accumulate grace, sacrifice food, sacrifice again, accept at
+depth $d=4$ (communion).  Middle: the recognition variant $GGCSSL$
+that picks up chirality $C$ before consuming.  Bottom: the
+pathological sink $q_{\bot}$ reached by trying to sacrifice or
+absorb before grace is open (starvation/anorexia) or to retain
+without ever opening (the devouring pathology, \Cref{sec:devouring}).
+The transducer output annotation on each edge ($\uparrow g$ raises
+grace, $\downarrow g$ consumes grace, $\uparrow d$ deepens the
+accepting depth) is the operational reading of $R = G(W(L(\Omega)))$:
+each letter is a Clifford-operator action on the substrate state.}
+\label{fig:fsctf-fst}
+\end{figure}
 
 %% =====================================================================
 \section{Pathology Theorems}

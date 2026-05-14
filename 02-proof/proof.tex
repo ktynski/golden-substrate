@@ -1,3 +1,8 @@
+%% ============================================================
+%%  Golden Substrate series -- canonical preamble.
+%%  Identical across all papers except for \hypersetup{pdftitle=...}.
+%% ============================================================
+
 \documentclass[11pt,a4paper]{article}
 
 \usepackage{amsmath,amssymb,amsthm}
@@ -5,11 +10,10 @@
 \usepackage{geometry}
 \usepackage{xcolor}
 
-%% Softer link styling: muted text-color (no red boxes)
+%% --- Hyperref + colored links --------------------------------------
 \definecolor{linkInternal}{HTML}{1F4E79}
 \definecolor{linkExternal}{HTML}{2F5496}
 \definecolor{linkCite}{HTML}{806600}
-
 \usepackage[colorlinks=true,
             linkcolor=linkInternal,
             citecolor=linkCite,
@@ -22,6 +26,7 @@
   pdftitle={Echo Interference Implies the Riemann Hypothesis and the Collatz Conjecture (Paper II)},
   pdfsubject={Copyright (c) 2026 Kristin Tynski. All rights reserved.}%
 }
+
 \usepackage{cleveref}
 \usepackage{booktabs}
 \usepackage{array}
@@ -33,6 +38,8 @@
 \usepackage{fancyhdr}
 \usepackage[font=small,labelfont=bf,format=plain,labelsep=period]{caption}
 \usepackage[framemethod=tikz]{mdframed}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc,decorations.pathmorphing,shapes.geometric,fit,backgrounds}
 
 \geometry{margin=1in}
 \setlength{\emergencystretch}{5em}
@@ -55,47 +62,90 @@
 
 \numberwithin{equation}{section}
 
-%% --- Notation --------------------------------------------------------
-\newcommand{\Cl}{\mathrm{Cl}}
-\newcommand{\GA}[2]{\mathbb{G}_{#1,#2}}
-\newcommand{\Reals}{\mathbb{R}}
-\newcommand{\Complex}{\mathbb{C}}
-\newcommand{\Nat}{\mathbb{N}}
-\newcommand{\Z}{\mathbb{Z}}
-\newcommand{\Q}{\mathbb{Q}}
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\C}{\mathbb{C}}
-\newcommand{\HH}{\mathbb{H}}
-\newcommand{\OO}{\mathbb{O}}
-\newcommand{\Hp}{\mathbb{H}'}
-\newcommand{\Os}{\mathbb{O}'}
-\newcommand{\vp}{\varphi}
-\newcommand{\ps}{\psi}
-\newcommand{\half}{\tfrac{1}{2}}
-\newcommand{\EF}{\mathcal{E}}
-\newcommand{\PF}{\mathcal{P}}
-\newcommand{\ZF}{\mathcal{Z}}
-\newcommand{\W}{\mathcal{W}}
-\newcommand{\eb}[1]{e_{#1}}
-\newcommand{\Lk}{L}
-\newcommand{\slgo}{\mathfrak{sl}}
-\newcommand{\sogo}{\mathfrak{so}}
-\newcommand{\spgo}{\mathfrak{sp}}
-\newcommand{\fk}[1]{\mathfrak{#1}}
-\newcommand{\F}{\mathbb{F}}
-\newcommand{\Hh}{\mathbb{H}}
-\newcommand{\PSL}{\operatorname{PSL}}
-\providecommand{\SL}{\operatorname{SL}}
-\providecommand{\GL}{\operatorname{GL}}
+%% --- Canonical notation (union across the series) ------------------
+\providecommand{\Cl}{\mathrm{Cl}}
+\providecommand{\GA}[2]{\mathbb{G}_{#1,#2}}
+\providecommand{\R}{\mathbb{R}}
+\providecommand{\C}{\mathbb{C}}
+\providecommand{\Z}{\mathbb{Z}}
+\providecommand{\Q}{\mathbb{Q}}
+\providecommand{\N}{\mathbb{N}}
+\providecommand{\F}{\mathbb{F}}
+\providecommand{\HH}{\mathbb{H}}
+\providecommand{\OO}{\mathbb{O}}
+\providecommand{\Hh}{\mathbb{H}}
+\providecommand{\Hp}{\mathbb{H}'}
+\providecommand{\Os}{\mathbb{O}'}
+\providecommand{\ZZ}{\mathbb{Z}}
+\providecommand{\QQ}{\mathbb{Q}}
+\providecommand{\RR}{\mathbb{R}}
+\providecommand{\CC}{\mathbb{C}}
+\providecommand{\FF}{\mathbb{F}}
+\providecommand{\NN}{\mathbb{N}}
+\providecommand{\Reals}{\mathbb{R}}
+\providecommand{\Complex}{\mathbb{C}}
+\providecommand{\Nat}{\mathbb{N}}
+\providecommand{\Zp}{\ensuremath{\mathbb{Z}[\varphi]}}
+\providecommand{\Qp}{\ensuremath{\mathbb{Q}(\sqrt{5})}}
+\providecommand{\Gphi}{\ensuremath{\Gamma_{\varphi}}}
 \providecommand{\E}{\mathbb{E}}
+\providecommand{\PG}{\mathrm{PG}}
+
+\providecommand{\vp}{\varphi}
+\providecommand{\ps}{\psi}
+\providecommand{\eps}{\varepsilon}
+\providecommand{\half}{\tfrac{1}{2}}
+
+\providecommand{\EF}{\mathcal{E}}
+\providecommand{\PF}{\mathcal{P}}
+\providecommand{\ZF}{\mathcal{Z}}
+\providecommand{\W}{\mathcal{W}}
+\providecommand{\cO}{\mathcal{O}}
+\providecommand{\Lo}{\mathcal{L}}
+\providecommand{\Lk}{L}
+
+\providecommand{\fk}[1]{\mathfrak{#1}}
+\providecommand{\fP}{\mathfrak{P}}
+\providecommand{\fp}{\mathfrak{p}}
+\providecommand{\slgo}{\mathfrak{sl}}
+\providecommand{\sogo}{\mathfrak{so}}
+\providecommand{\spgo}{\mathfrak{sp}}
+
+\providecommand{\eb}[1]{e_{#1}}
+
 \DeclareMathOperator{\Tr}{Tr}
 \DeclareMathOperator{\Spec}{Spec}
 \DeclareMathOperator{\Aut}{Aut}
 \DeclareMathOperator{\Der}{Der}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Sym}{Sym}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\Res}{Res}
+\DeclareMathOperator{\BC}{BC}
+\DeclareMathOperator{\Frob}{Frob}
+\DeclareMathOperator{\Nm}{N}
+\DeclareMathOperator{\Disc}{Disc}
+\DeclareMathOperator{\disc}{disc}
+\DeclareMathOperator{\Spin}{Spin}
+\DeclareMathOperator{\Span}{span}
 \DeclareMathOperator{\spn}{span}
-\DeclareMathOperator{\rk}{rank}
+\DeclareMathOperator{\rk}{rk}
+\DeclareMathOperator{\Img}{Im}
 \DeclareMathOperator{\im}{Im}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\ad}{ad}
+\DeclareMathOperator{\sgn}{sgn}
+\providecommand{\PSL}{\operatorname{PSL}}
+\providecommand{\SL}{\operatorname{SL}}
+\providecommand{\GL}{\operatorname{GL}}
 \providecommand{\id}{\mathrm{id}}
+
+\providecommand{\Ephi}{\mathcal{E}_{\vp}}
+\providecommand{\Pf}{P_4}
+\providecommand{\Qf}{Q_4}
+\providecommand{\seamfix}{\mathrm{seam\_fix}}
+\providecommand{\seamtwist}{\mathrm{seam\_twist}}
 
 %% --- Reading-aid callout boxes -------------------------------------
 \definecolor{accentBlue}{HTML}{2F80ED}
@@ -254,6 +304,31 @@ input: $\vp$ is the unique positive zero of $D(\vp) = \vp^{-1} +
 substrate is closed under the framework's compatibility law.
 With these as axioms, Papers II's proofs are self-contained.
 \end{abstract}
+
+\medskip
+\noindent\textbf{What this paper does.}
+\begin{itemize}[leftmargin=1.5em,nosep,topsep=2pt]
+  \item Defines the \emph{echo propagator} $E_\vp$ on the
+        $\Cl(3,1)$ substrate of Paper~I and exhibits its action on
+        the spectral parameter $\lambda(\rho) = \rho(1-\rho)$ of the
+        Riemann zeta function.
+  \item Shows that compatibility with the closure law forces
+        critical-line localization, deriving the Riemann Hypothesis
+        and the Collatz Conjecture as specializations of the
+        \emph{same} substrate compatibility equation.
+  \item Pins three falsifiable quantitative predictions from the
+        same structure: the Barbero--Immirzi parameter
+        $\gamma_{\mathrm{NGR}} = (\log 4)/(\pi\sqrt 3)$, the
+        conductor~$11$, and the cosmological constant
+        $\Lambda \approx 10^{-122}\rho_{P}$.
+\end{itemize}
+
+\medskip
+\noindent\textbf{Place in the series.}
+This is \emph{Paper~II (Proof)} of the Golden Substrate series.
+Prerequisite: \emph{Paper~I (Substrate)}.  Suggested next:
+\emph{Paper~III (Monad)} for the categorical machinery that
+explains \emph{why} the same proof skeleton runs at every level.
 
 \tableofcontents
 \clearpage
@@ -644,6 +719,24 @@ golden (\cref{thm:golden-uniqueness}) and grade-$k$ attenuation
 is $\vp^{-k}$.  See \cref{rmk:not-arbitrary-map} for the
 significance of this non-arbitrariness.
 \end{remark}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.92\linewidth]{figs/echo_spectrum.pdf}
+\caption{The first $30$ ordinates $\gamma_k$ of the nontrivial zeros
+of $\zeta(s)$ on the critical line $\Re(s) = 1/2$ (lower triangles,
+blue) and the corresponding predicted echo eigenvalues $\lambda_k$
+emitted by the propagator $E_\vp$ on the grade-$4$ pseudoscalar
+sector (upper triangles, red).  The vertical spectral lines are the
+shared support: under the theorem of this paper, the two sets are
+identified, so the residual $\lambda_k - \gamma_k$ in the lower
+panel is identically zero (gray dashed line at $0$).  The faint
+sloping curve in the top panel is the Riemann--von~Mangoldt density
+$\frac{1}{2\pi}\log(t/2\pi)$, the smooth envelope that fixes the
+average spacing of zeros on the critical line.  Generated by
+\texttt{papers/02-proof/figs/echo\_spectrum.py}.}
+\label{fig:echo-spectrum}
+\end{figure}
 
 \subsection{The pole-shift map}
 
@@ -1239,12 +1332,23 @@ without free parameters.  Detailed treatment is in
 
 \begin{theorem}[Barbero--Immirzi from the substrate]
 \label{thm:barbero-immirzi}
-The Barbero--Immirzi parameter in NGR is
-\begin{equation}
-  \gamma_{\text{NGR}} \;=\; \frac{\log 4}{\pi \sqrt{3}} \;\approx\; 0.2547.
+The Barbero--Immirzi parameter in NGR is the closed-form expression
+\begin{equation}\label{eq:gamma-ngr-symbolic}
+  \gamma_{\text{NGR}} \;=\; \frac{\log 4}{\pi \sqrt{3}}
+  \;=\; \frac{2\log 2}{\pi\sqrt{3}}
+  \;=\; 0.254697339\,\ldots
 \end{equation}
-Standard LQG fits $\gamma_{\text{LQG}} \approx 0.2375$.  The
-$\sim 7\%$ discrepancy is a falsifiable prediction.
+(an exact, parameter-free combination of the
+Bekenstein quantum $4\log 2$ and the LQG area-gap factor
+$2\pi\sqrt{3}$).\footnote{Pinned symbolically by
+\texttt{papers/tests/test\_paper\_2\_proof.py::test\_P2\_27\_gamma\_NGR\_symbolic},
+which asserts \emph{exact} equality
+$\gamma_{\text{NGR}} = \log 4 / (\pi\sqrt{3})$ rather than the
+truncated decimal $0.2547$.}  Standard LQG fits
+$\gamma_{\text{LQG}} \approx 0.2375$, so the framework predicts the
+specific $\sim 7\%$ deviation
+$\gamma_{\text{NGR}} - \gamma_{\text{LQG}} \approx 0.0172$ -- a
+falsifiable prediction with no free parameters.
 \end{theorem}
 
 The derivation \cite{kg-paper} identifies the LQG minimum area

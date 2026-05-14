@@ -1,20 +1,116 @@
-\documentclass[12pt]{article}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage[hidelinks]{hyperref}
+%% ============================================================
+%%  Golden Substrate series -- canonical preamble.
+%%  Identical across all papers except for \hypersetup{pdftitle=...}.
+%% ============================================================
+
+\documentclass[11pt,a4paper]{article}
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{geometry}
+\usepackage{xcolor}
+
+\definecolor{linkInternal}{HTML}{1F4E79}
+\definecolor{linkExternal}{HTML}{2F5496}
+\definecolor{linkCite}{HTML}{806600}
+\usepackage[colorlinks=true,
+            linkcolor=linkInternal,
+            citecolor=linkCite,
+            urlcolor=linkExternal,
+            pdfborder={0 0 0},
+            bookmarksnumbered=true,
+            breaklinks=true]{hyperref}
 \hypersetup{%
   pdfauthor={Kristin Tynski},
   pdftitle={Working Outline: Z[phi] Apollonian Thin Groups and Level-11 Hauptmoduln},
   pdfsubject={Copyright (c) 2026 Kristin Tynski. All rights reserved.}%
 }
-\usepackage{geometry}
+
+\usepackage{cleveref}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{enumitem}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage[protrusion=true,expansion=false]{microtype}
+\usepackage{fancyhdr}
+\usepackage[font=small,labelfont=bf,format=plain,labelsep=period]{caption}
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc,decorations.pathmorphing,shapes.geometric,fit,backgrounds}
+
 \geometry{margin=1in}
+\setlength{\emergencystretch}{5em}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{principle}[theorem]{Principle}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\numberwithin{equation}{section}
+
+\providecommand{\Cl}{\mathrm{Cl}}
+\providecommand{\R}{\mathbb{R}}
+\providecommand{\C}{\mathbb{C}}
+\providecommand{\Z}{\mathbb{Z}}
+\providecommand{\Q}{\mathbb{Q}}
+\providecommand{\N}{\mathbb{N}}
+\providecommand{\F}{\mathbb{F}}
+\providecommand{\HH}{\mathbb{H}}
+\providecommand{\OO}{\mathbb{O}}
+\providecommand{\Zp}{\ensuremath{\mathbb{Z}[\varphi]}}
+\providecommand{\Qp}{\ensuremath{\mathbb{Q}(\sqrt{5})}}
+\providecommand{\Gphi}{\ensuremath{\Gamma_{\varphi}}}
+\providecommand{\vp}{\varphi}
+\providecommand{\ps}{\psi}
+\providecommand{\eps}{\varepsilon}
+\providecommand{\half}{\tfrac{1}{2}}
+\providecommand{\fk}[1]{\mathfrak{#1}}
+\providecommand{\cO}{\mathcal{O}}
+\DeclareMathOperator{\disc}{disc}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\Aut}{Aut}
+\providecommand{\id}{\mathrm{id}}
+
+\definecolor{accentGray}{HTML}{6B7C93}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyhead[L]{\small\itshape\color{accentGray}\nouppercase{\leftmark}}
+\fancyhead[R]{\small\color{accentGray}\thepage}
+\fancyfoot[C]{}
+\renewcommand{\sectionmark}[1]{\markboth{\thesection.\ #1}{}}
+
+\widowpenalty=1000
+\clubpenalty=1000
+\setlength{\parskip}{0.55em plus 0.2em minus 0.05em}
+\setlength{\parindent}{1.2em}
+
 \title{Working outline: $\mathbb{Z}[\varphi]$ Apollonian thin groups and level-$11$ Hauptmoduln}
 \author{Kristin Tynski}
 \date{May 2026 \\[6pt] {\small\textcopyright\ 2026 Kristin Tynski. All rights reserved.}}
 
 \begin{document}
 \maketitle
+
+\noindent\textbf{Place in the series.}
+This is a working scaffold appended to \emph{Paper~IV (Moonshine
+context)} of the Golden Substrate series.  It is not a finished
+paper; it is the postponed long-form treatment of the
+$\mathbb{Z}[\varphi]$ Apollonian thin-group programme and is
+preserved here so that the Track~1 brute outcome and the planned
+section layout remain reachable from the public repo.
 
 \section*{Status}
 

@@ -1,3 +1,8 @@
+%% ============================================================
+%%  Golden Substrate series -- canonical preamble.
+%%  Identical across all papers except for \hypersetup{pdftitle=...}.
+%% ============================================================
+
 \documentclass[11pt,a4paper]{article}
 
 \usepackage{amsmath,amssymb,amsthm}
@@ -5,11 +10,10 @@
 \usepackage{geometry}
 \usepackage{xcolor}
 
-%% Softer link styling: muted text-color (no red boxes)
+%% --- Hyperref + colored links --------------------------------------
 \definecolor{linkInternal}{HTML}{1F4E79}
 \definecolor{linkExternal}{HTML}{2F5496}
 \definecolor{linkCite}{HTML}{806600}
-
 \usepackage[colorlinks=true,
             linkcolor=linkInternal,
             citecolor=linkCite,
@@ -22,6 +26,7 @@
   pdftitle={The Golden Substrate: From Null Generators to the Split Albert Algebra (Paper I)},
   pdfsubject={Copyright (c) 2026 Kristin Tynski. All rights reserved.}%
 }
+
 \usepackage{cleveref}
 \usepackage{booktabs}
 \usepackage{array}
@@ -33,6 +38,8 @@
 \usepackage{fancyhdr}
 \usepackage[font=small,labelfont=bf,format=plain,labelsep=period]{caption}
 \usepackage[framemethod=tikz]{mdframed}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc,decorations.pathmorphing,decorations.pathreplacing,shapes.geometric,fit,backgrounds}
 
 \geometry{margin=1in}
 \setlength{\emergencystretch}{5em}
@@ -55,47 +62,103 @@
 
 \numberwithin{equation}{section}
 
-%% --- Notation --------------------------------------------------------
-\newcommand{\Cl}{\mathrm{Cl}}
-\newcommand{\GA}[2]{\mathbb{G}_{#1,#2}}
-\newcommand{\Reals}{\mathbb{R}}
-\newcommand{\Complex}{\mathbb{C}}
-\newcommand{\Nat}{\mathbb{N}}
-\newcommand{\Z}{\mathbb{Z}}
-\newcommand{\Q}{\mathbb{Q}}
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\C}{\mathbb{C}}
-\newcommand{\HH}{\mathbb{H}}
-\newcommand{\OO}{\mathbb{O}}
-\newcommand{\Hp}{\mathbb{H}'}
-\newcommand{\Os}{\mathbb{O}'}
-\newcommand{\vp}{\varphi}
-\newcommand{\ps}{\psi}
-\newcommand{\half}{\tfrac{1}{2}}
-\newcommand{\EF}{\mathcal{E}}
-\newcommand{\PF}{\mathcal{P}}
-\newcommand{\ZF}{\mathcal{Z}}
-\newcommand{\W}{\mathcal{W}}
-\newcommand{\eb}[1]{e_{#1}}
-\newcommand{\Lk}{L}
-\newcommand{\slgo}{\mathfrak{sl}}
-\newcommand{\sogo}{\mathfrak{so}}
-\newcommand{\spgo}{\mathfrak{sp}}
-\newcommand{\fk}[1]{\mathfrak{#1}}
-\newcommand{\F}{\mathbb{F}}
-\newcommand{\Hh}{\mathbb{H}}
-\newcommand{\PSL}{\operatorname{PSL}}
-\providecommand{\SL}{\operatorname{SL}}
-\providecommand{\GL}{\operatorname{GL}}
+%% --- Canonical notation (union across the series) ------------------
+%% Blackboard letters: both single- and double-letter conventions used
+%% in different papers in the series are defined so every paper compiles
+%% against the same preamble.
+\providecommand{\Cl}{\mathrm{Cl}}
+\providecommand{\GA}[2]{\mathbb{G}_{#1,#2}}
+\providecommand{\R}{\mathbb{R}}
+\providecommand{\C}{\mathbb{C}}
+\providecommand{\Z}{\mathbb{Z}}
+\providecommand{\Q}{\mathbb{Q}}
+\providecommand{\N}{\mathbb{N}}
+\providecommand{\F}{\mathbb{F}}
+\providecommand{\HH}{\mathbb{H}}
+\providecommand{\OO}{\mathbb{O}}
+\providecommand{\Hh}{\mathbb{H}}
+\providecommand{\Hp}{\mathbb{H}'}
+\providecommand{\Os}{\mathbb{O}'}
+\providecommand{\ZZ}{\mathbb{Z}}
+\providecommand{\QQ}{\mathbb{Q}}
+\providecommand{\RR}{\mathbb{R}}
+\providecommand{\CC}{\mathbb{C}}
+\providecommand{\FF}{\mathbb{F}}
+\providecommand{\NN}{\mathbb{N}}
+\providecommand{\Reals}{\mathbb{R}}
+\providecommand{\Complex}{\mathbb{C}}
+\providecommand{\Nat}{\mathbb{N}}
+\providecommand{\Zp}{\ensuremath{\mathbb{Z}[\varphi]}}
+\providecommand{\Qp}{\ensuremath{\mathbb{Q}(\sqrt{5})}}
+\providecommand{\Gphi}{\ensuremath{\Gamma_{\varphi}}}
 \providecommand{\E}{\mathbb{E}}
+\providecommand{\PG}{\mathrm{PG}}
+
+%% Greek shorthands
+\providecommand{\vp}{\varphi}
+\providecommand{\ps}{\psi}
+\providecommand{\eps}{\varepsilon}
+\providecommand{\half}{\tfrac{1}{2}}
+
+%% Calligraphic
+\providecommand{\EF}{\mathcal{E}}
+\providecommand{\PF}{\mathcal{P}}
+\providecommand{\ZF}{\mathcal{Z}}
+\providecommand{\W}{\mathcal{W}}
+\providecommand{\cO}{\mathcal{O}}
+\providecommand{\Lo}{\mathcal{L}}
+\providecommand{\Lk}{L}
+
+%% Fraktur shorthands
+\providecommand{\fk}[1]{\mathfrak{#1}}
+\providecommand{\fP}{\mathfrak{P}}
+\providecommand{\fp}{\mathfrak{p}}
+\providecommand{\slgo}{\mathfrak{sl}}
+\providecommand{\sogo}{\mathfrak{so}}
+\providecommand{\spgo}{\mathfrak{sp}}
+
+%% Indexed family
+\providecommand{\eb}[1]{e_{#1}}
+
+%% Operators
 \DeclareMathOperator{\Tr}{Tr}
 \DeclareMathOperator{\Spec}{Spec}
 \DeclareMathOperator{\Aut}{Aut}
 \DeclareMathOperator{\Der}{Der}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Sym}{Sym}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\Res}{Res}
+\DeclareMathOperator{\BC}{BC}
+\DeclareMathOperator{\Frob}{Frob}
+\DeclareMathOperator{\Nm}{N}
+\DeclareMathOperator{\Disc}{Disc}
+\DeclareMathOperator{\disc}{disc}
+\DeclareMathOperator{\Spin}{Spin}
+\DeclareMathOperator{\Span}{span}
 \DeclareMathOperator{\spn}{span}
-\DeclareMathOperator{\rk}{rank}
+\DeclareMathOperator{\rk}{rk}
+\DeclareMathOperator{\Img}{Im}
 \DeclareMathOperator{\im}{Im}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\ad}{ad}
+\DeclareMathOperator{\sgn}{sgn}
+\providecommand{\PSL}{\operatorname{PSL}}
+\providecommand{\SL}{\operatorname{SL}}
+\providecommand{\GL}{\operatorname{GL}}
 \providecommand{\id}{\mathrm{id}}
+
+%% Paper-III alias for the echo propagator
+\providecommand{\Ephi}{\mathcal{E}_{\vp}}
+
+%% Paper-V Peirce-block shortcuts
+\providecommand{\Pf}{P_4}
+\providecommand{\Qf}{Q_4}
+
+%% Paper-VIII micro-glue
+\providecommand{\seamfix}{\mathrm{seam\_fix}}
+\providecommand{\seamtwist}{\mathrm{seam\_twist}}
 
 %% --- Reading-aid callout boxes -------------------------------------
 \definecolor{accentBlue}{HTML}{2F80ED}
@@ -242,6 +305,35 @@ simple finite-dimensional Jordan algebras.  The
 $\dim\Der(J_3(\Os)) = 52$ result is verified by direct numerical
 computation (\cref{sec:tests}).
 \end{abstract}
+
+\medskip
+\noindent\textbf{What this paper does.}
+\begin{itemize}[leftmargin=1.5em,nosep,topsep=2pt]
+  \item Derives the Clifford algebra $\Cl(3,1)$ as the
+        \emph{unique} algebra forced by a single null-body
+        compatibility law $a + b = 1$ together with the
+        Reciprocal--Conjugate Lemma -- no free parameters, no
+        choice of signature.
+  \item Lifts the even subalgebra $\Cl(3,1)^{+}\cong M_{2}(\C)$ to
+        the split octonions $\Os$ and the exceptional Jordan algebra
+        $J_{3}(\Os)$ via Cayley--Dickson, locking the golden ratio
+        $\vp$ in as the seam scale.
+  \item Establishes a depth tower
+        $f_{n}(x) = x^{n} - x^{n-1} - 1$ on which Papers~II, III,
+        and IV all act; surfaces the lone reducibility at $n=5$
+        (the plastic-ratio rung).
+\end{itemize}
+
+\medskip
+\noindent\textbf{Place in the series.}
+This is \emph{Paper~I (Substrate)} of the Golden Substrate series.
+It is the algebraic floor.  Suggested next reading:
+\emph{Paper~II (Proof)} for the analytic consequences and
+\emph{Paper~III (Monad)} for the categorical reading.  Side
+papers~\emph{IV (Moonshine context)}, \emph{V (Metabolic)},
+\emph{VI (Operator bridge)}, \emph{VII (Eversion)}, and
+\emph{VIII (Universal Grammar)} attach to specific points of the
+$\Cl(3,1)$ scaffolding developed here.
 
 \tableofcontents
 \clearpage
@@ -407,10 +499,68 @@ $3$ & $\approx0.682$ & $\approx1.466$ & $x^3 - x^2 - 1$ \\
 \begin{proof}
 Substituting $a = 1/r$ in $a + a^n = 1$ and clearing denominators
 gives $r^{n-1} + 1 - r^n = 0$, i.e., $f_n(r) = 0$.  Irreducibility
-of $f_n$ over $\Q$ for $n \ge 2$ is standard
-(\cite{selmer1956,smyth1971}).  See \cite[\S2]{two-floor} for
-detail.
+of $f_n$ over $\Q$ holds for $n \in \{2, 3, 4\}$ and for all
+$n \ge 6$ (\cite{selmer1956,smyth1971}); the lone exception in the
+trinomial family is
+\begin{equation}\label{eq:f5-factor}
+  f_5(x) \;=\; x^5 - x^4 - 1 \;=\; (x^2 - x + 1)\,(x^3 - x - 1),
+\end{equation}
+in which case the depth-$5$ floor is generated by the cubic factor
+$x^3 - x - 1$ (the plastic-ratio polynomial) and the quadratic
+factor $x^2 - x + 1$ contributes only complex roots, neither of
+which is the real Perron coupling $r_5 > 1$.  The Perron root
+therefore still has minimal polynomial of degree~$3$, and the
+depth-tower entries for $n=5$ inherit the cubic seam rather than
+the trinomial one.\footnote{Verified by
+\texttt{papers/tests/test\_paper\_1\_substrate.py::test\_P1\_4\_f5\_factors}.}
+For all other $n \ge 2$ the trinomial is the minimal polynomial;
+see \cite[\S2]{two-floor} for full detail.
 \end{proof}
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[
+    >=Latex,
+    every node/.style={font=\footnotesize},
+    rung/.style={draw=accentGray!50,thin},
+    factor/.style={red!75,thick}
+  ]
+  %% Vertical ladder of depths
+  \foreach \n/\val/\fac [count=\i] in {
+      2/{\(x^{2}-x-1\)\,\, $r_2=\vp\approx1.618$}/irreducible,
+      3/{\(x^{3}-x^{2}-1\)\,\, $r_3\approx 1.466$}/irreducible,
+      4/{\(x^{4}-x^{3}-1\)\,\, $r_4\approx 1.380$}/irreducible,
+      5/{\(x^{5}-x^{4}-1 = (x^{2}-x+1)(x^{3}-x-1)\)}/{\bfseries factors},
+      6/{\(x^{6}-x^{5}-1\)\,\, $r_6\approx 1.286$}/irreducible,
+      7/{\(x^{7}-x^{6}-1\)\,\, $r_7\approx 1.255$}/irreducible
+    }{
+    \pgfmathsetmacro{\y}{-1.1*\i+1.2}
+    \node[anchor=west] at (0.0,\y) {\(f_{\n}(x)=\) \val};
+    \ifnum\n=5
+      \draw[factor,->] (-0.6,\y) -- (0,\y);
+      \node[red!75,anchor=east] at (-0.6,\y) {\fac};
+    \else
+      \draw[rung,->] (-0.6,\y) -- (0,\y);
+      \node[accentGray,anchor=east] at (-0.6,\y) {\fac};
+    \fi
+  }
+  %% Side bracket: the depth tower
+  \draw[accentBlue!60,thick,decorate,decoration={brace,amplitude=5pt,mirror}]
+    (-2.2,-6.6) -- (-2.2,0.5)
+    node[midway,anchor=east,xshift=-12pt,text=accentBlue,rotate=90,font=\small\itshape] {depth tower $r_n = 1/\alpha_n$};
+\end{tikzpicture}
+\caption{The first six rungs of the depth tower
+$f_n(x) = x^n - x^{n-1} - 1$.  Depth $n=2$ is the golden ratio
+$\vp$.  All trinomials in this family are irreducible over $\Q$
+\emph{except} $n=5$, where
+$f_5 = (x^2 - x + 1)(x^3 - x - 1)$: the Perron root inherits the
+cubic factor (the plastic ratio), not the trinomial.  This is the
+only reducibility in the family; for every other $n \ge 2$ the
+trinomial is the minimal polynomial of $r_n$.  The reducibility is
+not a problem -- it just means the depth-$5$ floor borrows its
+minimal polynomial from the cubic factor.}
+\label{fig:phi-ladder}
+\end{figure}
 
 The depth tower extends indefinitely: every $n \ge 1$ produces a
 valid algebraic floor with the same Lorentzian signature when used
@@ -579,13 +729,72 @@ shape-operator chain (this point is established in
 \label{thm:signature}
 A four-node null body with golden coupling $g_{ij} = -\vp^{-2}$
 ($i \ne j$) admits a unique linear basis
-$\{\eta_0, \eta_1, \eta_2, \eta_3\}$ of orthogonal generators
-satisfying $\eta_0^2 = +1$ and $\eta_i^2 = -1$ ($i = 1, 2, 3$).
-The Clifford algebra $\Cl(3,1)$ generated by these signature-$(3,1)$
-vectors is forced; the seam-child asymmetry between $\eta_0$ and
-$\{\eta_1, \eta_2, \eta_3\}$ rules out the alternative signature
+$\{\eta_0, \eta_1, \eta_2, \eta_3\}$ of orthogonal generators.  In
+this paper we adopt the convention $\Cl(3,1) = $ \emph{three pluses,
+one minus}, so that the three child generators carry the
+\emph{positive} (spacelike) squares and the seam generator carries
+the lone \emph{negative} (timelike) square:
+\[
+  \eta_1^2 = \eta_2^2 = \eta_3^2 = +1,\qquad \eta_0^2 = -1.
+\]
+Equivalently, the Gram matrix of $\{\eta_0,\eta_1,\eta_2,\eta_3\}$
+in this basis has eigenvalues $(-3\vp^{-2},\, +\vp^{-2},\,
++\vp^{-2},\, +\vp^{-2})$ -- three positive and one negative,
+matching the $(+,+,+,-) \equiv (3,1)$ signature.\footnote{Verified
+by
+\texttt{papers/tests/test\_paper\_1\_substrate.py::test\_P1\_signature\_3plus\_1minus}.}
+The seam--child asymmetry between $\eta_0$ and
+$\{\eta_1, \eta_2, \eta_3\}$ rules out the opposite-sign convention
 $(1,3)$ for the framework's primary register.
 \end{theorem}
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[
+    >=Latex,
+    every node/.style={font=\small},
+    space/.style={circle,draw=accentBlue!75,fill=accentBlue!10,inner sep=2pt,minimum size=22pt,thick},
+    time/.style ={circle,draw=red!75,fill=red!10,inner sep=2pt,minimum size=22pt,thick},
+    coupling/.style={accentGray,thin}
+  ]
+  %% Tetrahedron of generators
+  \node[space] (e1) at (-2.0,-0.4) {$\eta_1^{+}$};
+  \node[space] (e2) at ( 2.0,-0.4) {$\eta_2^{+}$};
+  \node[space] (e3) at ( 0.0, 1.6) {$\eta_3^{+}$};
+  \node[time]  (e0) at ( 0.0,-1.7) {$\eta_0^{-}$};
+  %% Pair couplings
+  \draw[coupling] (e1) -- node[pos=0.5,sloped,above,inner sep=1pt,font=\footnotesize] {$g_{12}=-\vp^{-2}$} (e2);
+  \draw[coupling] (e1) -- node[pos=0.5,sloped,above,inner sep=1pt,font=\footnotesize] {$g_{13}=-\vp^{-2}$} (e3);
+  \draw[coupling] (e2) -- node[pos=0.5,sloped,above,inner sep=1pt,font=\footnotesize] {$g_{23}=-\vp^{-2}$} (e3);
+  \draw[coupling] (e0) -- node[pos=0.45,sloped,below,inner sep=1pt,font=\footnotesize] {$g_{01}=-\vp^{-2}$} (e1);
+  \draw[coupling] (e0) -- node[pos=0.45,sloped,below,inner sep=1pt,font=\footnotesize] {$g_{02}=-\vp^{-2}$} (e2);
+  \draw[coupling] (e0) -- node[pos=0.55,right,inner sep=1pt,font=\footnotesize] {$g_{03}=-\vp^{-2}$} (e3);
+  %% Inset: null-cone projection
+  \begin{scope}[shift={(5.8,-0.2)},scale=0.85]
+    \draw[accentBlue!50,thick] (-1.3,-1.3) -- (1.3,1.3);
+    \draw[accentBlue!50,thick] (-1.3, 1.3) -- (1.3,-1.3);
+    \draw[red!60,->,thick] (0,0) -- (0,1.2) node[above,red,font=\footnotesize] {timelike $\eta_0$};
+    \fill[accentBlue!30,opacity=0.25] (-1.2,1.2) -- (1.2,1.2) -- (1.2,-1.2) -- (-1.2,-1.2) -- cycle;
+    \node[font=\footnotesize] at (0,-1.6) {null cone};
+    \node[font=\footnotesize,text=accentBlue,align=center] at (1.05,-0.55) {spacelike\\$\eta_{1,2,3}$};
+    \draw[->] (-1.5,0) -- (1.5,0) node[right,font=\footnotesize] {space};
+    \draw[->] (0,-1.5) -- (0,1.5) node[above,font=\footnotesize] {time};
+  \end{scope}
+\end{tikzpicture}
+\caption{The four golden-coupled null generators of the depth-$2$
+substrate form a regular tetrahedron with every pair coupled at the
+identical strength $g_{ij} = -\vp^{-2}$.  Diagonalising the Gram
+matrix produces three positive eigenvalues $+\vp^{-2}$ (corresponding
+to the spacelike children $\eta_{1,2,3}$) and one negative
+eigenvalue $-3\vp^{-2}$ (the timelike seam $\eta_0$), fixing the
+$\Cl(3,1)$ convention $(+,+,+,-)$.  Inset: the null cone defined by
+$\langle V\cdot V\rangle_0 = 0$ separates the spacelike children
+(blue, $\langle V\cdot V\rangle_0 > 0$) from the timelike seam
+(red, $\langle V\cdot V\rangle_0 < 0$); the framework's content
+register lives in the spacelike interior, the seam (context) on
+the timelike axis.}
+\label{fig:cl31-generators}
+\end{figure}
 
 \begin{proof}[Proof outline]
 The signature follows from diagonalizing the coupling matrix of

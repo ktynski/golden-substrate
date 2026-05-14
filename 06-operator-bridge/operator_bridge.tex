@@ -1,3 +1,8 @@
+%% ============================================================
+%%  Golden Substrate series -- canonical preamble.
+%%  Identical across all papers except for \hypersetup{pdftitle=...}.
+%% ============================================================
+
 \documentclass[11pt,a4paper]{article}
 
 \usepackage{amsmath,amssymb,amsthm}
@@ -8,7 +13,6 @@
 \definecolor{linkInternal}{HTML}{1F4E79}
 \definecolor{linkExternal}{HTML}{2F5496}
 \definecolor{linkCite}{HTML}{806600}
-
 \usepackage[colorlinks=true,
             linkcolor=linkInternal,
             citecolor=linkCite,
@@ -21,6 +25,7 @@
   pdftitle={The Operator-Level Bridge: From Peirce Decomposition to Prime Splitting (Paper VI)},
   pdfsubject={Copyright (c) 2026 Kristin Tynski. All rights reserved.}%
 }
+
 \usepackage{cleveref}
 \usepackage{booktabs}
 \usepackage{array}
@@ -29,41 +34,165 @@
 \usepackage{lmodern}
 \usepackage[T1]{fontenc}
 \usepackage[protrusion=true,expansion=false]{microtype}
+\usepackage{fancyhdr}
 \usepackage[font=small,labelfont=bf,format=plain,labelsep=period]{caption}
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc,decorations.pathmorphing,shapes.geometric,fit,backgrounds}
 
 \geometry{margin=1in}
+\setlength{\emergencystretch}{5em}
 
+\theoremstyle{plain}
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{corollary}[theorem]{Corollary}
 \newtheorem{conjecture}[theorem]{Conjecture}
+
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definition}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{principle}[theorem]{Principle}
+
+\theoremstyle{remark}
 \newtheorem{remark}[theorem]{Remark}
 
-\DeclareMathOperator{\Cl}{Cl}
+\numberwithin{equation}{section}
+
+%% --- Canonical notation (union across the series) ------------------
+\providecommand{\Cl}{\mathrm{Cl}}
+\providecommand{\GA}[2]{\mathbb{G}_{#1,#2}}
+\providecommand{\R}{\mathbb{R}}
+\providecommand{\C}{\mathbb{C}}
+\providecommand{\Z}{\mathbb{Z}}
+\providecommand{\Q}{\mathbb{Q}}
+\providecommand{\N}{\mathbb{N}}
+\providecommand{\F}{\mathbb{F}}
+\providecommand{\HH}{\mathbb{H}}
+\providecommand{\OO}{\mathbb{O}}
+\providecommand{\Hh}{\mathbb{H}}
+\providecommand{\Hp}{\mathbb{H}'}
+\providecommand{\Os}{\mathbb{O}'}
+\providecommand{\ZZ}{\mathbb{Z}}
+\providecommand{\QQ}{\mathbb{Q}}
+\providecommand{\RR}{\mathbb{R}}
+\providecommand{\CC}{\mathbb{C}}
+\providecommand{\FF}{\mathbb{F}}
+\providecommand{\NN}{\mathbb{N}}
+\providecommand{\Reals}{\mathbb{R}}
+\providecommand{\Complex}{\mathbb{C}}
+\providecommand{\Nat}{\mathbb{N}}
+\providecommand{\Zp}{\ensuremath{\mathbb{Z}[\varphi]}}
+\providecommand{\Qp}{\ensuremath{\mathbb{Q}(\sqrt{5})}}
+\providecommand{\Gphi}{\ensuremath{\Gamma_{\varphi}}}
+\providecommand{\E}{\mathbb{E}}
+\providecommand{\PG}{\mathrm{PG}}
+
+\providecommand{\vp}{\varphi}
+\providecommand{\ps}{\psi}
+\providecommand{\eps}{\varepsilon}
+\providecommand{\half}{\tfrac{1}{2}}
+
+\providecommand{\EF}{\mathcal{E}}
+\providecommand{\PF}{\mathcal{P}}
+\providecommand{\ZF}{\mathcal{Z}}
+\providecommand{\W}{\mathcal{W}}
+\providecommand{\cO}{\mathcal{O}}
+\providecommand{\Lo}{\mathcal{L}}
+\providecommand{\Lk}{L}
+
+\providecommand{\fk}[1]{\mathfrak{#1}}
+\providecommand{\fP}{\mathfrak{P}}
+\providecommand{\fp}{\mathfrak{p}}
+\providecommand{\slgo}{\mathfrak{sl}}
+\providecommand{\sogo}{\mathfrak{so}}
+\providecommand{\spgo}{\mathfrak{sp}}
+
+\providecommand{\eb}[1]{e_{#1}}
+
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Der}{Der}
 \DeclareMathOperator{\End}{End}
-\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\Hom}{Hom}
 \DeclareMathOperator{\Sym}{Sym}
-\DeclareMathOperator{\GL}{GL}
-\DeclareMathOperator{\SL}{SL}
 \DeclareMathOperator{\Gal}{Gal}
 \DeclareMathOperator{\Res}{Res}
 \DeclareMathOperator{\BC}{BC}
-\DeclareMathOperator{\rk}{rk}
 \DeclareMathOperator{\Frob}{Frob}
 \DeclareMathOperator{\Nm}{N}
+\DeclareMathOperator{\Disc}{Disc}
+\DeclareMathOperator{\disc}{disc}
+\DeclareMathOperator{\Spin}{Spin}
+\DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\spn}{span}
+\DeclareMathOperator{\rk}{rk}
+\DeclareMathOperator{\Img}{Im}
+\DeclareMathOperator{\im}{Im}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\ad}{ad}
+\DeclareMathOperator{\sgn}{sgn}
+\providecommand{\PSL}{\operatorname{PSL}}
+\providecommand{\SL}{\operatorname{SL}}
+\providecommand{\GL}{\operatorname{GL}}
+\providecommand{\id}{\mathrm{id}}
 
-\newcommand{\HH}{\mathbb{H}}
-\newcommand{\ZZ}{\mathbb{Z}}
-\newcommand{\QQ}{\mathbb{Q}}
-\newcommand{\RR}{\mathbb{R}}
-\newcommand{\CC}{\mathbb{C}}
-\newcommand{\FF}{\mathbb{F}}
-\newcommand{\fP}{\mathfrak{P}}
-\newcommand{\fp}{\mathfrak{p}}
-\newcommand{\cO}{\mathcal{O}}
+\providecommand{\Ephi}{\mathcal{E}_{\vp}}
+\providecommand{\Pf}{P_4}
+\providecommand{\Qf}{Q_4}
+\providecommand{\seamfix}{\mathrm{seam\_fix}}
+\providecommand{\seamtwist}{\mathrm{seam\_twist}}
+
+\definecolor{accentBlue}{HTML}{2F80ED}
+\definecolor{accentGray}{HTML}{6B7C93}
+\definecolor{accentMuted}{HTML}{D5DBE0}
+
+\newmdenv[
+  linecolor=accentBlue!50,
+  linewidth=0.6pt,
+  backgroundcolor=accentBlue!4,
+  roundcorner=3pt,
+  innerleftmargin=8pt,
+  innerrightmargin=8pt,
+  innertopmargin=6pt,
+  innerbottommargin=6pt,
+  skipabove=0.8em,
+  skipbelow=0.8em,
+]{keyresultbox}
+
+\newmdenv[
+  linecolor=accentGray!25,
+  linewidth=0.5pt,
+  backgroundcolor=accentGray!5,
+  roundcorner=2.5pt,
+  innerleftmargin=10pt,
+  innerrightmargin=10pt,
+  innertopmargin=6pt,
+  innerbottommargin=6pt,
+  skipabove=0.6em,
+  skipbelow=1.0em,
+]{sectionopenerframe}
+\newenvironment{sectionopener}
+  {\begin{sectionopenerframe}\small\itshape\ignorespaces}
+  {\end{sectionopenerframe}}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyhead[L]{\small\itshape\color{accentGray}\nouppercase{\leftmark}}
+\fancyhead[R]{\small\color{accentGray}\thepage}
+\fancyfoot[C]{}
+\renewcommand{\sectionmark}[1]{\markboth{\thesection.\ #1}{}}
+
+\widowpenalty=1000
+\clubpenalty=1000
+\setlength{\parskip}{0.55em plus 0.2em minus 0.05em}
+\setlength{\parindent}{1.2em}
+\AtBeginEnvironment{itemize}{\setlength{\parskip}{0pt}}
+\AtBeginEnvironment{enumerate}{\setlength{\parskip}{0pt}}
+\AtBeginEnvironment{description}{\setlength{\parskip}{0pt}}
 
 \title{Paper VI: The Operator-Level Bridge\\[4pt]
 \large From Peirce Decomposition to Prime Splitting via the Quaternion--Clifford Identification}
@@ -92,6 +221,125 @@ Hecke operators commute with the Peirce projectors, with exact eigenvalue
 extraction confirmed for all primes $p \leq 79$ (83 tests, 0 failures).
 \end{abstract}
 
+\medskip
+\noindent\textbf{What this paper does.}
+\begin{itemize}[leftmargin=1.5em,nosep,topsep=2pt]
+  \item Constructs an explicit faithful algebra homomorphism
+        $\rho: \Cl(3,1) \to \End(H_{1})$ where $H_{1}$ is the
+        $4$-dimensional Hilbert modular symbol homology for
+        the seam $X_{0}((11))$ over $K = \Q(\sqrt 5)$.
+  \item Identifies the Peirce decomposition of
+        $\Cl(3,1) \cong M_{2}(\HH)$ with the
+        Eisenstein--cuspidal splitting
+        $H_{1} = H_{1}^{\mathrm{eis}} \oplus H_{1}^{\mathrm{cusp}}$
+        of rank $(3,1)$ and shows the Hecke operators
+        $T_\fP$ commute with each Peirce projector.
+  \item Stratifies the cuspidal eigenvalues $a_\fP$ by the
+        splitting type of $p$ in $\Z[\vp]$ (split, inert, ramified)
+        and matches each type to a specific Peirce block; verifies
+        the construction by point counting on $E_{11}$ for all
+        primes $p \le 79$.
+\end{itemize}
+
+\medskip
+\noindent\textbf{Place in the series.}
+This is \emph{Paper~VI} of the Golden Substrate series: the
+\emph{operator-level} bridge that lifts the algebraic substrate of
+Paper~I and the conductor of Paper~II to the explicit
+$\rho:\Cl(3,1)\to\End(H_{1})$ representation.  Prerequisites:
+Paper~I (Clifford algebra, Peirce), Paper~II (conductor $11$),
+Paper~IV (moonshine context, $\Z[\vp]$-arithmetic).  Paper~VII
+(eversion) consumes this representation directly, composing Hecke
+operators along a three-prime sequence.
+
+\medskip
+\noindent\textbf{The arc this paper sits in.}
+The first three papers of the series establish, respectively, the
+algebraic substrate ($\Cl(3,1)$, $J_{3}(\Os)$, the golden ratio
+$\vp$), the analytic consequences (Riemann, Collatz, three
+quantitative predictions), and the categorical reading
+(holographic monad, golden unit).  Paper~IV brings in the
+$\Z[\vp]$-arithmetic and the seam at the prime~$11$.  By the time
+we reach the present paper, the framework has produced an
+algebra, a propagator, a monad, and an arithmetic seam, but they
+have not yet been welded to an operator-level model that an
+arithmetic geometer can recognise as a Hecke representation.
+Paper~VI is the weld.
+
+The construction is sharp.  We do \emph{not} replace the existing
+Eichler--Shimura, Mazur--Cremona, or base-change machinery; we
+\emph{compose} with them.  The four-dimensional homology
+$H_{1}(X_{0}((11)),\mathrm{cusps}; \ZZ)$ for $K = \Q(\sqrt 5)$ is
+a classical object, with $\dim S_{2}(\Gamma_{0}(11))^{\mathrm{new}} = 1$
+forcing $\dim H_{1}^{\mathrm{cusp}} = 1$ and hence
+$\dim H_{1}^{\mathrm{eis}} = 3$ on the nose.  What is new is that
+this $4$-dim space is exactly the right shape to carry a
+\emph{faithful} representation of $\Cl(3,1)$ as a real algebra
+($\dim_{\R}\Cl(3,1) = 16 = \dim_{\R}M_{4}(\R) = \dim_{\R}\End(H_{1})$).
+Paper~VI exhibits an explicit such homomorphism $\rho$ and proves
+three things about it: (i) it is faithful and spans $M_{4}(\R)$;
+(ii) it intertwines with every Hecke operator $T_\fP$; and (iii)
+under $\rho$, the Peirce block structure of $M_{2}(\HH) =
+\Cl(3,1)$ recovers exactly the Eisenstein--cuspidal splitting.
+Point (iii) is the punchline: \emph{the Peirce decomposition of
+the substrate is the Eisenstein/cuspidal decomposition of the
+modular homology.}
+
+This unifies four lenses on the same arithmetic object: the
+Peirce algebraist's lens (idempotents in $M_{2}(\HH)$), the
+modular-form theorist's lens
+($S_{2}^{\mathrm{new}}\oplus\text{Eisenstein}$), the
+Galois-theorist's lens (prime-splitting type in $\Z[\vp]$), and
+the framework's substrate lens ($\Cl(3,1)$ acting on coherence
+states).  Each of these lenses was already known to a different
+community before this paper.  What was missing -- and what this
+paper supplies -- is the explicit $\rho$ that lets them be
+composed without changing notation.
+
+% ===========================================================================
+\section*{Conventions on the Eisenstein--cuspidal projector pair}
+% ===========================================================================
+
+\noindent
+Two distinct API surfaces in the surrounding code base ship under the
+name ``Eisenstein projector'' and the two are \emph{not}
+interchangeable, so we fix the convention used throughout this paper
+up front:
+\begin{itemize}[leftmargin=1.3em]
+  \item \textbf{(Rank-2 / Rank-2 pairing.)}
+    The Peirce projector pair $(P_{\gamma_0}, 1 - P_{\gamma_0})$ onto
+    the $\pm 1$ eigenspaces of $\gamma_0$ inside the
+    $4$-dimensional Hecke module $H_1$ partitions $H_1$ into two
+    rank-$2$ sub-bundles.  This is the \emph{rank-$2$ Eisenstein
+    projector} convention; it is the natural Peirce pair on the
+    \emph{full} $M_2(\HH) = \Cl(3,1)$ algebra and is the one used
+    in the Paper~V FSCTF API and in the substrate-sim
+    spectral-Hecke prototype.
+  \item \textbf{(Rank-3 Eisenstein, Rank-1 cuspidal.)}
+    The arithmetic decomposition of
+    $H_1(X_0((11)), \mathrm{cusps}; \ZZ) \otimes \RR$
+    forced by the Mazur--Cremona dimension count
+    $\dim S_2(\Gamma_0(11))^{\mathrm{new}} = 1$ is
+    $H_1 = H_1^{\mathrm{eis}} \oplus H_1^{\mathrm{cusp}}$ with
+    $\rk H_1^{\mathrm{eis}} = 3$ and $\rk H_1^{\mathrm{cusp}} = 1$;
+    the matching Peirce idempotents are $\Pi_{\mathrm{eis}} = \rho(Q_4)$,
+    $\Pi_c = \rho(1 - Q_4)$ with $\rk(Q_4) = 3$.
+\end{itemize}
+\noindent
+Paper~VI is built on the \emph{second} pairing: the projector pair
+$(\Pi_{\mathrm{eis}}, \Pi_c)$ has ranks $(3,1)$ matching the
+$\dim H_1 = 4 = 3 + 1$ arithmetic split.  Whenever this paper writes
+``Eisenstein projector $\Pi_{\mathrm{eis}}$'' it means the
+\emph{rank-$3$} projector $\rho(Q_4)$ above, not the rank-$2$
+$\gamma_0$-eigenspace projector.  Cross-paper citations of
+``$\Pi_{\mathrm{eis}}$'' in Paper~V or in the substrate-sim modules
+that follow the rank-$2$ convention should be translated through this
+table before being composed with Paper~VI's
+$T_\fP = a_\fP\,\Pi_c + (\Nm(\fP)+1)\,\Pi_{\mathrm{eis}}$.\footnote{The
+ambiguity was flagged by
+\texttt{papers/tests/test\_paper\_6\_bridge.py::test\_P6\_2\_eisenstein\_rank\_disambiguation},
+which checks that every use of $\Pi_{\mathrm{eis}}$ inside Paper~VI
+operates as a rank-$3$ idempotent on the 4-dim $H_1$.}
 
 % ===========================================================================
 \section{The Base-Change Recognition}\label{sec:base-change}
@@ -322,6 +570,60 @@ For every prime $p \leq 79$ and every $\fP \mid p\cO_K$:
 \end{enumerate}
 All 83 tests pass with zero failures.
 \end{proposition}
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[
+    >=Latex,
+    every node/.style={font=\small},
+    block/.style={rectangle,draw=accentBlue!75,fill=accentBlue!7,
+                  thick,minimum height=24pt,minimum width=68pt,inner sep=4pt,align=center},
+    target/.style={rectangle,draw=red!70,fill=red!8,
+                  thick,minimum height=24pt,minimum width=68pt,inner sep=4pt,align=center},
+    arr/.style={->,thick,accentGray!85},
+    lab/.style={font=\footnotesize,text=accentGray}
+  ]
+  %% Left column: Cl(3,1) = M_2(H) Peirce decomposition
+  \node[block]   (P4)  at (0,2.2)  {$P_4$};
+  \node[block]   (P4c) at (0,1.0)  {$P_{4}^{\,c} = 1 - P_4$};
+  \node[block]   (P23) at (0,-0.4) {$P_{23}$ (off-diag.)};
+  \node[lab,anchor=south] at (P4.north)
+       {$\Cl(3,1)\cong M_2(\HH)$ Peirce blocks};
+  %% Middle column: splitting types of primes in Z[phi]
+  \node[block]    (split) at (5.0,2.2) {split\\\(p\equiv\pm1\!\!\pmod 5\)};
+  \node[block]    (inert) at (5.0,1.0) {inert\\\(p\equiv\pm2\!\!\pmod 5\)};
+  \node[block]    (ram)   at (5.0,-0.4){ramified\\\(p=5\)};
+  \node[lab,anchor=south] at (split.north) {prime splitting in $\Z[\vp]$};
+  %% Right column: Hecke eigenvalues
+  \node[target]   (eA)  at (9.6,2.2)  {$a_\fP = a_p$};
+  \node[target]   (eB)  at (9.6,1.0)  {$a_\fP = a_p^{2} - 2p$};
+  \node[target]   (eC)  at (9.6,-0.4) {$a_\fP = a_5 = 1$};
+  \node[lab,anchor=south] at (eA.north) {cuspidal $T_\fP$ eigenvalue};
+  %% Connecting arrows: Peirce block -> splitting -> eigenvalue
+  \draw[arr] (P23.east)  -- node[lab,above] {$\rho$} (split.west);
+  \draw[arr] (P4c.east)  -- node[lab,above] {$\rho$} (inert.west);
+  \draw[arr] (P4.east)   -- node[lab,above] {$\rho$} (ram.west);
+  \draw[arr] (split.east) -- (eA.west);
+  \draw[arr] (inert.east) -- (eB.west);
+  \draw[arr] (ram.east)   -- (eC.west);
+  %% Bottom note
+  \node[lab,font=\footnotesize\itshape] at (4.8,-1.7)
+        {$T_\fP = a_\fP\,\Pi_c + (\Nm(\fP)+1)\,\Pi_{\mathrm{eis}}$ commutes with each $\rho(P)$.};
+\end{tikzpicture}
+\caption{The Peirce--prime-splitting bridge for the homomorphism
+$\rho:\Cl(3,1) \to \End(H_1)$ of Paper~VI.  The three Peirce blocks
+of $M_2(\HH) = \Cl(3,1)$ -- the boundary idempotent $P_4$, its
+complement $P_4^c$, and the off-diagonal $P_{23}$ block -- map under
+$\rho$ to the three splitting types of rational primes in
+$\Z[\vp]$.  The Hecke operator $T_\fP$ commutes with each Peirce
+projector and acts on the cuspidal summand $\Pi_c$ with the
+splitting-type-stratified eigenvalues
+$(a_p,\, a_p^2-2p,\, 1)$ shown at right.  This is the algebraic
+content of the entire Paper~VI in one picture: \emph{which prime
+splitting type a prime belongs to is the same data as which Peirce
+block of $\Cl(3,1)$ it factors through.}}
+\label{fig:peirce-prime}
+\end{figure}
 
 
 % ===========================================================================

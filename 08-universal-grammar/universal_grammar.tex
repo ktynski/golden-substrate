@@ -1,3 +1,8 @@
+%% ============================================================
+%%  Golden Substrate series -- canonical preamble.
+%%  Identical across all papers except for \hypersetup{pdftitle=...}.
+%% ============================================================
+
 \documentclass[11pt,a4paper]{article}
 
 \usepackage{amsmath,amssymb,amsthm}
@@ -8,7 +13,6 @@
 \definecolor{linkInternal}{HTML}{1F4E79}
 \definecolor{linkExternal}{HTML}{2F5496}
 \definecolor{linkCite}{HTML}{806600}
-
 \usepackage[colorlinks=true,
             linkcolor=linkInternal,
             citecolor=linkCite,
@@ -21,49 +25,173 @@
   pdftitle={From G_2 to Universal Grammar: A Math-First Derivation of Natural Semantic Metalanguage via Cl(3,1)},
   pdfsubject={Copyright (c) 2026 Kristin Tynski. All rights reserved.}%
 }
+
 \usepackage{cleveref}
 \usepackage{booktabs}
 \usepackage{array}
+\usepackage{longtable}
 \usepackage{enumitem}
 \usepackage{lmodern}
 \usepackage[T1]{fontenc}
 \usepackage[protrusion=true,expansion=false]{microtype}
+\usepackage{fancyhdr}
 \usepackage[font=small,labelfont=bf,format=plain,labelsep=period]{caption}
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc,decorations.pathmorphing,shapes.geometric,fit,backgrounds}
 
 \geometry{margin=1in}
+\setlength{\emergencystretch}{5em}
 
+\theoremstyle{plain}
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definition}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{principle}[theorem]{Principle}
+
+\theoremstyle{remark}
 \newtheorem{remark}[theorem]{Remark}
 
-\DeclareMathOperator{\Cl}{Cl}
-\DeclareMathOperator{\End}{End}
+\numberwithin{equation}{section}
+
+\providecommand{\Cl}{\mathrm{Cl}}
+\providecommand{\GA}[2]{\mathbb{G}_{#1,#2}}
+\providecommand{\R}{\mathbb{R}}
+\providecommand{\C}{\mathbb{C}}
+\providecommand{\Z}{\mathbb{Z}}
+\providecommand{\Q}{\mathbb{Q}}
+\providecommand{\N}{\mathbb{N}}
+\providecommand{\F}{\mathbb{F}}
+\providecommand{\HH}{\mathbb{H}}
+\providecommand{\OO}{\mathbb{O}}
+\providecommand{\Hh}{\mathbb{H}}
+\providecommand{\Hp}{\mathbb{H}'}
+\providecommand{\Os}{\mathbb{O}'}
+\providecommand{\ZZ}{\mathbb{Z}}
+\providecommand{\QQ}{\mathbb{Q}}
+\providecommand{\RR}{\mathbb{R}}
+\providecommand{\CC}{\mathbb{C}}
+\providecommand{\FF}{\mathbb{F}}
+\providecommand{\NN}{\mathbb{N}}
+\providecommand{\Reals}{\mathbb{R}}
+\providecommand{\Complex}{\mathbb{C}}
+\providecommand{\Nat}{\mathbb{N}}
+\providecommand{\Zp}{\ensuremath{\mathbb{Z}[\varphi]}}
+\providecommand{\Qp}{\ensuremath{\mathbb{Q}(\sqrt{5})}}
+\providecommand{\Gphi}{\ensuremath{\Gamma_{\varphi}}}
+\providecommand{\E}{\mathbb{E}}
+\providecommand{\PG}{\mathrm{PG}}
+
+\providecommand{\vp}{\varphi}
+\providecommand{\ps}{\psi}
+\providecommand{\eps}{\varepsilon}
+\providecommand{\half}{\tfrac{1}{2}}
+
+\providecommand{\EF}{\mathcal{E}}
+\providecommand{\PF}{\mathcal{P}}
+\providecommand{\ZF}{\mathcal{Z}}
+\providecommand{\W}{\mathcal{W}}
+\providecommand{\cO}{\mathcal{O}}
+\providecommand{\Lo}{\mathcal{L}}
+\providecommand{\Lk}{L}
+
+\providecommand{\fk}[1]{\mathfrak{#1}}
+\providecommand{\fP}{\mathfrak{P}}
+\providecommand{\fp}{\mathfrak{p}}
+\providecommand{\slgo}{\mathfrak{sl}}
+\providecommand{\sogo}{\mathfrak{so}}
+\providecommand{\spgo}{\mathfrak{sp}}
+
+\providecommand{\eb}[1]{e_{#1}}
+
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\Spec}{Spec}
 \DeclareMathOperator{\Aut}{Aut}
 \DeclareMathOperator{\Der}{Der}
+\DeclareMathOperator{\End}{End}
 \DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Sym}{Sym}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\Res}{Res}
+\DeclareMathOperator{\BC}{BC}
+\DeclareMathOperator{\Frob}{Frob}
+\DeclareMathOperator{\Nm}{N}
+\DeclareMathOperator{\Disc}{Disc}
+\DeclareMathOperator{\disc}{disc}
 \DeclareMathOperator{\Spin}{Spin}
 \DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\spn}{span}
 \DeclareMathOperator{\rk}{rk}
-\DeclareMathOperator{\sgn}{sgn}
 \DeclareMathOperator{\Img}{Im}
+\DeclareMathOperator{\im}{Im}
 \DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\ad}{ad}
+\DeclareMathOperator{\sgn}{sgn}
+\providecommand{\PSL}{\operatorname{PSL}}
+\providecommand{\SL}{\operatorname{SL}}
+\providecommand{\GL}{\operatorname{GL}}
+\providecommand{\id}{\mathrm{id}}
 
-\newcommand{\OO}{\mathbb{O}}
-\newcommand{\HH}{\mathbb{H}}
-\newcommand{\CC}{\mathbb{C}}
-\newcommand{\RR}{\mathbb{R}}
-\newcommand{\ZZ}{\mathbb{Z}}
-\newcommand{\NN}{\mathbb{N}}
-\newcommand{\PG}{\mathrm{PG}}
-\newcommand{\Lo}{\mathcal{L}}
+\providecommand{\Ephi}{\mathcal{E}_{\vp}}
+\providecommand{\Pf}{P_4}
+\providecommand{\Qf}{Q_4}
+\providecommand{\seamfix}{\mathrm{seam\_fix}}
+\providecommand{\seamtwist}{\mathrm{seam\_twist}}
 
-\newcommand{\seamfix}{\mathrm{seam\_fix}}
-\newcommand{\seamtwist}{\mathrm{seam\_twist}}
-\newcommand{\eps}{\varepsilon}
+\definecolor{accentBlue}{HTML}{2F80ED}
+\definecolor{accentGray}{HTML}{6B7C93}
+\definecolor{accentMuted}{HTML}{D5DBE0}
+
+\newmdenv[
+  linecolor=accentBlue!50,
+  linewidth=0.6pt,
+  backgroundcolor=accentBlue!4,
+  roundcorner=3pt,
+  innerleftmargin=8pt,
+  innerrightmargin=8pt,
+  innertopmargin=6pt,
+  innerbottommargin=6pt,
+  skipabove=0.8em,
+  skipbelow=0.8em,
+]{keyresultbox}
+
+\newmdenv[
+  linecolor=accentGray!25,
+  linewidth=0.5pt,
+  backgroundcolor=accentGray!5,
+  roundcorner=2.5pt,
+  innerleftmargin=10pt,
+  innerrightmargin=10pt,
+  innertopmargin=6pt,
+  innerbottommargin=6pt,
+  skipabove=0.6em,
+  skipbelow=1.0em,
+]{sectionopenerframe}
+\newenvironment{sectionopener}
+  {\begin{sectionopenerframe}\small\itshape\ignorespaces}
+  {\end{sectionopenerframe}}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyhead[L]{\small\itshape\color{accentGray}\nouppercase{\leftmark}}
+\fancyhead[R]{\small\color{accentGray}\thepage}
+\fancyfoot[C]{}
+\renewcommand{\sectionmark}[1]{\markboth{\thesection.\ #1}{}}
+
+\widowpenalty=1000
+\clubpenalty=1000
+\setlength{\parskip}{0.55em plus 0.2em minus 0.05em}
+\setlength{\parindent}{1.2em}
+\AtBeginEnvironment{itemize}{\setlength{\parskip}{0pt}}
+\AtBeginEnvironment{enumerate}{\setlength{\parskip}{0pt}}
+\AtBeginEnvironment{description}{\setlength{\parskip}{0pt}}
 
 \title{From $G_2$ to Universal Grammar:\\
        A Math-First Derivation of Natural Semantic Metalanguage
@@ -137,6 +265,30 @@ $\rho_{\mathrm{enwik9}} = 0.4633$ from
 $\rho_{\mathrm{NSM-bytes}} = 0.2222$.
 \end{abstract}
 
+\medskip
+\noindent\textbf{What this paper does.}
+\begin{itemize}[leftmargin=1.5em,nosep,topsep=2pt]
+  \item Builds an eight-layer derivation chain from the
+        exceptional Lie group $G_{2} = \Aut(\OO)$ down to a
+        Natural Semantic Metalanguage (NSM) universal grammar via
+        the Fano plane $\PG(2,2)$, $\Cl(3)$, the
+        $(\Cl(3,1),\Cl(1,3),\text{seam})$ pair of Paper~I, and a
+        Hodge-dual witness pair.
+  \item Forces $21$ blade primes, $9$ channel primes, and
+        $11$ operator primes (with $9 + 2$ binary structure) with
+        \emph{zero free parameters} at every layer; supplies an
+        executable verification probe for each.
+  \item Derives the seam-twist sign rule
+        $\eps(\text{chain}) = (-1)^{\lfloor c_2/2\rfloor + \lfloor c_3/2\rfloor}$
+        and shows the empirical English active-/passive-voice
+        flip ratio matches $\eps(\cdot)$ in $622/622$ chains.
+\end{itemize}
+
+\medskip
+\noindent\textbf{Place in the series.}
+This is \emph{Paper~VIII} of the Golden Substrate series and is
+the most application-facing.  Prerequisite: \emph{Paper~I (Substrate)}
+for the $\Cl(3,1)$ scaffolding.  Independent of Papers~II--VII.
 
 % ===========================================================================
 \section{Introduction}\label{sec:intro}
@@ -188,31 +340,57 @@ Figure~\ref{fig:chain}:
 
 \begin{figure}[h!]
 \centering
-\begin{tabular}{|c|}
-\hline
-\textbf{Layer 0:} $G_2 = \Aut(\OO)$, dimension $14$, exceptional \\
-$\downarrow$ \\
-\textbf{Layer 1:} Fano plane $\PG(2,2)$: 7 points, 7 lines \\
-$\downarrow$ \\
-\textbf{Layer 2:} $\Cl(3)$ spatial bulk: $8 = 1+3+3+1$ \\
-$\downarrow$ \\
-\textbf{Layer 3:} $(\Cl(3,1), \Cl(1,3), \text{seam})$: eversion law \\
-$\downarrow$ \\
-\textbf{Layer 4:} Witness $= (\mathsf{be}, \mathsf{know})$: unique
-                   grade-$0$/$4$ Hodge pair \\
-$\downarrow$ \\
-\textbf{Layer 5:} 21 blade primes (forced by bipolar/monopole partition) \\
-$\downarrow$ \\
-\textbf{Layer 6:} 9 channel primes (4 fundamental projectors) \\
-$\downarrow$ \\
-\textbf{Layer 7:} 11 operator primes (9 unary + 2 binary) \\
-$\downarrow$ \\
-\textbf{Layer 8:} Universal Grammar theorem \\
-\hline
-\end{tabular}
-\caption{The eight-layer derivation chain.  Each layer is forced
-by the one above; each carries an executable verification probe;
-every probe passes.}\label{fig:chain}
+\begin{tikzpicture}[
+    >=Latex,
+    every node/.style={font=\small},
+    layer/.style={rectangle,draw=accentBlue!75,fill=accentBlue!8,
+                  thick,rounded corners=2pt,
+                  minimum height=22pt,minimum width=11.5cm,
+                  inner sep=4pt,align=left},
+    keystone/.style={rectangle,draw=red!70,fill=red!8,
+                  thick,rounded corners=2pt,
+                  minimum height=22pt,minimum width=11.5cm,
+                  inner sep=4pt,align=left},
+    arr/.style={->,thick,accentGray!85},
+    idx/.style={font=\footnotesize\bfseries,text=accentBlue!75},
+    keyidx/.style={font=\footnotesize\bfseries,text=red!75}
+  ]
+  \node[layer] (L0) at (0,9.0)
+        {\textbf{Layer 0.} $G_{2} = \Aut(\OO)$, dim $14$ -- exceptional Lie group};
+  \node[layer] (L1) at (0,7.8)
+        {\textbf{Layer 1.} Fano plane $\PG(2,2)$ -- $7$ points, $7$ lines from $\OO$};
+  \node[layer] (L2) at (0,6.6)
+        {\textbf{Layer 2.} $\Cl(3)$ spatial bulk -- $8 = 1+3+3+1$};
+  \node[keystone] (L3) at (0,5.4)
+        {\textbf{Layer 3.} $\bigl(\Cl(3,1),\Cl(1,3),\text{seam}\bigr)$ -- eversion law};
+  \node[keystone] (L4) at (0,4.2)
+        {\textbf{Layer 4.} Witness $=(\mathsf{be},\mathsf{know})$ -- unique grade-$0/4$ Hodge pair};
+  \node[layer] (L5) at (0,3.0)
+        {\textbf{Layer 5.} $21$ blade primes -- bipolar/monopole partition};
+  \node[layer] (L6) at (0,1.8)
+        {\textbf{Layer 6.} $9$ channel primes -- $4$ fundamental projectors};
+  \node[layer] (L7) at (0,0.6)
+        {\textbf{Layer 7.} $11$ operator primes -- $9$ unary $+\,2$ binary};
+  \node[keystone] (L8) at (0,-0.6)
+        {\textbf{Layer 8.} Universal Grammar theorem -- zero free parameters};
+  \foreach \a/\b in {L0/L1, L1/L2, L2/L3, L3/L4, L4/L5, L5/L6, L6/L7, L7/L8}
+    \draw[arr] (\a.south) -- (\b.north);
+  %% Side annotation
+  \node[font=\footnotesize\itshape,text=accentGray,rotate=90] at (-7.0,4.2)
+        {forced by the layer above\;\,(no free parameters)};
+\end{tikzpicture}
+\caption{The eight-layer derivation chain from the exceptional Lie
+group $G_{2}$ at the top to the Universal Grammar theorem at the
+bottom.  Each layer is forced by the one above by a precise
+geometric or algebraic construction (Cayley--Dickson, Fano
+incidence, Clifford generators, signature seam, Hodge duality,
+blade partition, projector decomposition, operator typing).  Each
+layer also carries an executable verification probe; every probe
+passes (see Section~\ref{sec:layer0} onward).  The three
+keystone-coloured rows (Layer~3, Layer~4, Layer~8) are where the
+chain has irreducible content: the seam, the witness, and the final
+theorem.  No free numerical parameter is introduced anywhere along
+the chain.}\label{fig:chain}
 \end{figure}
 
 The mathematical content is the following.  Beginning with the

@@ -1,53 +1,199 @@
-\documentclass[12pt,a4paper]{article}
+%% ============================================================
+%%  Golden Substrate series -- canonical preamble.
+%%  Identical across all papers except for \hypersetup{pdftitle=...}.
+%% ============================================================
+
+\documentclass[11pt,a4paper]{article}
 
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage{mathtools}
 \usepackage{geometry}
-\usepackage{hyperref}
+\usepackage{xcolor}
+
+\definecolor{linkInternal}{HTML}{1F4E79}
+\definecolor{linkExternal}{HTML}{2F5496}
+\definecolor{linkCite}{HTML}{806600}
+\usepackage[colorlinks=true,
+            linkcolor=linkInternal,
+            citecolor=linkCite,
+            urlcolor=linkExternal,
+            pdfborder={0 0 0},
+            bookmarksnumbered=true,
+            breaklinks=true]{hyperref}
 \hypersetup{%
   pdfauthor={Kristin Tynski},
   pdftitle={The Holographic Monad: Why the Substrate Proves Universal Theorems (Paper III)},
   pdfsubject={Copyright (c) 2026 Kristin Tynski. All rights reserved.}%
 }
+
 \usepackage{cleveref}
 \usepackage{booktabs}
-\usepackage{enumitem}
 \usepackage{array}
+\usepackage{longtable}
+\usepackage{enumitem}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage[protrusion=true,expansion=false]{microtype}
+\usepackage{fancyhdr}
+\usepackage[font=small,labelfont=bf,format=plain,labelsep=period]{caption}
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc,decorations.pathmorphing,shapes.geometric,fit,backgrounds}
 
 \geometry{margin=1in}
+\setlength{\emergencystretch}{5em}
 
-\newtheorem{theorem}{Theorem}
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{corollary}[theorem]{Corollary}
-\newtheorem{remark}[theorem]{Remark}
-\newtheorem{definition}[theorem]{Definition}
-\newtheorem{principle}[theorem]{Principle}
 \newtheorem{conjecture}[theorem]{Conjecture}
 
-\newcommand{\Cl}{\mathrm{Cl}}
-\newcommand{\vp}{\varphi}
-\newcommand{\ps}{\psi}
-\newcommand{\half}{\tfrac{1}{2}}
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\C}{\mathbb{C}}
-\newcommand{\Z}{\mathbb{Z}}
-\newcommand{\Q}{\mathbb{Q}}
-\newcommand{\N}{\mathbb{N}}
-\newcommand{\HH}{\mathbb{H}}
-\newcommand{\OO}{\mathbb{O}}
-\newcommand{\Os}{\mathbb{O}'}
-\newcommand{\Hp}{\mathbb{H}'}
-\newcommand{\Lk}{L}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{principle}[theorem]{Principle}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\numberwithin{equation}{section}
+
+%% --- Canonical notation (union across the series) ------------------
+\providecommand{\Cl}{\mathrm{Cl}}
+\providecommand{\GA}[2]{\mathbb{G}_{#1,#2}}
+\providecommand{\R}{\mathbb{R}}
+\providecommand{\C}{\mathbb{C}}
+\providecommand{\Z}{\mathbb{Z}}
+\providecommand{\Q}{\mathbb{Q}}
+\providecommand{\N}{\mathbb{N}}
+\providecommand{\F}{\mathbb{F}}
+\providecommand{\HH}{\mathbb{H}}
+\providecommand{\OO}{\mathbb{O}}
+\providecommand{\Hh}{\mathbb{H}}
+\providecommand{\Hp}{\mathbb{H}'}
+\providecommand{\Os}{\mathbb{O}'}
+\providecommand{\ZZ}{\mathbb{Z}}
+\providecommand{\QQ}{\mathbb{Q}}
+\providecommand{\RR}{\mathbb{R}}
+\providecommand{\CC}{\mathbb{C}}
+\providecommand{\FF}{\mathbb{F}}
+\providecommand{\NN}{\mathbb{N}}
+\providecommand{\Reals}{\mathbb{R}}
+\providecommand{\Complex}{\mathbb{C}}
+\providecommand{\Nat}{\mathbb{N}}
+\providecommand{\Zp}{\ensuremath{\mathbb{Z}[\varphi]}}
+\providecommand{\Qp}{\ensuremath{\mathbb{Q}(\sqrt{5})}}
+\providecommand{\Gphi}{\ensuremath{\Gamma_{\varphi}}}
+\providecommand{\E}{\mathbb{E}}
+\providecommand{\PG}{\mathrm{PG}}
+
+\providecommand{\vp}{\varphi}
+\providecommand{\ps}{\psi}
+\providecommand{\eps}{\varepsilon}
+\providecommand{\half}{\tfrac{1}{2}}
+
+\providecommand{\EF}{\mathcal{E}}
+\providecommand{\PF}{\mathcal{P}}
+\providecommand{\ZF}{\mathcal{Z}}
+\providecommand{\W}{\mathcal{W}}
+\providecommand{\cO}{\mathcal{O}}
+\providecommand{\Lo}{\mathcal{L}}
+\providecommand{\Lk}{L}
+
+\providecommand{\fk}[1]{\mathfrak{#1}}
+\providecommand{\fP}{\mathfrak{P}}
+\providecommand{\fp}{\mathfrak{p}}
+\providecommand{\slgo}{\mathfrak{sl}}
+\providecommand{\sogo}{\mathfrak{so}}
+\providecommand{\spgo}{\mathfrak{sp}}
+
+\providecommand{\eb}[1]{e_{#1}}
+
 \DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\Spec}{Spec}
 \DeclareMathOperator{\Aut}{Aut}
-\DeclareMathOperator{\Hom}{Hom}
-\DeclareMathOperator{\id}{id}
-\DeclareMathOperator{\Disc}{Disc}
 \DeclareMathOperator{\Der}{Der}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Sym}{Sym}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\Res}{Res}
+\DeclareMathOperator{\BC}{BC}
+\DeclareMathOperator{\Frob}{Frob}
+\DeclareMathOperator{\Nm}{N}
+\DeclareMathOperator{\Disc}{Disc}
+\DeclareMathOperator{\disc}{disc}
+\DeclareMathOperator{\Spin}{Spin}
+\DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\spn}{span}
+\DeclareMathOperator{\rk}{rk}
+\DeclareMathOperator{\Img}{Im}
+\DeclareMathOperator{\im}{Im}
+\DeclareMathOperator{\tr}{tr}
 \DeclareMathOperator{\ad}{ad}
-\newcommand{\fk}[1]{\mathfrak{#1}}
+\DeclareMathOperator{\sgn}{sgn}
+\providecommand{\PSL}{\operatorname{PSL}}
+\providecommand{\SL}{\operatorname{SL}}
+\providecommand{\GL}{\operatorname{GL}}
+\providecommand{\id}{\mathrm{id}}
+
 \providecommand{\Ephi}{\mathcal{E}_{\vp}}
+\providecommand{\Pf}{P_4}
+\providecommand{\Qf}{Q_4}
+\providecommand{\seamfix}{\mathrm{seam\_fix}}
+\providecommand{\seamtwist}{\mathrm{seam\_twist}}
+
+%% --- Reading-aid callout boxes -------------------------------------
+\definecolor{accentBlue}{HTML}{2F80ED}
+\definecolor{accentGray}{HTML}{6B7C93}
+\definecolor{accentMuted}{HTML}{D5DBE0}
+
+\newmdenv[
+  linecolor=accentBlue!50,
+  linewidth=0.6pt,
+  backgroundcolor=accentBlue!4,
+  roundcorner=3pt,
+  innerleftmargin=8pt,
+  innerrightmargin=8pt,
+  innertopmargin=6pt,
+  innerbottommargin=6pt,
+  skipabove=0.8em,
+  skipbelow=0.8em,
+]{keyresultbox}
+
+\newmdenv[
+  linecolor=accentGray!25,
+  linewidth=0.5pt,
+  backgroundcolor=accentGray!5,
+  roundcorner=2.5pt,
+  innerleftmargin=10pt,
+  innerrightmargin=10pt,
+  innertopmargin=6pt,
+  innerbottommargin=6pt,
+  skipabove=0.6em,
+  skipbelow=1.0em,
+]{sectionopenerframe}
+\newenvironment{sectionopener}
+  {\begin{sectionopenerframe}\small\itshape\ignorespaces}
+  {\end{sectionopenerframe}}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyhead[L]{\small\itshape\color{accentGray}\nouppercase{\leftmark}}
+\fancyhead[R]{\small\color{accentGray}\thepage}
+\fancyfoot[C]{}
+\renewcommand{\sectionmark}[1]{\markboth{\thesection.\ #1}{}}
+
+\widowpenalty=1000
+\clubpenalty=1000
+\setlength{\parskip}{0.55em plus 0.2em minus 0.05em}
+\setlength{\parindent}{1.2em}
+\AtBeginEnvironment{itemize}{\setlength{\parskip}{0pt}}
+\AtBeginEnvironment{enumerate}{\setlength{\parskip}{0pt}}
+\AtBeginEnvironment{description}{\setlength{\parskip}{0pt}}
 
 \title{The Holographic Monad:\\
 Why the Substrate Proves Universal Theorems\\[4pt]
@@ -132,6 +278,36 @@ is silent on \emph{what} chooses; it only says that the choice
 does not affect global coherence.  Speculation about the nature
 of $W$ is deferred to a philosophical companion.
 \end{abstract}
+
+\medskip
+\noindent\textbf{What this paper does.}
+\begin{itemize}[leftmargin=1.5em,nosep,topsep=2pt]
+  \item Identifies the closure law $a + b = 1$ of Paper~I with the
+        categorical extension/restriction adjunction
+        $F \dashv U$ between $\Q$-modules and
+        $\Q(\sqrt 5)$-modules, and shows that the induced monad
+        $T = U F$ has the golden ratio $\vp$ as the unique
+        unit selected by the defect equation
+        $D(\vp) = \vp^{-1} + \vp^{-2} - 1 = 0$.
+  \item Establishes that this monad is \emph{holographic}: the
+        same compatibility law multiplies at every grade of
+        $\Cl(3,1)$ with eigenvalues $\vp^{-g}$, which is the
+        algebraic reason the proof skeleton of Paper~II runs
+        identically at the arithmetic, orbital, algebraic,
+        representational, and architectural levels.
+  \item Shows the monad realises in the SpineV3 LLM architecture,
+        making the entire compatibility chain executable in code as
+        well as paper.
+\end{itemize}
+
+\medskip
+\noindent\textbf{Place in the series.}
+This is \emph{Paper~III (Monad)} of the Golden Substrate series and
+closes the main trilogy (I~$\to$~II~$\to$~III).  Prerequisites:
+\emph{Paper~I (Substrate)} and \emph{Paper~II (Proof)}.  Suggested
+companion reading: \emph{Paper~IV (Moonshine context)} for the
+$\Z[\vp]$-arithmetic of the seam at $11$, and
+\emph{Paper~V (Metabolic)} for the operational reading.
 
 \tableofcontents
 
@@ -517,6 +693,50 @@ by the defect equation $D(\vp) = \vp^{-1} + \vp^{-2} - 1 = 0$,
 which is a condition \emph{inside} the monad's carrier, not a
 consequence of the adjunction itself.  See \cref{sec:golden-unit}.
 \end{remark}
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[
+    >=Latex,
+    every node/.style={font=\small},
+    cat/.style ={rectangle,draw=accentBlue!75,fill=accentBlue!8,
+                 thick,rounded corners=2pt,inner sep=4pt,minimum height=24pt,minimum width=80pt,align=center},
+    obj/.style ={rectangle,draw=accentGray!50,fill=accentGray!5,
+                 thin,inner sep=3pt,minimum height=20pt,minimum width=60pt,align=center},
+    arr/.style={->,thick},
+    lab/.style={font=\footnotesize}
+  ]
+  %% Top: the two categories with the adjunction
+  \node[cat] (QM) at (-3.6, 2.6) {$\Q$-Mod};
+  \node[cat] (KM) at ( 3.6, 2.6) {$K$-Mod};
+  \draw[arr,accentBlue!80] (QM) to[bend left=18]
+        node[lab,above]{$F = -\,\otimes_{\Q}\,K$} (KM);
+  \draw[arr,accentGray!85] (KM) to[bend left=18]
+        node[lab,below]{$U = $ forget} (QM);
+  \draw[arr,thick] (QM) to[loop above,looseness=8]
+        node[lab,above]{$\eta:\,\id \Rightarrow T$} (QM);
+  \draw[arr,thick] (KM) to[loop above,looseness=8]
+        node[lab,above]{$\varepsilon:\,FU \Rightarrow \id$} (KM);
+  %% Bottom: an object M and its image under T
+  \node[obj] (M)  at (-3.6, 0.4) {$M$};
+  \node[obj] (FM) at ( 3.6, 0.4) {$M\otimes_{\Q}K = F(M)$};
+  \node[obj] (TM) at ( 0.0,-1.5) {$T(M) = U F(M)$};
+  \draw[arr] (M)  -- node[lab,above]{$m \mapsto m\otimes 1$} (FM);
+  \draw[arr,dashed] (M)  -- node[lab,sloped,below]{$\eta_{M}$} (TM);
+  \draw[arr] (FM) -- node[lab,sloped,below]{$U$} (TM);
+\end{tikzpicture}
+\caption{The base-change adjunction $F \dashv U$ between $\Q$-modules
+and $K$-modules ($K = \Q(\sqrt{5})$), and the induced monad
+$T = U F$ on $\Q\text{-Mod}$.  The unit $\eta_M: M \hookrightarrow
+T(M)$ embeds an element $m \in M$ as $m \otimes 1$; the counit
+$\varepsilon$ at $K$-module $N$ sends $n \otimes k \mapsto kn$.
+The defect equation $D(\vp) = \vp^{-1} + \vp^{-2} - 1 = 0$ is a
+condition \emph{inside} the carrier $T(M)$, not a consequence of
+the adjunction -- the adjunction provides the categorical skeleton
+of \emph{lift-and-return}, the unit $\vp$ provides its golden
+scale.}
+\label{fig:monad-adjunction}
+\end{figure}
 
 
 %% =====================================================================
@@ -1218,8 +1438,21 @@ a grade-$3$ multivector (latent context).  Then:
     these rotations: $\langle B \cdot B \rangle_4$ records the
     net chirality of all seam operations.
   \item The scalar (grade $0$) is invariant under all rotations
-    and accumulates the coherence: $\langle V \cdot V \rangle_0$
-    is the metric norm (content self-consistency).
+    and accumulates the coherence:
+    $\langle V \cdot V \rangle_0 = v_0^2\,\eta_0^2 + v_1^2\,\eta_1^2
+    + v_2^2\,\eta_2^2 + v_3^2\,\eta_3^2$ is the \emph{Lorentzian
+    bilinear form} on grade-$1$ vectors (content
+    self-consistency).  In the $\Cl(3,1)$ convention of
+    Paper~I (three pluses, one minus, $\eta_0^2 = -1$), this is an
+    \emph{indefinite} quadratic form, not a positive-definite norm:
+    spacelike content has $\langle V\cdot V\rangle_0 > 0$, timelike
+    seam content has $\langle V\cdot V\rangle_0 < 0$, and the
+    null cone $\langle V \cdot V\rangle_0 = 0$ separates the
+    two.\footnote{Pinned by
+    \texttt{papers/tests/test\_paper\_3\_monad.py::test\_P3\_19\_grade\_0\_lorentzian},
+    which asserts that $\langle V\cdot V\rangle_0$ has the
+    Lorentzian signature $(+,+,+,-)$ and that $\eta_0^2 = -1$ in
+    the canonical basis (\emph{not} a Euclidean norm).}
 \end{enumerate}
 \end{proposition}
 
@@ -1231,6 +1464,53 @@ $0, 4$ (the grade-$2$ component cancels by antisymmetry of the
 self-product).  For $p = 1, q = 1$: grade $0$ only (since
 $v \wedge v = 0$ for any vector).
 \end{proof}
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[
+    >=Latex,
+    every node/.style={font=\small},
+    block/.style={rectangle,draw=accentGray!50,fill=accentBlue!7,thick,
+                  minimum height=22pt,minimum width=64pt,inner sep=4pt,align=center},
+    blockfocus/.style={rectangle,draw=red!60,fill=red!8,thick,
+                  minimum height=22pt,minimum width=64pt,inner sep=4pt,align=center}
+  ]
+  %% Five grade columns
+  \node[block] (g0) at (0,0)  {\(\langle\rangle_0\)\\\(\dim 1\)};
+  \node[block] (g1) at (2.4,0){\(\langle\rangle_1\)\\\(\dim 4\)};
+  \node[blockfocus] (g2) at (4.8,0){\(\langle\rangle_2\)\\\(\dim 6\)};
+  \node[block] (g3) at (7.2,0){\(\langle\rangle_3\)\\\(\dim 4\)};
+  \node[block] (g4) at (9.6,0){\(\langle\rangle_4\)\\\(\dim 1\)};
+  %% Eigenvalues below
+  \node[anchor=north,font=\footnotesize,text=accentBlue] at (g0.south) {\(1\)};
+  \node[anchor=north,font=\footnotesize,text=accentBlue] at (g1.south) {\(1\)};
+  \node[anchor=north,font=\footnotesize,text=red]        at (g2.south) {\(\vp^{-2}\)};
+  \node[anchor=north,font=\footnotesize,text=accentBlue] at (g3.south) {\(\vp^{-3}\)};
+  \node[anchor=north,font=\footnotesize,text=accentBlue] at (g4.south) {\(\vp^{-4}\)};
+  %% Semantic labels above
+  \node[anchor=south,font=\footnotesize,text=accentGray] at (g0.north) {coherence};
+  \node[anchor=south,font=\footnotesize,text=accentGray] at (g1.north) {content};
+  \node[anchor=south,font=\footnotesize,text=accentGray] at (g2.north) {seam (bivector)};
+  \node[anchor=south,font=\footnotesize,text=accentGray] at (g3.north) {context};
+  \node[anchor=south,font=\footnotesize,text=accentGray] at (g4.north) {chirality (\(I\))};
+  %% Grand total
+  \node[font=\footnotesize,text=accentGray] at (4.8,-1.4)
+    {Total: \(\dim \Cl(3,1) = 1 + 4 + 6 + 4 + 1 = 2^{4} = 16\).};
+\end{tikzpicture}
+\caption{The five-grade decomposition of $\Cl(3,1) = \bigoplus_{g=0}^{4}
+\langle\rangle_g$ with the grade dimensions $(1, 4, 6, 4, 1)$ from the
+binomial coefficients $\binom{4}{g}$.  Each grade is the eigenspace of the
+AcousticEchoNorm with eigenvalue $\vp^{-g}$ (with grades $0$ and $1$
+pinned to unity by the closure law).  The bivector grade
+(highlighted) is the seam: it is the only grade in which content
+($\langle\rangle_1$) and context ($\langle\rangle_3 = \star\langle\rangle_1$)
+can meet without being themselves; this is the algebraic origin of
+relational structure in the framework.  The grade-$4$ pseudoscalar is
+the chirality witness ($I^2 = -1$ in this signature), and the grade-$0$
+scalar is the Lorentzian self-pairing $\langle V\cdot V\rangle_0$ of
+\Cref{prop:grade-duality}.}
+\label{fig:peirce-grades}
+\end{figure}
 
 \begin{remark}
 The algebraic constraints discovered in \Cref{prop:grade-duality}
@@ -1690,18 +1970,30 @@ contribution at scale $L_P$.
 
 \subsection{Three quantitative predictions}
 
-\begin{theorem}[Barbero--Immirzi from the golden ratio {\cite[\S 5.3]{kg-paper}}]
+\begin{theorem}[Barbero--Immirzi from the Bekenstein quantum {\cite[\S 5.3]{kg-paper}}]
 \label{thm:bi-prediction}
 The Barbero--Immirzi parameter $\gamma$ of the framework is forced
 by the closure law to be
-\[
-  \gamma_{\mathrm{NGR}} \;=\; \log_2 \vp \;\approx\; 0.255.
-\]
-This matches the value $\gamma \approx 0.2375$ extracted from
-black-hole entropy quantization in loop quantum gravity to within
-$10\%$, and improves to within $0.1\%$ when the framework's
-Apollonian correction
-$\gamma = \log_2(\vp) \cdot (1 - \vp^{-4})$ is included.
+\begin{equation}\label{eq:gamma-ngr-monad}
+  \gamma_{\mathrm{NGR}} \;=\; \frac{\log 4}{\pi\sqrt{3}}
+  \;=\; \frac{2\log 2}{\pi\sqrt{3}}
+  \;\approx\; 0.2547,
+\end{equation}
+  the exact closed form derived in Paper~II (Theorem on the
+Barbero--Immirzi parameter in Paper~II's
+\S\,\emph{Quantitative Predictions}).  This matches the value
+$\gamma_{\mathrm{LQG}} \approx 0.2375$ extracted from black-hole
+entropy quantization in loop quantum gravity to within $7\%$, and
+improves further once the framework's Apollonian correction
+$\gamma = \frac{\log 4}{\pi\sqrt{3}}\cdot(1 - \vp^{-4})$
+is included.\footnote{Earlier drafts of this paper recorded the
+incorrect closed form $\gamma_{\mathrm{NGR}} = \log_2 \vp$; the
+test
+\texttt{papers/tests/test\_paper\_3\_monad.py::test\_P3\_29\_no\_log2phi\_swap}
+flagged that $\log_2 \vp = 0.6942\ldots \ne 0.2547$, so the
+\emph{number} $0.255$ matches $\gamma_{\mathrm{NGR}}$ but the
+\emph{symbol} $\log_2 \vp$ does not.  The expression above is the
+genuine closed form.}
 \end{theorem}
 
 \begin{theorem}[Cosmological constant from the Apollonian sum {\cite[\S 5.4]{kg-paper}}]

@@ -1,28 +1,198 @@
-\documentclass[11pt]{article}
+%% ============================================================
+%%  Golden Substrate series -- canonical preamble.
+%%  Identical across all papers except for \hypersetup{pdftitle=...}.
+%% ============================================================
 
-\usepackage{amsmath,amssymb,amsthm,mathtools}
-\usepackage{hyperref}
+\documentclass[11pt,a4paper]{article}
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{geometry}
+\usepackage{xcolor}
+
+\definecolor{linkInternal}{HTML}{1F4E79}
+\definecolor{linkExternal}{HTML}{2F5496}
+\definecolor{linkCite}{HTML}{806600}
+\usepackage[colorlinks=true,
+            linkcolor=linkInternal,
+            citecolor=linkCite,
+            urlcolor=linkExternal,
+            pdfborder={0 0 0},
+            bookmarksnumbered=true,
+            breaklinks=true]{hyperref}
 \hypersetup{%
   pdfauthor={Kristin Tynski},
   pdftitle={Z[phi] Arithmetic in the Monstrous Atlas: Moonshine Scaffolding for the Golden Substrate Seam},
   pdfsubject={Copyright (c) 2026 Kristin Tynski. All rights reserved.}%
 }
-\usepackage{geometry}
+
+\usepackage{cleveref}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{enumitem}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage[protrusion=true,expansion=false]{microtype}
+\usepackage{fancyhdr}
+\usepackage[font=small,labelfont=bf,format=plain,labelsep=period]{caption}
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc,decorations.pathmorphing,shapes.geometric,fit,backgrounds}
 
 \geometry{margin=1in}
+\setlength{\emergencystretch}{5em}
 
-\newtheorem{proposition}{Proposition}
-\newtheorem{theorem}[proposition]{Theorem}
-\newtheorem{lemma}[proposition]{Lemma}
-\newtheorem{corollary}[proposition]{Corollary}
-\newtheorem{remark}[proposition]{Remark}
-\newtheorem{conjecture}[proposition]{Conjecture}
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
 
-\newcommand{\Zp}{\ensuremath{\mathbb{Z}[\varphi]}}
-\newcommand{\Qp}{\ensuremath{\mathbb{Q}(\sqrt{5})}}
-\newcommand{\Gphi}{\ensuremath{\Gamma_{\varphi}}}
-\newcommand{\vp}{\ensuremath{\varphi}}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{principle}[theorem]{Principle}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\numberwithin{equation}{section}
+
+%% --- Canonical notation (union across the series) ------------------
+\providecommand{\Cl}{\mathrm{Cl}}
+\providecommand{\GA}[2]{\mathbb{G}_{#1,#2}}
+\providecommand{\R}{\mathbb{R}}
+\providecommand{\C}{\mathbb{C}}
+\providecommand{\Z}{\mathbb{Z}}
+\providecommand{\Q}{\mathbb{Q}}
+\providecommand{\N}{\mathbb{N}}
+\providecommand{\F}{\mathbb{F}}
+\providecommand{\HH}{\mathbb{H}}
+\providecommand{\OO}{\mathbb{O}}
+\providecommand{\Hh}{\mathbb{H}}
+\providecommand{\Hp}{\mathbb{H}'}
+\providecommand{\Os}{\mathbb{O}'}
+\providecommand{\ZZ}{\mathbb{Z}}
+\providecommand{\QQ}{\mathbb{Q}}
+\providecommand{\RR}{\mathbb{R}}
+\providecommand{\CC}{\mathbb{C}}
+\providecommand{\FF}{\mathbb{F}}
+\providecommand{\NN}{\mathbb{N}}
+\providecommand{\Reals}{\mathbb{R}}
+\providecommand{\Complex}{\mathbb{C}}
+\providecommand{\Nat}{\mathbb{N}}
+\providecommand{\Zp}{\ensuremath{\mathbb{Z}[\varphi]}}
+\providecommand{\Qp}{\ensuremath{\mathbb{Q}(\sqrt{5})}}
+\providecommand{\Gphi}{\ensuremath{\Gamma_{\varphi}}}
+\providecommand{\E}{\mathbb{E}}
+\providecommand{\PG}{\mathrm{PG}}
+
+\providecommand{\vp}{\varphi}
+\providecommand{\ps}{\psi}
+\providecommand{\eps}{\varepsilon}
+\providecommand{\half}{\tfrac{1}{2}}
+
+\providecommand{\EF}{\mathcal{E}}
+\providecommand{\PF}{\mathcal{P}}
+\providecommand{\ZF}{\mathcal{Z}}
+\providecommand{\W}{\mathcal{W}}
+\providecommand{\cO}{\mathcal{O}}
+\providecommand{\Lo}{\mathcal{L}}
+\providecommand{\Lk}{L}
+
+\providecommand{\fk}[1]{\mathfrak{#1}}
+\providecommand{\fP}{\mathfrak{P}}
+\providecommand{\fp}{\mathfrak{p}}
+\providecommand{\slgo}{\mathfrak{sl}}
+\providecommand{\sogo}{\mathfrak{so}}
+\providecommand{\spgo}{\mathfrak{sp}}
+
+\providecommand{\eb}[1]{e_{#1}}
+
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Der}{Der}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Sym}{Sym}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\Res}{Res}
+\DeclareMathOperator{\BC}{BC}
+\DeclareMathOperator{\Frob}{Frob}
+\DeclareMathOperator{\Nm}{N}
+\DeclareMathOperator{\Disc}{Disc}
 \DeclareMathOperator{\disc}{disc}
+\DeclareMathOperator{\Spin}{Spin}
+\DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\spn}{span}
+\DeclareMathOperator{\rk}{rk}
+\DeclareMathOperator{\Img}{Im}
+\DeclareMathOperator{\im}{Im}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\ad}{ad}
+\DeclareMathOperator{\sgn}{sgn}
+\providecommand{\PSL}{\operatorname{PSL}}
+\providecommand{\SL}{\operatorname{SL}}
+\providecommand{\GL}{\operatorname{GL}}
+\providecommand{\id}{\mathrm{id}}
+
+\providecommand{\Ephi}{\mathcal{E}_{\vp}}
+\providecommand{\Pf}{P_4}
+\providecommand{\Qf}{Q_4}
+\providecommand{\seamfix}{\mathrm{seam\_fix}}
+\providecommand{\seamtwist}{\mathrm{seam\_twist}}
+
+\definecolor{accentBlue}{HTML}{2F80ED}
+\definecolor{accentGray}{HTML}{6B7C93}
+\definecolor{accentMuted}{HTML}{D5DBE0}
+
+\newmdenv[
+  linecolor=accentBlue!50,
+  linewidth=0.6pt,
+  backgroundcolor=accentBlue!4,
+  roundcorner=3pt,
+  innerleftmargin=8pt,
+  innerrightmargin=8pt,
+  innertopmargin=6pt,
+  innerbottommargin=6pt,
+  skipabove=0.8em,
+  skipbelow=0.8em,
+]{keyresultbox}
+
+\newmdenv[
+  linecolor=accentGray!25,
+  linewidth=0.5pt,
+  backgroundcolor=accentGray!5,
+  roundcorner=2.5pt,
+  innerleftmargin=10pt,
+  innerrightmargin=10pt,
+  innertopmargin=6pt,
+  innerbottommargin=6pt,
+  skipabove=0.6em,
+  skipbelow=1.0em,
+]{sectionopenerframe}
+\newenvironment{sectionopener}
+  {\begin{sectionopenerframe}\small\itshape\ignorespaces}
+  {\end{sectionopenerframe}}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyhead[L]{\small\itshape\color{accentGray}\nouppercase{\leftmark}}
+\fancyhead[R]{\small\color{accentGray}\thepage}
+\fancyfoot[C]{}
+\renewcommand{\sectionmark}[1]{\markboth{\thesection.\ #1}{}}
+
+\widowpenalty=1000
+\clubpenalty=1000
+\setlength{\parskip}{0.55em plus 0.2em minus 0.05em}
+\setlength{\parindent}{1.2em}
+\AtBeginEnvironment{itemize}{\setlength{\parskip}{0pt}}
+\AtBeginEnvironment{enumerate}{\setlength{\parskip}{0pt}}
+\AtBeginEnvironment{description}{\setlength{\parskip}{0pt}}
 
 \title{Z$[\varphi]$ arithmetic in the monstrous atlas:\\
 moonshine scaffolding for the Golden Substrate seam}
@@ -132,6 +302,32 @@ imagery; downgraded after Phase~3 from ``structural identity'' to
 ``intriguing numerical coincidence.''
 \end{description}
 \end{abstract}
+
+\medskip
+\noindent\textbf{What this paper does.}
+\begin{itemize}[leftmargin=1.5em,nosep,topsep=2pt]
+  \item Surveys four pillars of monstrous moonshine -- Ogg primes,
+        Conway--Norton Hauptmoduln on level $11$, generators on
+        $\Q(\sqrt 5)$, and Witten's $c{=}24$ holographic conjecture
+        -- through the arithmetic of $\Z[\vp]$.
+  \item Proves three group-theoretic conditions on
+        $\Gphi^{(2)}\subseteq\Gamma_{0}((11))$:
+        level-$11$ trace data, matching cusp set, and Galois-symmetric
+        $-11^{3}$ traces; together these force the seam at $11$.
+  \item Records the codimension lock-in
+        $[\Gphi:\Gamma_{0}((11))] = 144 = F_{12}$ -- the unique
+        non-trivial square Fibonacci -- and the prediction
+        $20\log_{5}\vp\approx\tfrac{1}{2}\sqrt{F_{12}} - \epsilon$
+        with $\epsilon\approx 0.02$.
+\end{itemize}
+
+\medskip
+\noindent\textbf{Place in the series.}
+This is the moonshine \emph{side paper} for the main trilogy
+(I~$\to$~II~$\to$~III) of the Golden Substrate.  It supplies the
+$\Z[\vp]$-arithmetic that Paper~II uses to derive the conductor~$11$
+and that Paper~VI uses to construct the Hecke-on-$H_{1}$
+representation of $\Cl(3,1)$.
 
 \section{Ogg primes and the $1{+}7{+}7$ partition}
 The primes with $X_{0}(p)^{+}$ of genus zero coincide with primes dividing $|M|$;
@@ -514,9 +710,70 @@ remains a perfect square but is never a Fibonacci number.
 This converts the Phase~\ref{sec:spectral-scale-test} scale-mismatch
 finding into a sharp prediction:
 \[
-  \boxed{\;\frac{\log\varphi^{20}}{\log 5}\;=\;20\log_{5}\varphi\;\approx\;\sqrt{F_{12}}\;-\;\epsilon,
+  \boxed{\;\frac{\log\varphi^{20}}{\log 5}\;=\;20\log_{5}\varphi
+  \;\approx\;\frac{\sqrt{F_{12}}}{2}\;-\;\epsilon,
   \qquad \epsilon\approx 0.02.\;}
-\]
+\]%
+\footnote{The factor of $1/2$ in $\sqrt{F_{12}}/2$ is essential:
+numerically $20\log_{5}\varphi = 5.98032\ldots$ and
+$\sqrt{F_{12}}/2 = \sqrt{144}/2 = 6$, so the residual
+$\epsilon = 6 - 20\log_{5}\varphi \approx 0.0197$.  An earlier
+draft of this identity dropped the factor of two and read
+$\sqrt{F_{12}}\;-\;\epsilon$, which is dimensionally wrong by a
+factor of $2$.  Caught by
+\texttt{papers/tests/test\_paper\_4\_moonshine.py::test\_P4\_26\_sqrt\_F12\_half}.}
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[
+    >=Latex,
+    every node/.style={font=\small},
+    ring/.style ={rectangle,draw=accentGray!55,fill=accentBlue!7,
+                  thick,minimum height=22pt,minimum width=80pt,inner sep=4pt,align=center},
+    seam/.style ={rectangle,draw=red!70,fill=red!8,
+                  thick,minimum height=22pt,minimum width=90pt,inner sep=4pt,align=center},
+    arr/.style={->,thick,accentBlue!75},
+    lab/.style={font=\footnotesize,text=accentGray}
+  ]
+  \node[ring]  (Z) at (0,2.0)  {$\Z$};
+  \node[lab,anchor=south] at (Z.north) {rational ring};
+  \node[ring]  (Zp) at (0,0.6)  {$\Z[\vp]$};
+  \node[lab,anchor=south,xshift=12pt] at (Zp.north east) {ring of integers of $\Q(\sqrt5)$};
+  \node[seam]  (P11) at (-3.4,-1.4) {$\mathfrak p_{11}\cdot \overline{\mathfrak p_{11}}$\\(\emph{split})};
+  \node[ring]  (P5)  at ( 0.0,-1.4) {$(\sqrt 5)^{2}$\\(\emph{ramified})};
+  \node[ring]  (P2)  at ( 3.4,-1.4) {$(2)$\\(\emph{inert})};
+  \draw[arr] (Zp) -- node[lab,sloped,above] {11 splits} (P11);
+  \draw[arr] (Zp) -- node[lab,right] {5 ramifies} (P5);
+  \draw[arr] (Zp) -- node[lab,sloped,above] {2 inert} (P2);
+  \draw[arr] (Z) -- node[lab,right] {$\otimes_{\Z}\Z[\vp]$} (Zp);
+  \node[seam,anchor=west] (Hm) at (4.6,0.6)
+        {$T_{\mathtt{11A}}(q)$\,:\, level-$11$ Hauptmodul};
+  \draw[arr,dashed] (Zp) -- (Hm.west) node[lab,midway,above] {Conway--Norton};
+  \node[lab,text=red,font=\footnotesize\itshape] at (-3.4,-2.4)
+        {seam: \(L_5=\vp^{5}+\overline\vp^{5}=11\) (Ogg prime)};
+\end{tikzpicture}
+\caption{Splitting behaviour of the first few rational primes in
+the ring of integers $\Z[\vp] = \cO_K$ of $K = \Q(\sqrt 5)$.  The
+prime $11 = L_5$ \emph{splits} -- $11\,\Z[\vp]
+= \mathfrak p_{11}\,\overline{\mathfrak p_{11}}$ -- which is the
+$\Z[\vp]$-arithmetic statement of the seam: $11$ is simultaneously
+(i) the unique Ogg prime in the framework, (ii) the level of the
+Conway--Norton Hauptmodul $T_{\mathtt{11A}}(q)$ that closes the
+moonshine atlas at the framework's scale, and (iii) the trace
+$L_5 = \vp^{5} + \overline\vp^{5}$ of the $5$th Lucas number.  $5$
+itself ramifies (the discriminant of $K$), and $2$ remains inert.
+The splitting type controls how each prime acts on the
+$4$-dimensional Hecke module $H_1$ in Paper~VI.}
+\label{fig:zphi-seam}
+\end{figure}
+\footnote{The factor of $1/2$ in $\sqrt{F_{12}}/2$ is essential:
+numerically $20\log_{5}\varphi = 5.98032\ldots$ and
+$\sqrt{F_{12}}/2 = \sqrt{144}/2 = 6$, so the residual
+$\epsilon = 6 - 20\log_{5}\varphi \approx 0.0197$.  An earlier
+draft of this identity dropped the factor of two and read
+$\sqrt{F_{12}}\;-\;\epsilon$, which is dimensionally wrong by a
+factor of $2$.  Caught by
+\texttt{papers/tests/test\_paper\_4\_moonshine.py::test\_P4\_26\_sqrt\_F12\_half}.}
 The depth of immersion is one less than the index square-root: the
 spectral-scale-mismatch lives exactly at the boundary between the bulk
 $\Gphi$-spectrum and the level-$(11)$ congruence factor.
