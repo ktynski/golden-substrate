@@ -1,0 +1,336 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{geometry}
+\usepackage{xcolor}
+
+\definecolor{linkInternal}{HTML}{1F4E79}
+\definecolor{linkExternal}{HTML}{2F5496}
+\definecolor{linkCite}{HTML}{806600}
+
+\usepackage[colorlinks=true,
+            linkcolor=linkInternal,
+            citecolor=linkCite,
+            urlcolor=linkExternal,
+            pdfborder={0 0 0},
+            bookmarksnumbered=true,
+            breaklinks=true]{hyperref}
+\usepackage{cleveref}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage[protrusion=true,expansion=false]{microtype}
+\usepackage[font=small,labelfont=bf,format=plain,labelsep=period]{caption}
+
+\geometry{margin=1in}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\DeclareMathOperator{\Cl}{Cl}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\Nm}{N}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\rk}{rk}
+\DeclareMathOperator{\sgn}{sgn}
+
+\newcommand{\HH}{\mathbb{H}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\FF}{\mathbb{F}}
+\newcommand{\fP}{\mathfrak{P}}
+\newcommand{\cO}{\mathcal{O}}
+
+\title{Paper VII: The Information-Acoustic Eversion\\[4pt]
+\large Sphere Eversion as Hecke Propagation through the Cl(3,1) Substrate}
+\author{Kristin Tynski}
+\date{May 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We show that sphere eversion---the orientation reversal of an immersed
+$S^2$ in $\RR^3$---admits a natural arithmetic realization as Hecke
+propagation on the 4-dimensional Hilbert modular homology
+$H_1(X_0((11)), \mathrm{cusps}; \ZZ)$ over $K = \QQ(\sqrt{5})$.
+A coherence state $\psi \in H_1 \cong \RR^4$ evolves under
+$\psi_k = T_{\fP_k}\psi_{k-1}$, where $T_\fP = a_\fP\,\Pi_c + (\Nm(\fP)+1)\,\Pi_e$
+is the Hecke operator from Paper~VI.  The eversion completes when
+$\prod a_{\fP_k} < 0$---exactly when the cuspidal component reverses sign.
+The Thurston corrugation frequencies $k_\fP = \Nm(\fP)$ and amplitudes
+$A_\fP = |a_\fP|/\Nm(\fP)$ arise naturally from the arithmetic.
+A 3-prime sequence $(p=5, p=3, p=31)$ achieves a complete eversion with
+multi-frequency corrugation, verified by 29 tests covering path dynamics,
+sign flip, rho bridge integrity, acoustic propagation, marching cubes
+isosurface extraction, and Smale invariant.
+\end{abstract}
+
+
+% ===========================================================================
+\section{The Information-Acoustic Principle}\label{sec:principle}
+% ===========================================================================
+
+\subsection{Setting}
+
+Let $H_1 = H_1(X_0((11)), \mathrm{cusps}; \ZZ) \otimes \RR \cong \RR^4$
+denote the Hilbert modular homology from Paper~VI, with Eisenstein projector
+$\Pi_e$ (rank~3) and cuspidal projector $\Pi_c$ (rank~1).  The Hecke
+operators $T_\fP$ for prime ideals $\fP \in \Spec(\cO_K)$ act as:
+\begin{equation}\label{eq:hecke}
+  T_\fP = a_\fP\,\Pi_c + (\Nm(\fP)+1)\,\Pi_e,
+\end{equation}
+where $a_\fP$ is computed by point counting on $E_{11}$ and Langlands
+base-change (Paper~VI, \S3.1).
+
+The Cl(3,1) representation $\rho: \Cl(3,1) \xrightarrow{\sim} \End(H_1)$
+identifies the signature $(3,1)$ with the Eisenstein--cuspidal splitting:
+three spacelike generators $\gamma_0^2 = \gamma_1^2 = \gamma_2^2 = +I$
+correspond to the Eisenstein directions; the timelike generator
+$\gamma_3^2 = -I$ corresponds to the cuspidal direction.
+
+\begin{definition}[Information-acoustic eversion]
+An \emph{eversion path} is a sequence of prime ideals
+$(\fP_1, \ldots, \fP_n)$ and an initial state $\psi_0 \in H_1$ such that:
+\begin{enumerate}[label=(\roman*)]
+\item Each step propagates: $\psi_k = T_{\fP_k}\,\psi_{k-1}$.
+\item The eversion completes: $\langle \Pi_c\psi_n,\, \Pi_c\psi_0 \rangle < 0$.
+\end{enumerate}
+\end{definition}
+
+The completion condition is equivalent to $\prod_{k=1}^n a_{\fP_k} < 0$,
+since $T_\fP$ acts as the scalar $a_\fP$ on the 1-dim cuspidal line.
+
+
+% ===========================================================================
+\section{Eversion Existence}\label{sec:existence}
+% ===========================================================================
+
+\begin{theorem}[Existence]\label{thm:existence}
+For $E_{11}/K$ with $K = \QQ(\sqrt{5})$, there exists an eversion path
+of length~1.  The prime ideal $\fP$ above $p = 3$ (inert, $\Nm(\fP) = 9$,
+$a_\fP = -5$) satisfies $a_\fP < 0$ and hence reverses the cuspidal sign
+in a single step.
+\end{theorem}
+
+\begin{proof}
+By direct computation: $a_3(E_{11}/\QQ) = -1$, and for the inert prime
+$\fP | 3$ in $\cO_K$, $a_\fP = (-1)^2 - 2\cdot 3 = -5 < 0$.
+Then $\Pi_c\psi_1 = a_\fP\,\Pi_c\psi_0 = -5\,\Pi_c\psi_0$, so
+$\langle \Pi_c\psi_1, \Pi_c\psi_0 \rangle = -5\|\Pi_c\psi_0\|^2 < 0$.
+\end{proof}
+
+\begin{remark}
+The existence of negative $a_\fP$ is generic: for any non-CM elliptic
+curve $E/\QQ$, the Sato--Tate distribution guarantees that $a_p < 0$
+for a positive density of primes $p$.  By base change, the inert formula
+$a_\fP = a_p^2 - 2p < 0$ holds whenever $|a_p| < \sqrt{2p}$, which
+occurs for infinitely many $p$.
+\end{remark}
+
+
+% ===========================================================================
+\section{Parsimony and Thurston Frequencies}\label{sec:parsimony}
+% ===========================================================================
+
+A single-step eversion achieves the sign flip but has only one corrugation
+frequency.  For a visibly structured eversion with Thurston multi-frequency
+corrugation, we use a short multi-prime sequence.
+
+\begin{theorem}[Parsimonious eversion]\label{thm:parsimony}
+The sequence $(\fP_5, \fP_3, \fP_{31})$ with $p = 5$ (ramified,
+$a_\fP = 1$, $\Nm = 5$), $p = 3$ (inert, $a_\fP = -5$, $\Nm = 9$),
+$p = 31$ (split, $a_\fP = 7$, $\Nm = 31$) achieves:
+\begin{enumerate}[label=(\roman*)]
+\item Sign flip: $\prod a_{\fP_k} = 1 \cdot (-5) \cdot 7 = -35 < 0$.
+\item Three distinct corrugation frequencies: $k_\fP \in \{5, 9, 31\}$.
+\item One prime of each splitting type (ramified, inert, split).
+\end{enumerate}
+\end{theorem}
+
+The Thurston corrugation parameters at each step are:
+\begin{center}
+\begin{tabular}{llcccl}
+\toprule
+Step & Prime & $\Nm(\fP)$ & $a_\fP$ & $A_\fP = |a_\fP|/\Nm(\fP)$ & Type \\
+\midrule
+1 & $\fP_5$  & 5  & $+1$  & 0.200 & ramified \\
+2 & $\fP_3$  & 9  & $-5$  & 0.556 & inert (sign flip) \\
+3 & $\fP_{31}$ & 31 & $+7$ & 0.226 & split \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+In the theory-true pipeline, the corrugation is not applied as an
+explicit vertex displacement.  Instead, the Hecke operator $T_{\fP_k}$
+is expressed as a $\Cl(3,1)$ multivector via $\rho^{-1}$, applied as a
+full 16-component left-multiplication on the volumetric field, and then
+propagated spatially by the Dirac leapfrog.  The resulting oscillations
+in the witness scalar field at frequency $\Nm(\fP_k)$ correspond to the
+Thurston corrugation formula
+\begin{equation}\label{eq:thurston}
+  F_k(x) \sim F_{k-1}(x) + \frac{A_{\fP_k}}{k_{\fP_k}}
+    \sin\bigl(k_{\fP_k}\,\theta(x)\bigr)\,\mathbf{u}(x),
+\end{equation}
+but emerge from the arithmetic rather than being imposed post-hoc.
+
+
+% ===========================================================================
+\section{The Thurston Frequency Identity}\label{sec:thurston-identity}
+% ===========================================================================
+
+\begin{proposition}[Natural frequency limit]
+As $p \to \infty$ through primes of $\QQ$, the corrugation frequencies
+$k_\fP = \Nm(\fP)$ satisfy $k_\fP \to \infty$.  The Thurston formal limit
+$k \to \infty$ (in which the corrugation becomes a $C^1$-dense family of
+immersions) is realized as the limit over $\Spec(\cO_K)$ ordered by norm.
+\end{proposition}
+
+\begin{proof}
+For split primes, $\Nm(\fP) = p \to \infty$.  For inert primes,
+$\Nm(\fP) = p^2 \to \infty$.  Hence $\min(k_\fP) \to \infty$ as the
+prime-ideal sequence extends.
+\end{proof}
+
+This identification is the key structural claim: the Thurston
+corrugation method for sphere eversion is not an external construction
+applied to the arithmetic---it IS the arithmetic, with the prime-ideal
+norms providing the natural frequency scale.
+
+
+% ===========================================================================
+\section{Computational Verification}\label{sec:verification}
+% ===========================================================================
+
+All claims are verified by 29 tests (\texttt{test\_eversion.py}):
+
+\begin{center}
+\begin{tabular}{lcp{7cm}}
+\toprule
+Test class & Count & Verifies \\
+\midrule
+\texttt{TestPathDynamics}     & 3 & Hecke commutativity, exact product formula, path length \\
+\texttt{TestSignFlip}         & 3 & Single negative $a_\fP$ flips; positive does not; mixed sequence matches product sign \\
+\texttt{TestParsimony}        & 4 & Achieves eversion, bounded length, includes negative $a_\fP$, sorted by frequency \\
+\texttt{TestRhoBridge}        & 5 & $\rho$ round-trip (random \& Hecke), $\rho^{-1}(T_\fP)$ preserves eigenvalues, left-mult $=$ geometric product, atlas seed $\propto\rho^{-1}(\psi\psi^T)$ \\
+\texttt{TestAcousticPropagation} & 3 & Dirac leapfrog energy bounded; Hecke populates all 16 blades; Hecke + Dirac produces spatially varying field \\
+\texttt{TestWitnessSkinTopology}  & 4 & Icosphere $\chi = 2$; marching cubes produces mesh; no degenerate triangles; intermediate topology differs \\
+\texttt{TestMarchingCubes}    & 3 & Spherical field, empty field, vertex deduplication \\
+\texttt{TestSmaleInvariant}   & 4 & Eversion: invariant 1; no flip: 0; double flip: 0; triple flip: 1 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+All 29 tests pass.  The witness surface is extracted via marching cubes
+on the $64^3$ (or $32^3$) witness scalar grid, producing variable-topology
+meshes that can self-intersect---capturing the Morin-type intermediate
+that the field passes through during the cuspidal sign flip.
+
+
+% ===========================================================================
+\section{Interpretation}\label{sec:interpretation}
+% ===========================================================================
+
+\subsection{The eversion as arithmetic propagation}
+
+The traditional approach to sphere eversion constructs a global regular
+homotopy $F_t: S^2 \to \RR^3$ via either the Morin halfway model or
+Thurston's corrugation method.  Both require continuous deformation of
+an embedded surface through self-intersections.
+
+The information-acoustic approach replaces continuous surface deformation
+with discrete Hecke propagation on a 4-dimensional homological state space.
+The ``surface'' is a derived object---the level set of a witness scalar
+field in a volumetric Cl(3,1) substrate---not a primary geometric entity.
+
+\subsection{Why the signature matters}
+
+The Lorentzian signature $(3,1)$ of $\Cl(3,1)$ is not a choice: it is
+the Eisenstein--cuspidal splitting of $H_1$ (Paper~VI).  The three
+spacelike directions are the Eisenstein boundary modes; the single
+timelike direction is the cuspidal interior mode.  The eversion is
+propagation along the timelike axis: the cuspidal component flips sign,
+which reverses the inside/outside orientation of the witness sphere.
+
+\subsection{The parsimonious eversion principle}
+
+Informational parsimony demands that the eversion use the minimum
+arithmetic structure: one prime per splitting type, ordered by norm,
+truncated at the first sign flip.  The resulting 3-prime sequence
+$(5, 3, 31)$ is not arbitrary---it is the unique shortest sequence
+drawn from the first primes of $\cO_K$ that achieves multi-frequency
+corrugation with an odd number of cuspidal sign flips.
+
+\subsection{Forward reference: the eversion law on byte chains}
+
+The cuspidal sign-flip mechanism that drives geometric eversion
+generalizes to a per-chain parity law on arbitrary blade sequences
+in $\Cl(3,1)$.  In Paper~VIII (Layer~3) this is sharpened to the
+\emph{eversion law}
+\[
+  M_{T_{13}}(c) = \varepsilon(c) \cdot M_{T_{31}}(c),
+  \quad
+  \varepsilon(c) = (-1)^{\lfloor c_2/2 \rfloor + \lfloor c_3/2 \rfloor},
+\]
+where $c_i$ counts occurrences of generator $e_i$ across a blade
+chain $c$.  The same $\varepsilon(c)$ then forms one of the three
+identities of the Combined Reading Lemma
+(Paper~VIII, Section~12), which proves that engine state and NSM
+state decompose into orthogonal halves of $\Cl(3,1)$ for every
+byte chain; the witness pair $(\mathsf{be}, \mathsf{know}) =
+\mathrm{span}\{e_0, e_{15}\}$ is the unique chirality-invariant mediator
+between them.  Sphere eversion in this paper is thus the geometric
+realization of the same single-bit parity operation that drives
+voice swap in language.
+
+
+% ===========================================================================
+\section*{Acknowledgments}
+% ===========================================================================
+
+\begin{sloppypar}
+Computational verification uses the \texttt{substrate-sim/algebra}
+codebase.  Core modules: \texttt{eversion} (path dynamics, parsimony,
+Smale invariant), \texttt{acoustic\_lift} ($64^3$ Cl(3,1) atlas, Dirac
+leapfrog, witness scalar), \texttt{hilbert\_homology} (4-dim $H_1$ and
+spectral Hecke), \texttt{quaternion\_bridge} ($\Cl(3,1) \to \End(H_1)$
+representation, $\rho^{-1}$, left-multiplication),
+\texttt{e11\_point\_count} (first-principles eigenvalues).
+29 tests, 0 failures.
+\end{sloppypar}
+
+
+\begin{thebibliography}{99}
+
+\bibitem{paper6}
+Paper~VI: The Operator-Level Bridge.  From Peirce Decomposition to Prime
+Splitting via the Quaternion--Clifford Identification.
+
+\bibitem{thurston1974}
+W.~Thurston, \emph{Corrugations}, lecture notes, Princeton, 1974.
+
+\bibitem{smale1958}
+S.~Smale, \emph{A classification of immersions of the two-sphere},
+Trans.\ Amer.\ Math.\ Soc.\ \textbf{90} (1958), 281--290.
+
+\bibitem{morin1978}
+B.~Morin, \emph{Formes canoniques des singularit\'es d'une application
+diff\'erentiable}, C.~R.\ Acad.\ Sci.\ Paris \textbf{260} (1965), 5662--5665.
+
+\bibitem{max1977}
+N.~Max, \emph{Turning a Sphere Inside Out} (film), International Film
+Bureau, 1977.
+
+\end{thebibliography}
+
+\end{document}
